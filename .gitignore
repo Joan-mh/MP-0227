@@ -1,0 +1,14 @@
+# Material privat del professor (no es publica al repositori)
+**/examens.md
+**/solucions.md
+
+# Meta-documentació interna (no és per als alumnes)
+CLAUDE.md
+PrimerPromptChat.md
+programacion_didactica.md
+
+# Carpetes heretades amb material font original (encara per repartir per RA)
+Examens/
+solucions/
+_originals/
+**/_originals/
