@@ -21,3 +21,8 @@ Examens/
 solucions/
 _originals/
 **/_originals/
+
+# MkDocs
+site/
+index.md
+

@@ -36,7 +36,7 @@ N-RAx-Servei/
 
 Al RA7 hi ha, a més, un `checklist.md` amb els punts observables en directe (aquest RA no té examen escrit).
 
-Les solucions de pràctiques i els enunciats/solucions d'exàmens són **material privat del professor** i no formen part del repositori públic (veure [Material privat](#material-privat)).
+Les solucions de pràctiques i els enunciats/solucions d'exàmens són **material privat del professor** i no formen part del repositori públic.
 
 ## Projectes finals
 

@@ -1,0 +1,126 @@
+site_name: Serveis de Xarxa — M227
+site_description: Material docent del mòdul professional 0227 (CFGM Sistemes Microinformàtics i Xarxes)
+site_author: Joan Mercadé
+site_url: https://joan-mh.github.io/MP227/
+
+repo_url: https://github.com/Joan-mh/MP227
+repo_name: Joan-mh/MP227
+edit_uri: edit/main/
+
+docs_dir: .
+site_dir: site
+
+theme:
+  name: material
+  language: ca
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Passar a mode fosc
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Passar a mode clar
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Enllaç a aquesta secció
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.smartsymbols
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+exclude_docs: |
+  _professor/
+  _originals/
+  **/_originals/
+  **/solucions*.md
+  **/examens*.md
+  Projectes/solucions/
+  .github/
+  site/
+  Examens/
+  CLAUDE.md
+  README.md
+
+nav:
+  - Inici: index.md
+  - RA i ordre d'impartició:
+    - RA7 — Wifi:
+      - Teoria: 7-RA7-Wifi/teoria.md
+      - Pràctiques: 7-RA7-Wifi/practiques.md
+      - Checklist d'avaluació: 7-RA7-Wifi/checklist.md
+    - RA6 — SSH:
+      - Teoria: 6-RA6-SSH/teoria.md
+      - Pràctiques: 6-RA6-SSH/practiques.md
+    - RA1 — DHCP:
+      - Teoria: 1-RA1-DHCP/teoria.md
+      - Pràctiques: 1-RA1-DHCP/practiques.md
+    - RA2 — DNS:
+      - Teoria: 2-RA2-DNS/teoria.md
+      - Pràctiques: 2-RA2-DNS/practiques.md
+    - RA3 — FTP:
+      - Teoria: 3-RA3-FTP/teoria.md
+      - Pràctiques: 3-RA3-FTP/practiques.md
+    - RA5 — HTTP:
+      - Teoria: 5-RA5-HTTP/teoria.md
+      - Pràctiques: 5-RA5-HTTP/practiques.md
+    - RA8 — Proxy:
+      - Teoria: 8-RA8-Proxy/teoria.md
+      - Pràctiques: 8-RA8-Proxy/practiques.md
+    - RA4 — Correu:
+      - Teoria: 4-RA4-Mail/teoria.md
+      - Pràctiques: 4-RA4-Mail/practiques.md
+  - Projectes:
+    - Enunciat Projecte 1 (base + Ruta A): Projectes/Projecte1.md
+    - Enunciat Projecte 2 (Ruta B): Projectes/Projecte2.md
+    - Qüestionari base (tots): Projectes/Questionari-Projecte1-Base.md
+    - Qüestionari extensió Ruta A: Projectes/Questionari-Projecte1-Extensio.md
+    - Qüestionari Projecte 2: Projectes/Questionari-Projecte2.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Joan-mh/MP227
