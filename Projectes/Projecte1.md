@@ -77,7 +77,7 @@ Aquestes IPs són una proposta. **El professor us donarà la IP de servidor conc
 
 ### DHCP intern
 
-- Configureu **`isc-dhcp-server`** al vostre servidor perquè assigni IPs dinàmiques a les màquines de la vostra LAN interna.
+- Configureu **`Kea DHCP`** al vostre servidor perquè assigni IPs dinàmiques a les màquines de la vostra LAN interna.
 - Rang aprox. `192.168.<numGrup>.50` – `.150`.
 - **Gateway** = la IP del servidor a la LAN interna (`.1`).
 - **DNS servers** = el vostre propi servidor DNS (una vegada configurat) + fallback opcional.
@@ -85,7 +85,7 @@ Aquestes IPs són una proposta. **El professor us donarà la IP de servidor conc
 ### DNS
 
 - Configureu **BIND9** com a servidor **autoritatiu** per als vostres dominis.
-- Trieu **3 dominis** (sempre acabats en `.edu` per limitacions del DNS Root) — per exemple `grup5.edu`, `mercats.edu`, `bicis.edu`.
+- Trieu **3 dominis** (sempre acabats en `.edu` per limitacions del DNS Root) — per exemple `grup5.edu`, `mercade.edu`, `bicis.edu`.
 - Demaneu al professor que els **doni d'alta** al DNS Root. Us donarà la IP que faran servir els clients externs per arribar-hi.
 - El vostre DNS ha de **reenviar** al DNS Root qualsevol consulta que no sàpiga (forwarders) i ser **autoritatiu** per als vostres dominis.
 - Configureu **registres A** (per als serveis: `www`, `ftp`, `mail`), **MX** (per al mail), i el registre `PTR` si voleu tenir reverse DNS.

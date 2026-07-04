@@ -36,8 +36,6 @@ N-RAx-Servei/
 
 Al RA7 hi ha, a més, un `checklist.md` amb els punts observables en directe (aquest RA no té examen escrit).
 
-Les solucions de pràctiques i els enunciats/solucions d'exàmens són **material privat del professor** i no formen part del repositori públic.
-
 ## Projectes finals
 
 Al final del mòdul es fa un projecte de 36 hores. Cada grup tria una de les dues rutes:
@@ -56,24 +54,22 @@ Enllaços:
 
 ## Com fer servir aquest repositori
 
-**Alumnat**: llegiu `teoria.md`, feu `practiques.md` en ordre. Cada pràctica té una secció d'objectius, tasques i verificació. Al final del mòdul entregueu els projectes i els qüestionaris.
-
-**Professorat**: podeu fer fork del repositori i adaptar-lo. Les solucions i els exàmens són al vostre `.gitignore` — genereu els vostres propis o poseu-vos en contacte.
+**Alumnat**: llegiu `teoria.md`, feu `practiques.md` en ordre. Cada pràctica té una secció d'objectius, tasques i verificació. Entregueu els projectes i les pràctiques al Moodle abans de les dates de tancament previstos. No s'admeten treballs fora de termini.
 
 ## Ferramenta principal per servei
 
-| Servei | A pràctiques | Al Projecte 1 | Notes |
-|---|---|---|---|
-| DHCP | isc-dhcp-server | isc-dhcp-server | Kea és el successor modern (esmentat a teoria) |
-| DNS | BIND9 | BIND9 | |
-| FTP | vsftpd | ProFTPD | Els dos són vàlids; ProFTPD és més modular |
-| HTTP | Apache | Apache + Nginx (frontal) | Nginx com a proxy invers i balancejador |
-| Proxy | Squid | Squid + Nginx | Squid = directe, Nginx = invers |
-| Correu | Postfix + Dovecot | idem | TLS obligatori; client recomanat: Evolution |
-| SSH i accés remot | OpenSSH + Remmina + xrdp + VNC | — | Reservat per teoria/pràctica, no al projecte |
-| Wifi | Punt d'accés D-Link físic | — | Introducció; ús real més avall |
-| Escriptori remot web | — | Proxmox VE + Apache Guacamole | Només al Projecte 2 (Ruta B) |
-| Panel d'ISP | — | Virtualmin | Només al Projecte 1 extensió (Ruta A) |
+| Servei               | A pràctiques                   | Al Projecte 1                 | Notes                                          |
+| -------------------- | ------------------------------ | ----------------------------- | ---------------------------------------------- |
+| DHCP                 | isc-dhcp-server                | Kea DHCP                      | Kea és el successor modern (esmentat a teoria) |
+| DNS                  | BIND9                          | BIND9                         |                                                |
+| FTP                  | vsftpd                         | ProFTPD                       | Els dos són vàlids; ProFTPD és més modular     |
+| HTTP                 | Apache                         | Apache + Nginx (frontal)      | Nginx com a proxy invers i balancejador        |
+| Proxy                | Squid                          | Squid + Nginx                 | Squid = directe, Nginx = invers                |
+| Correu               | Postfix + Dovecot              | idem                          | TLS obligatori; client recomanat: Evolution    |
+| SSH i accés remot    | OpenSSH + Remmina + xrdp + VNC | —                             | Reservat per teoria/pràctica, no al projecte   |
+| Wifi                 | Punt d'accés D-Link físic      | —                             | Introducció; ús real més avall                 |
+| Escriptori remot web | —                              | Proxmox VE + Apache Guacamole | Només al Projecte 2 (Ruta B)                   |
+| Panel d'ISP          | —                              | Virtualmin                    | Només al Projecte 1 extensió (Ruta A)          |
 
 ## Llicència
 
