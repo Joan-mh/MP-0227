@@ -1,0 +1,2478 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material docent del mòdul professional 0227 (CFGM Sistemes Microinformàtics i Xarxes)">
+      
+      
+        <meta name="author" content="Joan Mercadé">
+      
+      
+        <link rel="canonical" href="https://joan-mh.github.io/MP-0227/3-RA3-FTP/teoria/">
+      
+      
+        <link rel="prev" href="../../2-RA2-DNS/practiques/">
+      
+      
+        <link rel="next" href="../practiques/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Teoria - Serveis de Xarxa — M227</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#serveis-de-xarxa-ftp" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-header__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Serveis de Xarxa — M227
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Teoria
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode fosc"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passar a mode fosc" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passar a mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inici
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../7-RA7-Wifi/teoria/" class="md-tabs__link">
+          
+  
+  
+  RA i ordre d'impartició
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Projectes/Projecte1/" class="md-tabs__link">
+          
+  
+  
+  Projectes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-nav__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Serveis de Xarxa — M227
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inici
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA i ordre d'impartició
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA i ordre d'impartició
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA7 — Wifi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA7 — Wifi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklist d'avaluació
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA6 — SSH
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA6 — SSH
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA1 — DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA1 — DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA2 — DNS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA2 — DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA3 — FTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA3 — FTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducció
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-client-servidor-dos-canals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model client-servidor: dos canals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mode-actiu-vs-mode-passiu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode actiu vs. mode passiu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diferencia-ftp-ftps-sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferència FTP / FTPS / SFTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsftpd-installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vsftpd: instal·lació
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitxer-de-configuracio-etcvsftpdconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxer de configuració: /etc/vsftpd.conf
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acces-anonim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accés anònim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usuaris-locals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usuaris locals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engabiar-amb-chroot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engabiar amb chroot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftps-xifratge-amb-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FTPS: xifratge amb TLS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sftp-xifratge-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFTP: xifratge via SSH
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandes-ftp-essencials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandes FTP essencials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filezilla-client-grafic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FileZilla: client gràfic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referències
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA5 — HTTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA5 — HTTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA8 — Proxy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA8 — Proxy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA4 — Correu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA4 — Correu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projectes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projectes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 1 (base + Ruta A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 2 (Ruta B)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari base (tots)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Extensio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari extensió Ruta A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari Projecte 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducció
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-client-servidor-dos-canals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model client-servidor: dos canals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mode-actiu-vs-mode-passiu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode actiu vs. mode passiu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diferencia-ftp-ftps-sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferència FTP / FTPS / SFTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsftpd-installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vsftpd: instal·lació
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitxer-de-configuracio-etcvsftpdconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxer de configuració: /etc/vsftpd.conf
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acces-anonim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accés anònim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usuaris-locals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usuaris locals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engabiar-amb-chroot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engabiar amb chroot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftps-xifratge-amb-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FTPS: xifratge amb TLS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sftp-xifratge-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFTP: xifratge via SSH
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandes-ftp-essencials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandes FTP essencials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filezilla-client-grafic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FileZilla: client gràfic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referències
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Joan-mh/MP-0227/edit/main/3-RA3-FTP/teoria.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="serveis-de-xarxa-ftp">Serveis de xarxa — FTP<a class="headerlink" href="#serveis-de-xarxa-ftp" title="Enllaç a aquesta secció">&para;</a></h1>
+<h2 id="introduccio">Introducció<a class="headerlink" href="#introduccio" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><strong>FTP (File Transfer Protocol)</strong> és un dels protocols més antics d'Internet: el primer RFC que el descriu data del <strong>1971</strong> i va ser estandarditzat el <strong>1985</strong> (RFC 959). Per posar-ho en context, HTTP (el protocol de la web) és de 1996.</p>
+<p>FTP forma part de la <strong>capa d'aplicació</strong> de TCP/IP. La seva funció és la <strong>transferència de fitxers</strong> entre client i servidor. És un protocol <strong>amb estat (<em>stateful</em>)</strong>: manté oberta una sessió durant tota la interacció, cosa que el diferencia de HTTP, que és sense estat.</p>
+<p>Un cop establerta la sessió, el client té un <em>prompt</em> per donar ordres al servidor: pujar, baixar, esborrar, renombrar fitxers, canviar de directori, etc.</p>
+<p>Aquest RA cobreix la instal·lació i configuració de <strong><code>vsftpd</code></strong> (Very Secure FTP Daemon) a Ubuntu Server. Al <strong>Projecte 1</strong> del mòdul es reprendrà el tema amb un servidor més potent, <strong>ProFTPD</strong>.</p>
+<h2 id="model-client-servidor-dos-canals">Model client-servidor: dos canals<a class="headerlink" href="#model-client-servidor-dos-canals" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Una particularitat de FTP és que utilitza <strong>dues connexions TCP</strong> entre client i servidor:</p>
+<ul>
+<li><strong>Canal de control</strong> (port 21 al servidor): per on viatgen les ordres i les respostes. Es manté obert tota la sessió.</li>
+<li><strong>Canal de dades</strong> (port 20 o negociat, segons el mode): s'obre quan cal transferir un fitxer o el llistat d'un directori, i es tanca en acabar.</li>
+</ul>
+<p>Aquesta separació és la que fa que FTP tingui <strong>dos modes de funcionament</strong> — actiu i passiu — que veurem tot seguit.</p>
+<h2 id="mode-actiu-vs-mode-passiu">Mode actiu vs. mode passiu<a class="headerlink" href="#mode-actiu-vs-mode-passiu" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>En <strong>mode actiu</strong> el client obre el canal de control cap al port 21 del servidor. Quan cal transferir dades, és el <strong>servidor</strong> qui obre la connexió de dades cap a un port que el client li ha indicat. Aquesta connexió entrant al client sol ser <strong>bloquejada per tallafocs i NAT</strong>, cosa que fa que el mode actiu sigui problemàtic en molts entorns.</p>
+<p>En <strong>mode passiu (PASV)</strong> el servidor no inicia cap connexió cap al client. En lloc d'això, obre un <strong>port aleatori</strong> al seu costat i li'n dona el número al client. El client és qui obre les dues connexions (control i dades) cap al servidor. Aquesta és la forma <strong>estàndard avui dia</strong> perquè travessa millor NAT i tallafocs.</p>
+<blockquote>
+<p>Aquest tema s'explica en detall al vídeo que us passaré junt amb aquest material. Mireu-lo abans de fer les pràctiques.</p>
+</blockquote>
+<h2 id="diferencia-ftp-ftps-sftp">Diferència FTP / FTPS / SFTP<a class="headerlink" href="#diferencia-ftp-ftps-sftp" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Sovint es confonen. Són tres coses diferents:</p>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Base</th>
+<th>Xifratge</th>
+<th>Port habitual</th>
+<th>Autenticació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FTP</strong></td>
+<td>FTP pur</td>
+<td>Cap (text pla)</td>
+<td>21</td>
+<td>Usuari/contrasenya (en pla)</td>
+</tr>
+<tr>
+<td><strong>FTPS</strong></td>
+<td>FTP + TLS/SSL</td>
+<td>Certificat X.509 (com HTTPS)</td>
+<td>21 (explícit) o 990 (implícit)</td>
+<td>Usuari/contrasenya (xifrada per TLS)</td>
+</tr>
+<tr>
+<td><strong>SFTP</strong></td>
+<td>Subsistema d'<strong>SSH</strong></td>
+<td>Claus SSH</td>
+<td>22 (mateix que SSH)</td>
+<td>Contrasenya o claus SSH</td>
+</tr>
+</tbody>
+</table>
+<p>Punts clau que sovint es malinterpreten:</p>
+<ul>
+<li><strong>FTPS</strong> és FTP de tota la vida amb una capa TLS al damunt. Manté els dos canals (control i dades), l'estat, les comandes (<code>RETR</code>, <code>STOR</code>, <code>PASV</code>...). Només afegeix xifratge.</li>
+<li><strong>SFTP</strong> <strong>no té res a veure amb FTP</strong>. És un protocol completament diferent, dissenyat des de zero, que es transporta dins d'una connexió <strong>SSH</strong>. Reutilitza tot el que ja fa SSH (autenticació, xifratge, integritat), amb un únic port.</li>
+<li>Per a <strong>FTPS</strong> cal un certificat generat amb <strong><code>openssl</code></strong>.</li>
+<li>Per a <strong>SFTP</strong> el servidor és el mateix <strong><code>openssh-server</code></strong> — no cal instal·lar res més; el subsistema SFTP ja ve activat per defecte a <code>/etc/ssh/sshd_config</code>.</li>
+</ul>
+<p>En aquest RA farem servir <strong>totes dues opcions</strong> com a pràctica de xifratge (FTPS amb vsftpd, SFTP amb OpenSSH).</p>
+<h2 id="vsftpd-installacio"><code>vsftpd</code>: instal·lació<a class="headerlink" href="#vsftpd-installacio" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><strong><code>vsftpd</code></strong> (Very Secure FTP Daemon) és un servidor FTP lleuger i orientat a seguretat, molt utilitzat a distribucions Linux. És l'eina que farem servir a les pràctiques d'aquest RA.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>vsftpd
+</span></code></pre></div>
+<p>En instal·lar-lo:</p>
+<ul>
+<li>Es crea el fitxer de configuració a <strong><code>/etc/vsftpd.conf</code></strong>.</li>
+<li>Es crea l'usuari del sistema <code>ftp</code> i el grup <code>ftp</code>.</li>
+<li>El servei s'inicia com a <code>vsftpd.service</code>.</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>vsftpd
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>vsftpd
+</span></code></pre></div>
+<p>Els logs es consulten amb <code>journalctl -u vsftpd</code> o a <code>/var/log/vsftpd.log</code> (si està activat a <code>xferlog_file</code>).</p>
+<h2 id="fitxer-de-configuracio-etcvsftpdconf">Fitxer de configuració: <code>/etc/vsftpd.conf</code><a class="headerlink" href="#fitxer-de-configuracio-etcvsftpdconf" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>El fitxer que crea <code>apt</code> ja porta molts exemples comentats. <strong>Feu-ne una còpia abans de tocar-lo</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/vsftpd.conf<span class="w"> </span>/etc/vsftpd.conf.bck
+</span></code></pre></div>
+<p>Directives més habituals (les principals):</p>
+<table>
+<thead>
+<tr>
+<th>Directiva</th>
+<th>Què fa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>listen=YES</code></td>
+<td>Fa que vsftpd escolti com a dimoni independent (no via <code>inetd</code>/<code>xinetd</code>).</td>
+</tr>
+<tr>
+<td><code>anonymous_enable=YES/NO</code></td>
+<td>Permet o denega el login anònim.</td>
+</tr>
+<tr>
+<td><code>local_enable=YES/NO</code></td>
+<td>Permet o denega el login d'usuaris del sistema.</td>
+</tr>
+<tr>
+<td><code>write_enable=YES/NO</code></td>
+<td>Permet operacions d'escriptura (<code>PUT</code>, <code>MKDIR</code>, <code>DELETE</code>...).</td>
+</tr>
+<tr>
+<td><code>local_umask=022</code></td>
+<td>Umask amb què es creen els fitxers pujats.</td>
+</tr>
+<tr>
+<td><code>chroot_local_user=YES</code></td>
+<td>Engabia els usuaris locals al seu directori (<code>chroot</code>).</td>
+</tr>
+<tr>
+<td><code>chroot_list_enable=YES</code></td>
+<td>Activa la llista d'excepcions al <code>chroot</code>.</td>
+</tr>
+<tr>
+<td><code>chroot_list_file=/etc/vsftpd.chroot_list</code></td>
+<td>Fitxer amb els usuaris que <strong>no</strong> s'han d'engabiar.</td>
+</tr>
+<tr>
+<td><code>allow_writeable_chroot=YES</code></td>
+<td>Permet que un directori engabiat sigui també d'escriptura.</td>
+</tr>
+<tr>
+<td><code>anon_root=/var/ftp/pub</code></td>
+<td>Directori on aterren els anònims.</td>
+</tr>
+<tr>
+<td><code>pasv_enable=YES</code></td>
+<td>Activa el mode passiu (per defecte ho està).</td>
+</tr>
+<tr>
+<td><code>pasv_min_port</code> / <code>pasv_max_port</code></td>
+<td>Rang de ports per al mode passiu (útil amb tallafocs).</td>
+</tr>
+<tr>
+<td><code>ssl_enable=YES</code></td>
+<td>Activa FTPS (TLS).</td>
+</tr>
+<tr>
+<td><code>rsa_cert_file</code> / <code>rsa_private_key_file</code></td>
+<td>Rutes al certificat i la clau privada.</td>
+</tr>
+</tbody>
+</table>
+<p>Després de qualsevol canvi:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>vsftpd
+</span></code></pre></div>
+<p>Si el servei no arrenca, es pot cercar l'error executant vsftpd manualment:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>vsftpd<span class="w"> </span>/etc/vsftpd.conf
+</span></code></pre></div>
+<h2 id="acces-anonim">Accés anònim<a class="headerlink" href="#acces-anonim" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>L'usuari <code>anonymous</code> (àlies <code>ftp</code>) és una convenció clàssica per permetre descàrregues públiques sense credencials. <strong>Mai</strong> ha de tenir permís d'escriptura.</p>
+<p>Estructura habitual:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/ftp/pub
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">555</span><span class="w"> </span>/var/ftp/pub<span class="w">          </span><span class="c1"># r-x per a tothom, sense escriptura</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sudo<span class="w"> </span>chgrp<span class="w"> </span>ftp<span class="w"> </span>/var/ftp<span class="w"> </span>/var/ftp/pub
+</span></code></pre></div>
+<p>I al <code>vsftpd.conf</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>anonymous_enable=YES
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>anon_root=/var/ftp/pub
+</span></code></pre></div>
+<h2 id="usuaris-locals">Usuaris locals<a class="headerlink" href="#usuaris-locals" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Els usuaris locals són usuaris del sistema (definits a <code>/etc/passwd</code>). Si volem que <strong>només accedeixin per FTP i no puguin iniciar sessió al sistema</strong>, els posem el shell <code>/usr/sbin/nologin</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>-g<span class="w"> </span>ftp<span class="w"> </span>-d<span class="w"> </span>/home/ftp1<span class="w"> </span>-m<span class="w"> </span>-s<span class="w"> </span>/usr/sbin/nologin<span class="w"> </span>ftp1
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>passwd<span class="w"> </span>ftp1
+</span></code></pre></div>
+<ul>
+<li><code>-g ftp</code> — el fem membre del grup <code>ftp</code>.</li>
+<li><code>-d /home/ftp1 -m</code> — crea el directori home ara mateix.</li>
+<li><code>-s /usr/sbin/nologin</code> — shell de "no login" (no pot obrir sessió SSH ni consola local).</li>
+</ul>
+<p>Perquè el sistema accepti <code>nologin</code> com a shell vàlid per a FTP, cal afegir-lo a <code>/etc/shells</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>/usr/sbin/nologin
+</span></code></pre></div>
+<blockquote>
+<p><strong>Compte</strong>: si l'usuari té <code>nologin</code>, tampoc podrà accedir per <strong>SFTP</strong> (que és SSH). Per a la pràctica d'SFTP haurem d'usar usuaris amb un shell real (<code>/bin/bash</code>), o configurar SSH amb <code>ForceCommand internal-sftp</code> (fora de l'abast d'aquest RA — es veu a RA6).</p>
+</blockquote>
+<h2 id="engabiar-amb-chroot">Engabiar amb <code>chroot</code><a class="headerlink" href="#engabiar-amb-chroot" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Per defecte, un usuari FTP pot navegar amunt del seu <code>home</code> i explorar el sistema de fitxers. Això és un problema de seguretat evident. La solució és el <strong><code>chroot</code></strong> ("change root"): fer creure a l'usuari que la seva arrel (<code>/</code>) és el seu propi directori. No pot pujar més amunt.</p>
+<p>Configuració a <code>vsftpd.conf</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>chroot_local_user=YES                        # tots els locals engabiats per defecte
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>chroot_list_enable=YES                       # activa la llista d&#39;excepcions
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>chroot_list_file=/etc/vsftpd.chroot_list     # llista d&#39;usuaris que sí que poden sortir
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>allow_writeable_chroot=YES                   # per poder escriure dins de la gàbia
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>write_enable=YES
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>local_umask=022
+</span></code></pre></div>
+<p>I es crea el fitxer amb els usuaris "lliures" (un per línia):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>touch<span class="w"> </span>/etc/vsftpd.chroot_list
+</span></code></pre></div>
+<h2 id="ftps-xifratge-amb-tls">FTPS: xifratge amb TLS<a class="headerlink" href="#ftps-xifratge-amb-tls" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Perquè FTP viatgi xifrat, vsftpd pot afegir una capa TLS. Cal generar un certificat autofirmat amb OpenSSL i indicar-ne les rutes al <code>vsftpd.conf</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-nodes<span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span>-keyout<span class="w"> </span>/etc/ssl/private/vsftpd.key<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span>-out<span class="w"> </span>/etc/ssl/certs/vsftpd.crt
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/etc/ssl/private/vsftpd.key
+</span></code></pre></div>
+<p>I a <code>vsftpd.conf</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ssl_enable=YES
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>rsa_cert_file=/etc/ssl/certs/vsftpd.crt
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>rsa_private_key_file=/etc/ssl/private/vsftpd.key
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>allow_anon_ssl=NO
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>force_local_data_ssl=YES
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>force_local_logins_ssl=YES
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>ssl_tlsv1_2=YES
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>ssl_sslv2=NO
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>ssl_sslv3=NO
+</span></code></pre></div>
+<p>Per connectar-s'hi cal un client compatible amb FTPS explícit — el client <code>ftp</code> de línia de comandes clàssic <strong>no ho és</strong>, però <code>lftp</code>, <code>curl</code> i <strong>FileZilla</strong> sí.</p>
+<h2 id="sftp-xifratge-via-ssh">SFTP: xifratge via SSH<a class="headerlink" href="#sftp-xifratge-via-ssh" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>SFTP no és una variant de FTP: és un <strong>subsistema d'SSH</strong>. Si ja tenim <code>openssh-server</code> instal·lat, SFTP ja funciona sense fer res:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openssh-server
+</span></code></pre></div>
+<p>Comprovació:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sftp<span class="w"> </span>usuari@ip_del_servidor
+</span></code></pre></div>
+<p>L'usuari que es connecta per SFTP ha de tenir un shell vàlid (<code>/bin/bash</code>, per exemple). El fitxer <code>/etc/ssh/sshd_config</code> sol tenir aquesta línia activada per defecte:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Subsystem sftp /usr/lib/openssh/sftp-server
+</span></code></pre></div>
+<h2 id="comandes-ftp-essencials">Comandes FTP essencials<a class="headerlink" href="#comandes-ftp-essencials" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Un cop dins de la sessió FTP (<code>ftp&gt;</code> o <code>sftp&gt;</code>), les comandes principals són pràcticament idèntiques a Linux. <strong>N'hi ha moltes més</strong> (fàcilment 50-60), però amb aquestes 20 en tens prou per moure't. Consulta <code>help</code> dins del client per veure la llista completa d'un servidor concret.</p>
+<p>Les que <strong>has de saber per l'examen</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Comanda</th>
+<th>Ús</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>open &lt;host&gt;</code></td>
+<td>Connecta amb el servidor.</td>
+</tr>
+<tr>
+<td><code>bye</code> / <code>quit</code></td>
+<td>Tanca la sessió i surt del client.</td>
+</tr>
+<tr>
+<td><code>close</code> / <code>disconnect</code></td>
+<td>Tanca la sessió però no surt del client.</td>
+</tr>
+<tr>
+<td><code>pwd</code></td>
+<td>Directori de treball al servidor.</td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>Canvia de directori al servidor.</td>
+</tr>
+<tr>
+<td><code>lcd</code></td>
+<td>Canvia de directori al client (LOCAL).</td>
+</tr>
+<tr>
+<td><code>ls</code> / <code>dir</code></td>
+<td>Llista contingut del directori remot.</td>
+</tr>
+<tr>
+<td><code>get &lt;fitxer&gt;</code></td>
+<td>Descarrega un fitxer del servidor.</td>
+</tr>
+<tr>
+<td><code>mget &lt;patró&gt;</code></td>
+<td>Descarrega diversos fitxers (<code>mget *.txt</code>).</td>
+</tr>
+<tr>
+<td><code>put &lt;fitxer&gt;</code></td>
+<td>Puja un fitxer al servidor.</td>
+</tr>
+<tr>
+<td><code>mput &lt;patró&gt;</code></td>
+<td>Puja diversos fitxers.</td>
+</tr>
+<tr>
+<td><code>mkdir &lt;nom&gt;</code></td>
+<td>Crea directori remot.</td>
+</tr>
+<tr>
+<td><code>rmdir &lt;nom&gt;</code></td>
+<td>Esborra directori remot (ha d'estar buit).</td>
+</tr>
+<tr>
+<td><code>delete &lt;fitxer&gt;</code></td>
+<td>Esborra fitxer remot.</td>
+</tr>
+<tr>
+<td><code>mdelete &lt;patró&gt;</code></td>
+<td>Esborra diversos fitxers remots.</td>
+</tr>
+<tr>
+<td><code>mdir</code> / <code>mls</code></td>
+<td>Llista contingut de diversos directoris remots.</td>
+</tr>
+<tr>
+<td><code>rename &lt;a&gt; &lt;b&gt;</code></td>
+<td>Renombra un fitxer remot.</td>
+</tr>
+<tr>
+<td><code>ascii</code></td>
+<td>Mode de transferència text.</td>
+</tr>
+<tr>
+<td><code>binary</code></td>
+<td>Mode de transferència binari (per defecte).</td>
+</tr>
+<tr>
+<td><code>help</code> / <code>?</code></td>
+<td>Ajuda dins del client.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="filezilla-client-grafic">FileZilla: client gràfic<a class="headerlink" href="#filezilla-client-grafic" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><code>FileZilla</code> és un client gràfic multiplataforma (Linux, Windows, macOS) que suporta <strong>FTP</strong>, <strong>FTPS</strong> i <strong>SFTP</strong>. És l'estàndard <em>de facto</em> al món educatiu i sysadmin.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>filezilla
+</span></code></pre></div>
+<p>Camps de la barra ràpida:</p>
+<ul>
+<li><strong>Host</strong>: IP o nom del servidor. Amb prefix <code>ftp://</code>, <code>ftps://</code> o <code>sftp://</code> s'indica el protocol.</li>
+<li><strong>Nom d'usuari</strong> / <strong>Contrasenya</strong>.</li>
+<li><strong>Port</strong>: 21 per FTP/FTPS, 22 per SFTP.</li>
+</ul>
+<p>Per a configuracions més complexes s'utilitza el <strong>Gestor de llocs</strong> (<code>File → Site Manager</code>), on cada connexió es desa amb el seu protocol, credencials i opcions de xifratge.</p>
+<p>A cada pràctica d'aquest RA farem les tasques <strong>primer per línia de comandes</strong> (per fixar les comandes) i <strong>després verificarem el resultat amb FileZilla</strong> (per confirmar visualment).</p>
+<h2 id="referencies">Referències<a class="headerlink" href="#referencies" title="Enllaç a aquesta secció">&para;</a></h2>
+<ul>
+<li>Documentació oficial de vsftpd: <a href="https://security.appspot.com/vsftpd.html">security.appspot.com/vsftpd.html</a></li>
+<li>Documentació d'Ubuntu sobre FTP: <a href="https://ubuntu.com/server/docs/service-ftp">ubuntu.com/server/docs/service-ftp</a></li>
+<li>FileZilla: <a href="https://filezilla-project.org/">filezilla-project.org</a></li>
+<li>RFC 959 — File Transfer Protocol.</li>
+<li>RFC 4217 — Securing FTP with TLS (FTPS).</li>
+<li>RFC 4251/4253 — SSH (base de SFTP).</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+          
+          <a href="../../2-RA2-DNS/practiques/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctiques">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Pràctiques
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../practiques/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctiques">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                Pràctiques
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Joan-mh/MP-0227" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

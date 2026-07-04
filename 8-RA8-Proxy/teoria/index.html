@@ -1,0 +1,2645 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material docent del mòdul professional 0227 (CFGM Sistemes Microinformàtics i Xarxes)">
+      
+      
+        <meta name="author" content="Joan Mercadé">
+      
+      
+        <link rel="canonical" href="https://joan-mh.github.io/MP-0227/8-RA8-Proxy/teoria/">
+      
+      
+        <link rel="prev" href="../../5-RA5-HTTP/practiques/">
+      
+      
+        <link rel="next" href="../practiques/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Teoria - Serveis de Xarxa — M227</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#serveis-de-xarxa-servidors-proxy" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-header__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Serveis de Xarxa — M227
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Teoria
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode fosc"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passar a mode fosc" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passar a mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inici
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../7-RA7-Wifi/teoria/" class="md-tabs__link">
+          
+  
+  
+  RA i ordre d'impartició
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Projectes/Projecte1/" class="md-tabs__link">
+          
+  
+  
+  Projectes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-nav__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Serveis de Xarxa — M227
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inici
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA i ordre d'impartició
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA i ordre d'impartició
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA7 — Wifi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA7 — Wifi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklist d'avaluació
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA6 — SSH
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA6 — SSH
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA1 — DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA1 — DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA2 — DNS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA2 — DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA3 — FTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA3 — FTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA5 — HTTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA5 — HTTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA8 — Proxy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA8 — Proxy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Què és un proxy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proxy-directe-i-proxy-invers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proxy directe i proxy invers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proxy directe i proxy invers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-directe-forward-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proxy directe (forward proxy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy-invers-reverse-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proxy invers (reverse proxy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resum-rapid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resum ràpid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#squid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Squid
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Squid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio-i-estat-del-servei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació i estat del servei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fitxer-de-configuracio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxer de configuració
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directives-essencials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directives essencials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control-lists-acls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access Control Lists (ACLs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combinacio-de-normes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combinació de normes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combinació de normes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verticalment-una-sobre-laltra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verticalment (una sobre l'altra)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horitzontalment-una-al-costat-de-laltra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Horitzontalment (una al costat de l'altra)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-regla-implicita-deny-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La regla implícita deny all
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicis-dexemple-resolts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercicis d'exemple resolts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fitxers-de-registre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxers de registre
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx-com-a-proxy-invers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nginx com a proxy invers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nginx com a proxy invers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-dun-proxy-invers-minim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuració d'un proxy invers mínim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferents-paths-cap-a-diferents-backends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferents paths cap a diferents backends
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-acaba-nginx-a-aquest-modul" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On acaba Nginx a aquest mòdul
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA4 — Correu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA4 — Correu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projectes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projectes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 1 (base + Ruta A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 2 (Ruta B)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari base (tots)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Extensio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari extensió Ruta A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari Projecte 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Què és un proxy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proxy-directe-i-proxy-invers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proxy directe i proxy invers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proxy directe i proxy invers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-directe-forward-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proxy directe (forward proxy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy-invers-reverse-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proxy invers (reverse proxy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resum-rapid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resum ràpid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#squid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Squid
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Squid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio-i-estat-del-servei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació i estat del servei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fitxer-de-configuracio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxer de configuració
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directives-essencials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directives essencials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control-lists-acls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access Control Lists (ACLs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combinacio-de-normes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combinació de normes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combinació de normes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verticalment-una-sobre-laltra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verticalment (una sobre l'altra)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horitzontalment-una-al-costat-de-laltra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Horitzontalment (una al costat de l'altra)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-regla-implicita-deny-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La regla implícita deny all
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicis-dexemple-resolts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercicis d'exemple resolts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fitxers-de-registre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxers de registre
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx-com-a-proxy-invers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nginx com a proxy invers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nginx com a proxy invers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-dun-proxy-invers-minim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuració d'un proxy invers mínim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferents-paths-cap-a-diferents-backends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferents paths cap a diferents backends
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-acaba-nginx-a-aquest-modul" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On acaba Nginx a aquest mòdul
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Joan-mh/MP-0227/edit/main/8-RA8-Proxy/teoria.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="serveis-de-xarxa-servidors-proxy">Serveis de xarxa — Servidors proxy<a class="headerlink" href="#serveis-de-xarxa-servidors-proxy" title="Enllaç a aquesta secció">&para;</a></h1>
+<h2 id="que-es-un-proxy">Què és un proxy<a class="headerlink" href="#que-es-un-proxy" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Un <strong>servidor proxy</strong> és un intermediari entre un client i un servidor. Actua com un "porter" pel qual passa tot el trànsit: en pot bloquejar una part, guardar-ne còpies (caché), portar-ne un registre i, en general, aplicar-hi qualsevol política que decideixi l'administrador.</p>
+<p>Els beneficis tradicionals d'un proxy són:</p>
+<ul>
+<li><strong>Filtratge de contingut</strong>: bloquejar accés a determinats llocs, protocols o horaris.</li>
+<li><strong>Cau (<em>cache</em>)</strong>: quan un client demana una web, el proxy la baixa <strong>una vegada</strong> i la guarda. Les peticions posteriors al mateix contingut es responen des del cau, sense tornar a sortir a Internet. Estalvi d'ample de banda i millora de temps de resposta.</li>
+<li><strong>Registre (<em>logging</em>)</strong>: cada connexió queda apuntada. Molt útil en xarxes corporatives i educatives per auditoria i estadístiques d'ús.</li>
+<li><strong>Anonimat parcial</strong>: el proxy amaga la IP del client davant del servidor extern. La IP que veu el servidor és la del proxy, no la del client.</li>
+<li><strong>Protecció</strong>: els clients no parlen directament amb Internet; el proxy fa de barrera.</li>
+</ul>
+<h2 id="proxy-directe-i-proxy-invers">Proxy directe i proxy invers<a class="headerlink" href="#proxy-directe-i-proxy-invers" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Aquest és el punt conceptual clau del tema. Segons on es posi el proxy dins de la conversa, parlem d'un tipus o d'un altre.</p>
+<h3 id="proxy-directe-forward-proxy">Proxy directe (<em>forward proxy</em>)<a class="headerlink" href="#proxy-directe-forward-proxy" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El proxy es col·loca <strong>al costat dels clients</strong>. Els clients estan configurats per fer-hi passar totes les seves peticions abans que arribin a Internet.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[CLIENT1]  ┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>[CLIENT2]  ├──►  [PROXY DIRECTE]  ──►  Internet  (servidors externs)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[CLIENT3]  ┘
+</span></code></pre></div>
+<p>Casos d'ús típics:</p>
+<ul>
+<li><strong>Xarxes corporatives i educatives</strong> amb polítiques d'ús d'Internet.</li>
+<li><strong>Cauin de contingut</strong> compartit entre molts usuaris.</li>
+<li><strong>Auditoria</strong> de la navegació.</li>
+</ul>
+<p>L'exemple clàssic és <strong>Squid</strong>.</p>
+<h3 id="proxy-invers-reverse-proxy">Proxy invers (<em>reverse proxy</em>)<a class="headerlink" href="#proxy-invers-reverse-proxy" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El proxy es col·loca <strong>al costat dels servidors</strong>. Els clients d'Internet no parlen directament amb els servidors reals; parlen sempre amb el proxy, i aquest reparteix les peticions cap als servidors interns adequats.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Internet (clients) ──►  [PROXY INVERS]  ┬──►  [SERVIDOR APP 1]
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                                        ├──►  [SERVIDOR APP 2]
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                                        └──►  [SERVIDOR ESTÀTIC]
+</span></code></pre></div>
+<p>Casos d'ús típics:</p>
+<ul>
+<li><strong>Terminació TLS</strong>: el proxy invers desxifra HTTPS un cop i envia HTTP net cap als servidors interns.</li>
+<li><strong>Balanceig de càrrega</strong>: distribuir peticions entre diversos servidors idèntics per aguantar més usuaris.</li>
+<li><strong>Encaminament per ruta</strong>: <code>/api/*</code> va a un servidor Node, <code>/static/*</code> a un altre, <code>/wp/*</code> a un tercer.</li>
+<li><strong>Cau i acceleració</strong>: guardar contingut estàtic a prop del client (CDN).</li>
+<li><strong>Ocultació d'infraestructura</strong>: el client no sap res dels servidors interns; només veu el proxy.</li>
+</ul>
+<p>Les grans plataformes (Google, Netflix, Amazon...) tenen milers de proxies inversos distribuïts geogràficament (<em>edge servers</em>) per servir el contingut estàtic com més a prop possible dels usuaris finals.</p>
+<p>L'exemple clàssic és <strong>Nginx</strong>.</p>
+<h3 id="resum-rapid">Resum ràpid<a class="headerlink" href="#resum-rapid" title="Enllaç a aquesta secció">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Aspecte</th>
+<th>Proxy directe</th>
+<th>Proxy invers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ubicació</td>
+<td>Costat dels clients</td>
+<td>Costat dels servidors</td>
+</tr>
+<tr>
+<td>Qui el configura</td>
+<td>Cada client (o el navegador)</td>
+<td>Ningú, és transparent</td>
+</tr>
+<tr>
+<td>Coneix el client?</td>
+<td>Sí, és el seu (interno)</td>
+<td>Sí, pero és Internet obert</td>
+</tr>
+<tr>
+<td>Coneix el servidor destí?</td>
+<td>El client decideix</td>
+<td>El proxy decideix (per regles)</td>
+</tr>
+<tr>
+<td>Cas d'ús típic</td>
+<td>Filtratge/cau intern d'empresa</td>
+<td>Balanceig, TLS, entrega ràpida</td>
+</tr>
+<tr>
+<td>Exemple</td>
+<td>Squid</td>
+<td>Nginx</td>
+</tr>
+</tbody>
+</table>
+<h2 id="squid">Squid<a class="headerlink" href="#squid" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><a href="https://www.squid-cache.org/">Squid</a> és el servidor proxy directe més utilitzat des dels anys 90. Codi lliure, llicència GPL, disponible als repositoris estàndard d'Ubuntu.</p>
+<h3 id="installacio-i-estat-del-servei">Instal·lació i estat del servei<a class="headerlink" href="#installacio-i-estat-del-servei" title="Enllaç a aquesta secció">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>squid
+</span></code></pre></div>
+<p>Comprovació de l'estat del servei:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>squid
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>squid
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>squid<span class="w">    </span><span class="c1"># més ràpid que restart; s&#39;usa quan tocaste una ACL</span>
+</span></code></pre></div>
+<h3 id="fitxer-de-configuracio">Fitxer de configuració<a class="headerlink" href="#fitxer-de-configuracio" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El fitxer principal és <code>/etc/squid/squid.conf</code>. Té <strong>més de 9000 línies</strong>, però la major part són comentaris amb exemples i documentació. Consells de supervivència amb <code>nano</code>:</p>
+<ul>
+<li><code>Ctrl+C</code> — mostra a quina línia està el cursor.</li>
+<li><code>Ctrl+W</code> — buscar text.</li>
+<li><code>Ctrl+_</code> — anar directament a una línia.</li>
+<li>Obrir directament a una línia: <code>sudo nano +6000 /etc/squid/squid.conf</code>.</li>
+</ul>
+<p><strong>Recomanació</strong>: sempre fer còpia de seguretat abans de modificar-lo:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/squid/squid.conf<span class="w"> </span>/etc/squid/squid.conf.bak
+</span></code></pre></div>
+<p>I validar la sintaxi abans de reiniciar:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>squid<span class="w"> </span>-k<span class="w"> </span>parse
+</span></code></pre></div>
+<h3 id="directives-essencials">Directives essencials<a class="headerlink" href="#directives-essencials" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li><code>http_port 3128</code> — port on escolta el proxy (per defecte 3128).</li>
+<li><code>acl &lt;nom&gt; &lt;tipus&gt; &lt;valor&gt;</code> — defineix una llista d'accés amb un nom, un tipus i un valor.</li>
+<li><code>http_access allow|deny &lt;acl&gt;</code> — aplica una ACL.</li>
+<li><code>cache_dir ufs /var/spool/squid &lt;MB&gt; &lt;L1&gt; &lt;L2&gt;</code> — directori de cau amb la mida en MB i la profunditat de subdirectoris.</li>
+</ul>
+<p>Un cop definit <code>cache_dir</code>, cal inicialitzar l'estructura del cau amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>squid<span class="w"> </span>-z
+</span></code></pre></div>
+<h3 id="access-control-lists-acls">Access Control Lists (ACLs)<a class="headerlink" href="#access-control-lists-acls" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Les ACLs són el cor d'Squid. Cada ACL té tres parts:</p>
+<ol>
+<li><strong>Nom</strong> (l'invents tu — únic dins de la config).</li>
+<li><strong>Tipus</strong> (què estem mirant: IP origen, IP destí, domini, URL, hora del dia...).</li>
+<li><strong>Valor</strong> (el patró concret a comparar).</li>
+</ol>
+<p>Els tipus més usats a la pràctica:</p>
+<table>
+<thead>
+<tr>
+<th>Tipus</th>
+<th>Compara amb...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src</code></td>
+<td>IP origen (client)</td>
+</tr>
+<tr>
+<td><code>dst</code></td>
+<td>IP destí (servidor extern)</td>
+</tr>
+<tr>
+<td><code>dstdomain</code></td>
+<td>Domini destí (per exemple, <code>www.exemple.cat</code>)</td>
+</tr>
+<tr>
+<td><code>dstdom_regex</code></td>
+<td>Domini destí, amb expressió regular</td>
+</tr>
+<tr>
+<td><code>url_regex</code></td>
+<td>La URL sencera, amb expressió regular</td>
+</tr>
+<tr>
+<td><code>urlpath_regex</code></td>
+<td>Només la part del path, amb expressió regular</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>Franja horària (<code>M T W H F</code> = dl-dv, hh:mm-hh:mm)</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>Port destí</td>
+</tr>
+</tbody>
+</table>
+<p>Llista completa i actualitzada: <a href="https://wiki.squid-cache.org/SquidFaq/SquidAcl">wiki.squid-cache.org/SquidFaq/SquidAcl</a>.</p>
+<p>Una ACL <strong>només defineix la norma</strong>; per activar-la cal aplicar-la amb <code>http_access</code>.</p>
+<h3 id="combinacio-de-normes">Combinació de normes<a class="headerlink" href="#combinacio-de-normes" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Aquesta és la part més subtil d'Squid. Cal entendre com es combinen les normes.</p>
+<h4 id="verticalment-una-sobre-laltra">Verticalment (una sobre l'altra)<a class="headerlink" href="#verticalment-una-sobre-laltra" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Les normes es llegeixen d'una en una, de dalt a baix. <strong>Quan una coincideix (positivament o negativament), s'aplica i ja no es llegeix cap més</strong>.</p>
+<p>Exemple 1:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>acl localnet src 192.168.30.0/24
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>acl ubuntuhost src 192.168.30.10
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>http_access allow localnet
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>http_access deny ubuntuhost
+</span></code></pre></div>
+<p>En llenguatge natural: <em>"si véns de la localnet, deixa'l passar. Si no, mira si ets ubuntuhost i denega-li"</em>.</p>
+<p>Resultat: <code>ubuntuhost</code> <strong>sí que pot navegar</strong> — pertany a la localnet, la primera norma li coincideix i les altres no es miren.</p>
+<p>Per denegar-lo, hem d'invertir l'ordre:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>http_access deny ubuntuhost
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>http_access allow localnet
+</span></code></pre></div>
+<p>Ara <code>ubuntuhost</code> toca la primera norma, li denega, i ja no es mira res més.</p>
+<h4 id="horitzontalment-una-al-costat-de-laltra">Horitzontalment (una al costat de l'altra)<a class="headerlink" href="#horitzontalment-una-al-costat-de-laltra" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Diverses ACLs a la mateixa línia signifiquen <strong>AND</strong> (totes s'han de complir):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>http_access allow localnet !ubuntuhost
+</span></code></pre></div>
+<p><em>"Permet accedir si véns de la localnet </em><em>i</em><em> no ets ubuntuhost"</em>. El signe <code>!</code> és negació.</p>
+<p>Es poden posar tantes com calgui:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>http_access allow localnet !ubuntuhost horari_classe
+</span></code></pre></div>
+<h3 id="la-regla-implicita-deny-all">La regla implícita <code>deny all</code><a class="headerlink" href="#la-regla-implicita-deny-all" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Sempre que es definesin ACLs personalitzades, cal <strong>acabar el bloc amb un <code>deny all</code> explícit</strong> perquè les peticions que no encaixen amb cap norma quedin denegades:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>http_access allow localnet
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>http_access deny all
+</span></code></pre></div>
+<p>Sense <code>deny all</code>, el comportament pot ser imprevisible.</p>
+<h3 id="exercicis-dexemple-resolts">Exercicis d'exemple resolts<a class="headerlink" href="#exercicis-dexemple-resolts" title="Enllaç a aquesta secció">&para;</a></h3>
+<p><strong>Exercici 1</strong>: Què fa aquesta configuració?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>acl network172 src 172.16.5.0/24
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>http_access allow network172
+</span></code></pre></div>
+<p><em>Resposta</em>: només poden sortir a Internet els clients de la xarxa <code>172.16.5.0/24</code>. La resta reben la resposta per defecte, que sense <code>deny all</code> explícit dependrà de la config, però generalment <code>deny</code>.</p>
+<p><strong>Exercici 2</strong>: Què fa aquesta configuració?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>acl Cooking2 dstdomain www.gourmet-chef.com
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>http_access deny Cooking2
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>http_access allow all
+</span></code></pre></div>
+<p><em>Resposta</em>: es denega l'accés al domini <code>www.gourmet-chef.com</code> a tothom. La resta d'Internet queda permesa per a tothom.</p>
+<p>(A l'apartat de pràctiques resoldreu més exercicis d'aquest tipus.)</p>
+<h3 id="fitxers-de-registre">Fitxers de registre<a class="headerlink" href="#fitxers-de-registre" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Squid registra totes les peticions a <code>/var/log/squid/access.log</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/squid/access.log
+</span></code></pre></div>
+<p>Cada línia porta la data, la IP del client, l'URL demanada i si el proxy l'ha servit del cau o de fora.</p>
+<p>Els errors del servei van a <code>/var/log/squid/cache.log</code>.</p>
+<h2 id="nginx-com-a-proxy-invers">Nginx com a proxy invers<a class="headerlink" href="#nginx-com-a-proxy-invers" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><a href="https://nginx.org/">Nginx</a> és el servidor web/proxy invers més utilitzat avui dia. Ja el vam presentar breument a la teoria d'RA5 com a alternativa a Apache; aquí veurem el seu paper com a <strong>proxy invers</strong>.</p>
+<h3 id="installacio">Instal·lació<a class="headerlink" href="#installacio" title="Enllaç a aquesta secció">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nginx
+</span></code></pre></div>
+<p>Un cop instal·lat, escolta al port <strong>80</strong> amb una pàgina "Welcome to nginx!" per defecte.</p>
+<h3 id="configuracio-dun-proxy-invers-minim">Configuració d'un proxy invers mínim<a class="headerlink" href="#configuracio-dun-proxy-invers-minim" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Els fitxers de configuració viuen a <code>/etc/nginx/sites-available/</code> i s'activen amb enllaços simbòlics a <code>/etc/nginx/sites-enabled/</code>. Un bloc <code>server</code> mínim que fa de proxy invers cap a un servidor backend:</p>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">proxy.exemple.local</span><span class="p">;</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://192.168.30.20</span><span class="p">;</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li><code>listen 80</code> — escolta al port 80.</li>
+<li><code>server_name</code> — a quin nom de domini respon.</li>
+<li><code>location /</code> — per a tots els paths.</li>
+<li><code>proxy_pass</code> — cap a on redirigim.</li>
+<li><code>proxy_set_header</code> — passem informació útil al backend perquè sàpiga qui és el client real i quin domini demana.</li>
+</ul>
+<p>Aplicar canvis:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w">                </span><span class="c1"># valida la sintaxi</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx<span class="w">  </span><span class="c1"># aplica sense caiguda de servei</span>
+</span></code></pre></div>
+<h3 id="diferents-paths-cap-a-diferents-backends">Diferents paths cap a diferents backends<a class="headerlink" href="#diferents-paths-cap-a-diferents-backends" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Un proxy invers pot decidir cap a on va cada URL segons el path:</p>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">empresa.exemple.local</span><span class="p">;</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://192.168.30.20:3000/</span><span class="p">;</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/static/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://192.168.30.21/</span><span class="p">;</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://192.168.30.22/</span><span class="p">;</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Cada bloc <code>location</code> captura un prefix i el reenvia al servidor corresponent. Aquest patró és el que fan Netflix, Amazon, GitHub, etc. per repartir el trànsit entre desenes d'aplicacions internes.</p>
+<h3 id="on-acaba-nginx-a-aquest-modul">On acaba Nginx a aquest mòdul<a class="headerlink" href="#on-acaba-nginx-a-aquest-modul" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>En aquesta RA veurem Nginx només en la seva funció de <strong>proxy invers senzill</strong>: un frontal cap a un únic backend Apache. La configuració de <strong>balanceig de càrrega</strong> (múltiples backends amb <code>upstream</code> i <code>weight</code>) es reserva pel <strong>Projecte 1</strong>, on la treballarem en un escenari més complet.</p>
+<h2 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Enllaç a aquesta secció">&para;</a></h2>
+<ul>
+<li><a href="https://wiki.squid-cache.org/">Squid — documentació oficial</a></li>
+<li><a href="https://wiki.squid-cache.org/SquidFaq/SquidAcl">Squid ACLs — tipus complets</a></li>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass">Nginx — proxy_pass</a></li>
+<li>Diferència visual entre proxy directe i invers: <a href="https://www.youtube.com/watch?v=4NB0NDtOwIQ">www.youtube.com/watch?v=4NB0NDtOwIQ</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+          
+          <a href="../../5-RA5-HTTP/practiques/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctiques">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Pràctiques
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../practiques/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctiques">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                Pràctiques
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Joan-mh/MP-0227" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

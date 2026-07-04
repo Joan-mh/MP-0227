@@ -1,0 +1,3314 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material docent del mòdul professional 0227 (CFGM Sistemes Microinformàtics i Xarxes)">
+      
+      
+        <meta name="author" content="Joan Mercadé">
+      
+      
+        <link rel="canonical" href="https://joan-mh.github.io/MP-0227/2-RA2-DNS/teoria/">
+      
+      
+        <link rel="prev" href="../../1-RA1-DHCP/practiques/">
+      
+      
+        <link rel="next" href="../practiques/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Teoria - Serveis de Xarxa — M227</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#serveis-de-xarxa-dns" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-header__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Serveis de Xarxa — M227
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Teoria
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode fosc"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passar a mode fosc" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passar a mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inici
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../7-RA7-Wifi/teoria/" class="md-tabs__link">
+          
+  
+  
+  RA i ordre d'impartició
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Projectes/Projecte1/" class="md-tabs__link">
+          
+  
+  
+  Projectes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-nav__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Serveis de Xarxa — M227
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inici
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA i ordre d'impartició
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA i ordre d'impartició
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA7 — Wifi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA7 — Wifi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklist d'avaluació
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA6 — SSH
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA6 — SSH
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA1 — DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA1 — DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA2 — DNS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA2 — DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-historia-i-necessitat-del-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducció: història i necessitat del DNS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-el-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Què és el DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Què és el DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sistema-jerarquic-i-distribuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistema jeràrquic i distribuït
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traduccio-de-noms-a-ip-i-viceversa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traducció de noms a IP i viceversa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importancia-del-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importància del DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components-basics-del-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components bàsics del DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Components bàsics del DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dominis-i-subdominis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dominis i subdominis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zones-dautoritat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zones d'autoritat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidors-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clients-o-resolvers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clients o resolvers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipus-de-servidors-dns-a-la-jerarquia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipus de servidors DNS a la jerarquia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipus de servidors DNS a la jerarquia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Root servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tld-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TLD servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidors-autoritatius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors autoritatius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidors-recursius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors recursius
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipus-de-registres-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipus de registres DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipus de registres DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registre-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-aaaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre AAAA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-cname" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre CNAME
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-mx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre MX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-ns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre NS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-ptr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre PTR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-txt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre TXT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-soa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre SOA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcionament-duna-consulta-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funcionament d'una consulta DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Funcionament d&#39;una consulta DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resolucio-recursiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resolució recursiva
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolucio-iterativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resolució iterativa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-pas-a-pas-consulta-de-wwwexemplecom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple pas a pas: consulta de www.exemple.com
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importancia-del-ttl-i-la-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importància del TTL i la caché
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitxers-relacionats-a-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxers relacionats a Ubuntu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fitxers relacionats a Ubuntu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etcresolvconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /etc/resolv.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etchosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /etc/hosts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bind9-servidor-dns-a-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bind9: servidor DNS a Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bind9: servidor DNS a Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fitxers-principals-de-configuracio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxers principals de configuració
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-basic-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple bàsic complet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detalls-importants-sobre-la-sintaxi-dels-fitxers-de-zona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detalls importants sobre la sintaxi dels fitxers de zona
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eines-de-validacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eines de validació
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eines-de-diagnostic-dig-i-nslookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eines de diagnòstic: dig i nslookup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eines de diagnòstic: dig i nslookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dig
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nslookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nslookup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zones-inverses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zones inverses
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Zones inverses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nota-sobre-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nota sobre IPv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servidors-secundaris-slaves-i-transferencia-de-zona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors secundaris (slaves) i transferència de zona
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servidors secundaris (slaves) i transferència de zona">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transferencia-de-zona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transferència de zona
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bones-practiques-i-tlds-reservats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bones pràctiques i TLDs reservats
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentacio-i-referencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentació i referències
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA3 — FTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA3 — FTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA5 — HTTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA5 — HTTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA8 — Proxy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA8 — Proxy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA4 — Correu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA4 — Correu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projectes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projectes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 1 (base + Ruta A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 2 (Ruta B)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari base (tots)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Extensio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari extensió Ruta A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari Projecte 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-historia-i-necessitat-del-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducció: història i necessitat del DNS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-el-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Què és el DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Què és el DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sistema-jerarquic-i-distribuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistema jeràrquic i distribuït
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traduccio-de-noms-a-ip-i-viceversa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traducció de noms a IP i viceversa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importancia-del-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importància del DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components-basics-del-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components bàsics del DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Components bàsics del DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dominis-i-subdominis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dominis i subdominis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zones-dautoritat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zones d'autoritat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidors-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clients-o-resolvers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clients o resolvers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipus-de-servidors-dns-a-la-jerarquia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipus de servidors DNS a la jerarquia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipus de servidors DNS a la jerarquia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Root servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tld-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TLD servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidors-autoritatius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors autoritatius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidors-recursius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors recursius
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipus-de-registres-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipus de registres DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipus de registres DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registre-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-aaaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre AAAA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-cname" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre CNAME
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-mx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre MX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-ns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre NS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-ptr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre PTR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-txt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre TXT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registre-soa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre SOA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcionament-duna-consulta-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funcionament d'una consulta DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Funcionament d&#39;una consulta DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resolucio-recursiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resolució recursiva
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolucio-iterativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resolució iterativa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-pas-a-pas-consulta-de-wwwexemplecom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple pas a pas: consulta de www.exemple.com
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importancia-del-ttl-i-la-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importància del TTL i la caché
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitxers-relacionats-a-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxers relacionats a Ubuntu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fitxers relacionats a Ubuntu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etcresolvconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /etc/resolv.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etchosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /etc/hosts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bind9-servidor-dns-a-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bind9: servidor DNS a Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bind9: servidor DNS a Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fitxers-principals-de-configuracio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxers principals de configuració
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-basic-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple bàsic complet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detalls-importants-sobre-la-sintaxi-dels-fitxers-de-zona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detalls importants sobre la sintaxi dels fitxers de zona
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eines-de-validacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eines de validació
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eines-de-diagnostic-dig-i-nslookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eines de diagnòstic: dig i nslookup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eines de diagnòstic: dig i nslookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dig
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nslookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nslookup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zones-inverses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zones inverses
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Zones inverses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nota-sobre-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nota sobre IPv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servidors-secundaris-slaves-i-transferencia-de-zona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors secundaris (slaves) i transferència de zona
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servidors secundaris (slaves) i transferència de zona">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transferencia-de-zona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transferència de zona
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bones-practiques-i-tlds-reservats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bones pràctiques i TLDs reservats
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentacio-i-referencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentació i referències
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Joan-mh/MP-0227/edit/main/2-RA2-DNS/teoria.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="serveis-de-xarxa-dns">Serveis de xarxa — DNS<a class="headerlink" href="#serveis-de-xarxa-dns" title="Enllaç a aquesta secció">&para;</a></h1>
+<h2 id="introduccio-historia-i-necessitat-del-dns">Introducció: història i necessitat del DNS<a class="headerlink" href="#introduccio-historia-i-necessitat-del-dns" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Als inicis d'ARPANET, la xarxa predecessora d'Internet, la resolució de noms d'ordinador no era automàtica. Tots els nodes feien servir un fitxer anomenat <strong><code>hosts.txt</code></strong>, mantingut de manera centralitzada per la Stanford Research Institute (SRI).</p>
+<p>Aquest fitxer contenia una llista de totes les adreces IP existents i els noms associats. Cada ordinador descarregava periòdicament una còpia actualitzada del fitxer i l'utilitzava per traduir noms a adreces IP.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>127.0.0.1       localhost
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>192.168.1.10    servidor1.exemple.local servidor1
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>192.168.1.20    impressora.exemple.local impressora
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>8.8.8.8         google-dns
+</span></code></pre></div>
+<p>Aquest sistema funcionava bé mentre la xarxa era petita, amb pocs centenars de màquines. A mesura que ARPANET creixia i es transformava en l'Internet que coneixem, aquest model manual va començar a mostrar greus limitacions:</p>
+<ul>
+<li>Cada nou ordinador o canvi d'adreça havia de ser actualitzat manualment al fitxer central.</li>
+<li>La distribució de noves versions era lenta i podia provocar incoherències.</li>
+<li>La mida del fitxer creixia constantment i resultava poc pràctica la seva gestió.</li>
+</ul>
+<p>Per solucionar aquests problemes, el 1983 <strong>Paul Mockapetris</strong> va dissenyar el <strong>Domain Name System (DNS)</strong>. Aquest nou sistema era jeràrquic i distribuït: permetia dividir la responsabilitat entre diferents servidors i escalar fàcilment a milers, i després milions, de dominis. El DNS introduïa la idea de <strong>zones d'autoritat</strong>, on cada organització podia administrar la seva part de l'espai de noms sense dependre d'un fitxer central.</p>
+<p>Des de la seva creació, el DNS ha anat evolucionant amb noves extensions i mecanismes de seguretat, però l'essència continua sent la mateixa: un sistema distribuït i escalable per traduir noms en adreces IP. Avui dia és una <strong>peça clau d'Internet</strong>, comparable en importància a protocols bàsics com TCP/IP. Sense DNS, Internet seria pràcticament inusable per a la majoria d'usuaris.</p>
+<p>Mireu aquest vídeo introductori (01 — Introducció) abans de continuar:
+<a href="https://drive.google.com/file/d/1gAg1jVG-KQyGTeERLY2fiYlhqKQRfKWA/view?usp=drive_link">01-Introducció</a></p>
+<h2 id="que-es-el-dns">Què és el DNS<a class="headerlink" href="#que-es-el-dns" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>El <strong>Domain Name System (DNS)</strong> és un dels serveis fonamentals d'Internet i de qualsevol xarxa moderna. La seva funció principal és <strong>traduir noms fàcils d'entendre per a les persones en adreces IP numèriques</strong> que utilitzen els ordinadors per comunicar-se entre ells.</p>
+<h3 id="sistema-jerarquic-i-distribuit">Sistema jeràrquic i distribuït<a class="headerlink" href="#sistema-jerarquic-i-distribuit" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El DNS està dissenyat com un sistema <strong>jeràrquic i distribuït</strong>:</p>
+<ul>
+<li><strong>Jeràrquic</strong>: els noms de domini segueixen una estructura en forma d'arbre (arrel, dominis de primer nivell, subdominis, etc.).</li>
+<li><strong>Distribuït</strong>: la informació no es troba en un únic lloc, sinó repartida en milers de servidors arreu del món. Això permet escalar i garantir disponibilitat.</li>
+</ul>
+<h3 id="traduccio-de-noms-a-ip-i-viceversa">Traducció de noms a IP i viceversa<a class="headerlink" href="#traduccio-de-noms-a-ip-i-viceversa" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Quan un usuari escriu una adreça com <code>www.exemple.com</code>, el DNS la converteix en una IP, per exemple <code>93.184.216.34</code>. Com que l'ordinador només sap llegir adreces IP, però no noms de domini, cal fer aquesta transformació perquè el navegador (o una altra aplicació) demani la informació al servidor correcte.</p>
+<p>El procés també pot funcionar a la inversa (<strong>resolució inversa</strong>): obtenir el nom de domini a partir d'una IP.</p>
+<h3 id="importancia-del-dns">Importància del DNS<a class="headerlink" href="#importancia-del-dns" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Sense DNS, els usuaris haurien de memoritzar i escriure adreces IP per a cada pàgina web, impressora de xarxa o servei — cosa pràcticament impossible en una xarxa de gran mida. El DNS actua, doncs, com una <strong>"guia telefònica d'Internet"</strong>, que permet navegar i utilitzar serveis de manera intuïtiva i senzilla.</p>
+<h2 id="components-basics-del-dns">Components bàsics del DNS<a class="headerlink" href="#components-basics-del-dns" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>El funcionament del DNS es basa en diversos conceptes i rols que treballen conjuntament per resoldre noms de domini de manera ràpida i fiable.</p>
+<h3 id="dominis-i-subdominis">Dominis i subdominis<a class="headerlink" href="#dominis-i-subdominis" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Un <strong>domini</strong> és un nom únic dins del sistema DNS, com ara <code>exemple.com</code>. Els <strong>subdominis</strong> permeten dividir aquest domini en parts més específiques, per exemple <code>mail.exemple.com</code> o <code>www.exemple.com</code>. Aquesta jerarquia en forma d'arbre facilita l'organització i l'administració de grans espais de noms.</p>
+<h3 id="zones-dautoritat">Zones d'autoritat<a class="headerlink" href="#zones-dautoritat" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Una <strong>zona d'autoritat</strong> és la part de l'espai de noms DNS per la qual un servidor concret té responsabilitat. Per exemple, els servidors autoritatius del domini <code>exemple.com</code> contenen els registres que defineixen els subdominis i serveis d'aquest domini. Les zones permeten repartir la gestió del DNS entre diferents organitzacions o entitats, evitant la dependència d'un sol servidor central.</p>
+<h3 id="servidors-dns">Servidors DNS<a class="headerlink" href="#servidors-dns" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Hi ha diferents tipus de servidors que intervenen en el procés de resolució:</p>
+<ul>
+<li><strong>Autoritatius</strong>: contenen la informació definitiva d'una zona (els registres oficials). Si volem saber l'adreça de <code>www.exemple.com</code>, caldrà consultar el servidor autoritatiu de <code>exemple.com</code>.</li>
+<li><strong>Recursius</strong>: actuen com a intermediaris. Reben la consulta d'un client i, si no tenen la resposta, s'encarreguen de fer totes les consultes necessàries fins a trobar-la. Els servidors recursius acostumen a ser els que ofereixen els proveïdors d'Internet (ISP) o serveis públics com Google DNS o Cloudflare.</li>
+<li><strong>De caché</strong>: guarden temporalment respostes de consultes anteriors per accelerar resolucions futures. Aquesta memòria cau evita haver de repetir tot el procés cada vegada.</li>
+</ul>
+<h3 id="clients-o-resolvers">Clients o resolvers<a class="headerlink" href="#clients-o-resolvers" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El <strong>resolver</strong> és la part del sistema que fa la consulta DNS en nom de l'usuari o del programa que la necessita. Quan escrivim una adreça al navegador, el nostre ordinador (a través del sistema operatiu) actua com a client DNS i envia la consulta al servidor recursiu configurat.</p>
+<p>Vídeo recomanat (02 — Definicions):
+<a href="https://drive.google.com/file/d/1rg7IqbeKTAf7XgjO1kKi6T40gC7HkOjF/view?usp=drive_link">02-Definicions</a></p>
+<h2 id="tipus-de-servidors-dns-a-la-jerarquia">Tipus de servidors DNS a la jerarquia<a class="headerlink" href="#tipus-de-servidors-dns-a-la-jerarquia" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>El sistema DNS és jeràrquic i depèn de diferents tipus de servidors que col·laboren entre si per resoldre una consulta.</p>
+<h3 id="root-servers">Root servers<a class="headerlink" href="#root-servers" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Els <strong>root servers</strong> són el punt de partida del sistema DNS. N'hi ha 13 conjunts oficials, identificats per les lletres de la A fins a la M (per exemple, <code>a.root-servers.net</code>).</p>
+<p>Tot i que només es parla de 13, en realitat hi ha centenars de còpies distribuïdes per <strong>tot el món</strong> gràcies a la tècnica <strong>anycast</strong>. Això assegura redundància, alta disponibilitat i velocitat de resposta.</p>
+<p>Els root servers no contenen la informació de tots els dominis: <strong>redirigeixen</strong> a quins servidors TLD cal preguntar.</p>
+<h3 id="tld-servers">TLD servers<a class="headerlink" href="#tld-servers" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Els <strong>TLD (Top Level Domain) servers</strong> gestionen els dominis de primer nivell: <code>.com</code>, <code>.org</code>, <code>.net</code>, <code>.es</code>, <code>.cat</code>, etc.</p>
+<p>Quan un root server rep una consulta, respon indicant quin TLD server cal consultar. Per exemple, si es vol resoldre <code>www.exemple.com</code>, el root server indicarà el servidor de <code>.com</code>.</p>
+<h3 id="servidors-autoritatius">Servidors autoritatius<a class="headerlink" href="#servidors-autoritatius" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Un <strong>servidor autoritatiu</strong> és el que té la informació definitiva sobre un domini concret. Per exemple, els servidors autoritatius de <code>exemple.com</code> contenen els registres que defineixen quina IP correspon a <code>www.exemple.com</code>, quin és el servidor de correu (MX), etc. Quan es fa una consulta DNS, finalment és un servidor autoritatiu qui dona la resposta correcta i fiable.</p>
+<h3 id="servidors-recursius">Servidors recursius<a class="headerlink" href="#servidors-recursius" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Els <strong>servidors recursius</strong> són els que utilitzen habitualment els usuaris finals. Reben la consulta del client (ordinador, mòbil, etc.) i s'encarreguen de resoldre-la, preguntant als root servers, TLD i autoritatius si cal.</p>
+<p>Exemples habituals:</p>
+<ul>
+<li>Els servidors DNS proporcionats pels ISP (proveïdors d'Internet).</li>
+<li>Els DNS públics com Google DNS (<code>8.8.8.8</code>, <code>8.8.4.4</code>), Cloudflare (<code>1.1.1.1</code>) o OpenDNS (<code>208.67.222.222</code>).</li>
+</ul>
+<p>A més de fer de recursius, aquests servidors guarden en <strong>caché</strong> les respostes durant un temps (TTL), cosa que accelera molt les consultes repetides.</p>
+<h2 id="tipus-de-registres-dns">Tipus de registres DNS<a class="headerlink" href="#tipus-de-registres-dns" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Els registres DNS són les entrades que descriuen com s'ha de resoldre un nom de domini. Cada registre té un <strong>tipus</strong> que defineix la seva funció i informació associada. Aquests registres els definirem en un fitxer de text al nostre servidor, quan ens faci falta.</p>
+<p>Vídeos recomanats abans de continuar (04 — Registres, 05 — Resolució inversa):</p>
+<ul>
+<li><a href="https://drive.google.com/file/d/1-5jq-TDJQC_ZmgLCeMAYvdlbCGI-JZ64/view?usp=drive_link">04-Registres</a></li>
+<li><a href="https://drive.google.com/file/d/1KaWTO5RCHrtEcHlwSezYFP3QYTvY_D_9/view?usp=drive_link">05-Resolució inversa</a></li>
+</ul>
+<h3 id="registre-a">Registre A<a class="headerlink" href="#registre-a" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Associa un nom de domini a una adreça <strong>IPv4</strong>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>www.exemple.com. IN A 93.184.216.34
+</span></code></pre></div>
+<p>Cada dispositiu de la nostra xarxa tindrà un registre <code>A</code> associat.</p>
+<h3 id="registre-aaaa">Registre AAAA<a class="headerlink" href="#registre-aaaa" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Igual que l'<code>A</code>, però amb adreces <strong>IPv6</strong>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>www.exemple.com. IN AAAA 2606:2800:220:1:248:1893:25c8:1946
+</span></code></pre></div>
+<h3 id="registre-cname">Registre CNAME<a class="headerlink" href="#registre-cname" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Defineix un <strong>àlies</strong> per a un altre domini.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ftp.exemple.com. IN CNAME www.exemple.com.
+</span></code></pre></div>
+<p>El farem servir quan un servidor doni més d'un servei. A l'exemple, el nostre servidor ofereix FTP i HTTP.</p>
+<h3 id="registre-mx">Registre MX<a class="headerlink" href="#registre-mx" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Indica quin servidor gestiona el correu electrònic d'un domini. Inclou una <strong>preferència</strong> (nombre baix = més prioritari).</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>exemple.com. IN MX 10 mail.exemple.com.
+</span></code></pre></div>
+<p>Aquest registre el farem servir, evidentment, quan treballem el RA4 (correu electrònic).</p>
+<h3 id="registre-ns">Registre NS<a class="headerlink" href="#registre-ns" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Defineix els <strong>servidors autoritatius</strong> per a un domini.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>exemple.com. IN NS ns1.exemple.com.
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>exemple.com. IN NS ns2.exemple.com.
+</span></code></pre></div>
+<p>Cada servidor de noms del nostre DNS ha de tenir un registre <code>NS</code>.</p>
+<h3 id="registre-ptr">Registre PTR<a class="headerlink" href="#registre-ptr" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Utilitzat en la <strong>resolució inversa</strong> (d'una IP a un nom).</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>34.216.184.93.in-addr.arpa. IN PTR www.exemple.com.
+</span></code></pre></div>
+<p>Igual que amb els registres <code>A</code>, cada dispositiu amb IP assignada hauria de tenir un registre <code>PTR</code> si volem resolució inversa completa.</p>
+<h3 id="registre-txt">Registre TXT<a class="headerlink" href="#registre-txt" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Permet afegir informació addicional en forma de text, sovint usada per seguretat i validacions (SPF, DKIM, verificacions de propietat).</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>exemple.com. IN TXT &quot;v=spf1 include:_spf.google.com ~all&quot;
+</span></code></pre></div>
+<h3 id="registre-soa">Registre SOA<a class="headerlink" href="#registre-soa" title="Enllaç a aquesta secció">&para;</a></h3>
+<p><strong>Start Of Authority</strong>. Cada zona en té exactament un i defineix els paràmetres administratius de la zona:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>@ IN SOA ns1.exemple.com. admin.exemple.com. (
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>                          1         ; Serial
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>                          604800    ; Refresh
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>                          86400     ; Retry
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>                          2419200   ; Expire
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>                          604800 )  ; Negative Cache TTL
+</span></code></pre></div>
+<p>Camps del SOA:</p>
+<ul>
+<li><strong>Serial</strong>: número que cal incrementar cada cop que es modifica la zona. Els servidors secundaris (slaves) el consulten per saber si han d'actualitzar la seva còpia.</li>
+<li><strong>Refresh</strong>: cada quan (en segons) el slave consulta el serial del master.</li>
+<li><strong>Retry</strong>: si el slave no pot contactar el master, cada quan reintenta.</li>
+<li><strong>Expire</strong>: si passat aquest temps el slave no ha pogut refrescar, deixa de servir la zona.</li>
+<li><strong>Negative Cache TTL</strong>: quant de temps cacheja el resolver una resposta negativa (NXDOMAIN).</li>
+</ul>
+<h2 id="funcionament-duna-consulta-dns">Funcionament d'una consulta DNS<a class="headerlink" href="#funcionament-duna-consulta-dns" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>El procés de resolució DNS permet convertir un nom de domini en una adreça IP. Pot ser <strong>recursiu</strong> o <strong>iteratiu</strong>, depenent de com treballin els servidors implicats.</p>
+<p>Mireu aquest vídeo abans de continuar (03 — Funcionament):
+<a href="https://drive.google.com/file/d/1uTCDnBapaVmy1eTO-3pBCHR8b1bC8Xrt/view?usp=drive_link">03-Funcionament</a></p>
+<h3 id="resolucio-recursiva">Resolució recursiva<a class="headerlink" href="#resolucio-recursiva" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>En una resolució recursiva, el servidor DNS recursiu s'encarrega de consultar pas a pas fins a obtenir la resposta final i la retorna al client. És el mètode més habitual, utilitzat pels servidors DNS dels proveïdors d'Internet (ISP) i serveis públics com Google DNS o Cloudflare.</p>
+<h3 id="resolucio-iterativa">Resolució iterativa<a class="headerlink" href="#resolucio-iterativa" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>En la resolució iterativa, el servidor consultat respon amb la millor informació que té. Si no sap la resposta final, indica quin altre servidor s'ha de consultar. El client és qui ha d'anar fent les diferents consultes pas a pas fins arribar al servidor autoritatiu.</p>
+<h3 id="exemple-pas-a-pas-consulta-de-wwwexemplecom">Exemple pas a pas: consulta de www.exemple.com<a class="headerlink" href="#exemple-pas-a-pas-consulta-de-wwwexemplecom" title="Enllaç a aquesta secció">&para;</a></h3>
+<ol>
+<li>L'usuari escriu <code>www.exemple.com</code> al navegador. El sistema operatiu comprova primer la seva memòria cau local i el fitxer <code>/etc/hosts</code>.</li>
+<li>Si no troba la resposta, envia la consulta al servidor DNS recursiu configurat (per ex., el del seu ISP).</li>
+<li>El servidor recursiu, si no té la resposta en caché, pregunta a un root server.</li>
+<li>El root server no coneix l'adreça de <code>www.exemple.com</code>, però respon indicant on es troba el TLD server de <code>.com</code>.</li>
+<li>El servidor recursiu consulta el TLD server de <code>.com</code>, que respon amb l'adreça dels servidors autoritatius de <code>exemple.com</code>.</li>
+<li>El servidor recursiu consulta el servidor autoritatiu de <code>exemple.com</code>, que finalment respon amb l'adreça IP de <code>www.exemple.com</code>.</li>
+<li>El servidor recursiu retorna la resposta al client i la guarda en caché durant el temps definit pel TTL.</li>
+<li>L'usuari ja es pot connectar al servidor corresponent a <code>www.exemple.com</code>.</li>
+</ol>
+<h3 id="importancia-del-ttl-i-la-cache">Importància del TTL i la caché<a class="headerlink" href="#importancia-del-ttl-i-la-cache" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El <strong>TTL (Time To Live)</strong> indica quant de temps una resposta pot ser emmagatzemada en caché. Això permet accelerar les consultes posteriors i reduir el trànsit a la xarxa. Quan el TTL expira, el servidor ha de tornar a consultar la informació.</p>
+<h2 id="fitxers-relacionats-a-ubuntu">Fitxers relacionats a Ubuntu<a class="headerlink" href="#fitxers-relacionats-a-ubuntu" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="etcresolvconf"><code>/etc/resolv.conf</code><a class="headerlink" href="#etcresolvconf" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Fitxer que indica quins servidors DNS utilitza el sistema per resoldre noms:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>nameserver 192.168.50.1
+</span></code></pre></div>
+<blockquote>
+<p><strong>Important</strong>: aquest fitxer <strong>no s'ha d'editar mai directament</strong>. A Ubuntu modern, el gestiona <code>systemd-resolved</code> com a enllaç simbòlic (<code>/run/systemd/resolve/stub-resolv.conf</code>). El valor real ve del Netplan o del DHCP.</p>
+</blockquote>
+<h3 id="etchosts"><code>/etc/hosts</code><a class="headerlink" href="#etchosts" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Fitxer local que permet definir associacions fixes entre noms i IPs. Té prioritat sobre el DNS, però només és pràctic per a casos puntuals o proves. Avui dia el seu ús és molt limitat.</p>
+<blockquote>
+<p><strong>En aquest mòdul no el farem servir</strong>. Cap configuració que funcioni gràcies a <code>/etc/hosts</code> es considerarà vàlida — la resolució ha de venir del servidor DNS.</p>
+</blockquote>
+<h2 id="bind9-servidor-dns-a-linux">Bind9: servidor DNS a Linux<a class="headerlink" href="#bind9-servidor-dns-a-linux" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><strong><code>bind9</code></strong> (Berkeley Internet Name Domain, versió 9) és el programari més utilitzat a Linux per desplegar un servidor DNS complet. Pot actuar com a <strong>servidor autoritatiu</strong> o com a <strong>servidor recursiu/caché</strong>. És mantingut per <strong>ISC</strong> (Internet Systems Consortium).</p>
+<h3 id="installacio">Instal·lació<a class="headerlink" href="#installacio" title="Enllaç a aquesta secció">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>bind9<span class="w"> </span>bind9utils<span class="w"> </span>bind9-doc
+</span></code></pre></div>
+<h3 id="fitxers-principals-de-configuracio">Fitxers principals de configuració<a class="headerlink" href="#fitxers-principals-de-configuracio" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Tots dins de <code>/etc/bind/</code>:</p>
+<ul>
+<li><strong><code>named.conf</code></strong> — punt d'entrada. Inclou els altres fitxers (no es toca).</li>
+<li><strong><code>named.conf.options</code></strong> — opcions globals: forwarders, listen-on, caché, DNSSEC.</li>
+<li><strong><code>named.conf.local</code></strong> — declaració de les zones que gestionem (mestra, secundària, etc.).</li>
+<li><strong><code>db.&lt;zona&gt;</code></strong> — fitxer de zona directa (registres <code>A</code>, <code>NS</code>, <code>MX</code>, <code>CNAME</code>, <code>TXT</code>...).</li>
+<li><strong><code>db.&lt;xarxa-inversa&gt;</code></strong> — fitxer de zona inversa (registres <code>PTR</code>).</li>
+</ul>
+<h3 id="exemple-basic-complet">Exemple bàsic complet<a class="headerlink" href="#exemple-basic-complet" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Suposem que volem servir el domini <code>exemple.local</code> a la xarxa <code>192.168.50.0/24</code>, amb <code>ns1.exemple.local = 192.168.50.1</code> i <code>www.exemple.local = 192.168.50.10</code>.</p>
+<p><strong>1. Declaració de les zones a <code>/etc/bind/named.conf.local</code>:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>zone &quot;exemple.local&quot; {
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    type master;
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    file &quot;/etc/bind/db.exemple.local&quot;;
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>};
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>zone &quot;50.168.192.in-addr.arpa&quot; {
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    type master;
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    file &quot;/etc/bind/db.192.168.50&quot;;
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>};
+</span></code></pre></div>
+<blockquote>
+<p>Recorda: la zona inversa d'una <code>/24</code> s'escriu <strong>al revés</strong>: <code>192.168.50.0/24</code> → <code>50.168.192.in-addr.arpa</code>.</p>
+</blockquote>
+<p><strong>2. Opcions globals i forwarders a <code>/etc/bind/named.conf.options</code>:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>options {
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    directory &quot;/var/cache/bind&quot;;
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    forwarders {
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        8.8.8.8;
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        8.8.4.4;
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    };
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    // dnssec-validation auto;   // descomenta si vols validació DNSSEC
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    auth-nxdomain no;    # RFC1035
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>    listen-on-v6 { any; };
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>};
+</span></code></pre></div>
+<p>Els <strong>forwarders</strong> són els servidors DNS externs als quals bind9 preguntarà si li arriba una consulta sobre un domini del qual <strong>no és autoritatiu</strong> i no té la resposta en caché.</p>
+<p><strong>3. Zona directa <code>/etc/bind/db.exemple.local</code>:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$TTL    604800
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>@       IN      SOA     ns1.exemple.local. admin.exemple.local. (
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>                              1         ; Serial
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>                              604800    ; Refresh
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>                              86400     ; Retry
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>                              2419200   ; Expire
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>                              604800 )  ; Negative Cache TTL
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        IN      NS      ns1.exemple.local.
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>ns1     IN      A       192.168.50.1
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>www     IN      A       192.168.50.10
+</span></code></pre></div>
+<p><strong>4. Zona inversa <code>/etc/bind/db.192.168.50</code>:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$TTL    604800
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>@       IN      SOA     ns1.exemple.local. admin.exemple.local. (
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>                              1         ; Serial
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>                              604800    ; Refresh
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>                              86400     ; Retry
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>                              2419200   ; Expire
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>                              604800 )  ; Negative Cache TTL
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>@       IN      NS      ns1.exemple.local.
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>1       IN      PTR     ns1.exemple.local.
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>10      IN      PTR     www.exemple.local.
+</span></code></pre></div>
+<p><strong>5. Reiniciar el servei i comprovar l'estat:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>bind9
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>bind9
+</span></code></pre></div>
+<p>Amb aquesta configuració, qualsevol client que faci servir aquest servidor DNS podrà resoldre <code>www.exemple.local</code> a la IP <code>192.168.50.10</code> i la IP <code>192.168.50.10</code> a <code>www.exemple.local</code>.</p>
+<h3 id="detalls-importants-sobre-la-sintaxi-dels-fitxers-de-zona">Detalls importants sobre la sintaxi dels fitxers de zona<a class="headerlink" href="#detalls-importants-sobre-la-sintaxi-dels-fitxers-de-zona" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li><strong>El punt final és obligatori</strong> en noms totalment qualificats (<code>ns1.exemple.local.</code>). Sense el punt, bind9 hi afegeix el nom de la zona: escriure <code>ns1.exemple.local</code> (sense punt) es converteix en <code>ns1.exemple.local.exemple.local.</code> — error habitual.</li>
+<li>El símbol <code>@</code> representa el nom de la zona actual.</li>
+<li>El <strong>serial</strong> del SOA s'ha d'incrementar <strong>cada cop que es modifica la zona</strong>. Convenció habitual: <code>AAAAMMDDNN</code> (any-mes-dia-versió).</li>
+</ul>
+<h3 id="eines-de-validacio">Eines de validació<a class="headerlink" href="#eines-de-validacio" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Abans de reiniciar bind9, val la pena validar els fitxers:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>named-checkconf<span class="w">                                     </span><span class="c1"># valida named.conf*</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo<span class="w"> </span>named-checkzone<span class="w"> </span>exemple.local<span class="w"> </span>/etc/bind/db.exemple.local
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>sudo<span class="w"> </span>named-checkzone<span class="w"> </span><span class="m">50</span>.168.192.in-addr.arpa<span class="w"> </span>/etc/bind/db.192.168.50
+</span></code></pre></div>
+<p>Un <code>OK</code> significa que la zona s'ha carregat correctament (mostra el serial detectat).</p>
+<h2 id="eines-de-diagnostic-dig-i-nslookup">Eines de diagnòstic: <code>dig</code> i <code>nslookup</code><a class="headerlink" href="#eines-de-diagnostic-dig-i-nslookup" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Aquestes són les úniques eines que farem servir per validar que el DNS funciona. <strong>No fem servir <code>ping</code></strong> per comprovar el servei DNS — <code>ping</code> pot fallar per moltes causes que no tenen res a veure amb la resolució de noms.</p>
+<h3 id="dig"><code>dig</code><a class="headerlink" href="#dig" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Mostra la resposta completa de la consulta, capçaleres incloses. Molt útil per depurar.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dig<span class="w"> </span>www.google.com<span class="w">                        </span><span class="c1"># consulta al DNS configurat al sistema</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dig<span class="w"> </span>@192.168.50.1<span class="w"> </span>www.exemple.local<span class="w">       </span><span class="c1"># consulta un servidor concret</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>dig<span class="w"> </span>-x<span class="w"> </span><span class="m">192</span>.168.50.10<span class="w">                      </span><span class="c1"># resolució inversa</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>dig<span class="w"> </span>www.exemple.local<span class="w"> </span>+short<span class="w">              </span><span class="c1"># només la resposta neta</span>
+</span></code></pre></div>
+<h3 id="nslookup"><code>nslookup</code><a class="headerlink" href="#nslookup" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Més senzill i universal (existeix també a Windows). Ideal per comprovacions ràpides:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>nslookup<span class="w"> </span>www.exemple.local
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>nslookup<span class="w"> </span>www.exemple.local<span class="w"> </span><span class="m">192</span>.168.50.1<span class="w">     </span><span class="c1"># forçar un servidor concret</span>
+</span></code></pre></div>
+<p>A Windows:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>nslookup www.exemple.local
+</span></code></pre></div>
+<h2 id="zones-inverses">Zones inverses<a class="headerlink" href="#zones-inverses" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>La zona inversa serveix per resoldre <strong>d'IP a nom</strong>. S'expressa amb el domini especial <code>in-addr.arpa</code> (per IPv4) o <code>ip6.arpa</code> (per IPv6). El nom de la zona s'escriu invertint els octets de la xarxa.</p>
+<p>Exemples IPv4:</p>
+<table>
+<thead>
+<tr>
+<th>Xarxa</th>
+<th>Nom de zona inversa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>192.168.50.0/24</code></td>
+<td><code>50.168.192.in-addr.arpa</code></td>
+</tr>
+<tr>
+<td><code>10.0.0.0/8</code></td>
+<td><code>10.in-addr.arpa</code></td>
+</tr>
+<tr>
+<td><code>172.16.0.0/16</code></td>
+<td><code>16.172.in-addr.arpa</code></td>
+</tr>
+</tbody>
+</table>
+<p>Dins de la zona, cada host s'identifica només pel seu <strong>últim octet</strong> (o els octets que quedin fora de la part de xarxa):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>1       IN      PTR     ns1.exemple.local.
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>10      IN      PTR     www.exemple.local.
+</span></code></pre></div>
+<p>Un mateix nom pot tenir molts <code>A</code> (per exemple, per repartir càrrega), però un <code>PTR</code> normalment només apunta a un nom canònic. Per això la resolució directa i la inversa <strong>no sempre són simètriques</strong> a la vida real.</p>
+<h3 id="nota-sobre-ipv6">Nota sobre IPv6<a class="headerlink" href="#nota-sobre-ipv6" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Per a IPv6 el domini especial és <code>ip6.arpa</code> i la IP s'escriu <strong>nibble a nibble</strong> (grup de 4 bits) al revés. És més verbós, però la lògica és la mateixa. Es cobreix com a extra a la Part 2 de les pràctiques.</p>
+<h2 id="servidors-secundaris-slaves-i-transferencia-de-zona">Servidors secundaris (slaves) i transferència de zona<a class="headerlink" href="#servidors-secundaris-slaves-i-transferencia-de-zona" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Un <strong>servidor secundari</strong> (històricament <em>slave</em>, avui també <em>secondary</em>) manté una còpia sincronitzada d'una zona servida per un altre servidor (<em>master</em>/<em>primary</em>). Serveix per:</p>
+<ul>
+<li><strong>Redundància</strong>: si el master cau, el secundari continua responent.</li>
+<li><strong>Repartir càrrega</strong> entre diversos servidors.</li>
+</ul>
+<h3 id="transferencia-de-zona">Transferència de zona<a class="headerlink" href="#transferencia-de-zona" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Quan el secundari s'engega o quan el <code>Refresh</code> del SOA s'ha exhaurit, consulta el serial del master. Si el del master és superior, demana una <strong>transferència de zona</strong>:</p>
+<ul>
+<li><strong>AXFR</strong>: transferència completa (còpia sencera de la zona).</li>
+<li><strong>IXFR</strong>: transferència incremental (només els canvis).</li>
+</ul>
+<p>Al master s'ha d'autoritzar explícitament la transferència amb la directiva <code>allow-transfer</code> a la zona corresponent. Sense això, per motius de seguretat, bind9 rebutja les peticions.</p>
+<p>Al secundari, la zona es declara amb <code>type slave</code> (o <code>type secondary</code>) i s'indica la IP del master amb <code>masters { ... };</code>. Els fitxers transferits queden a <code>/var/cache/bind/</code> per defecte.</p>
+<h2 id="bones-practiques-i-tlds-reservats">Bones pràctiques i TLDs reservats<a class="headerlink" href="#bones-practiques-i-tlds-reservats" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Encara que als exercicis podem inventar qualsevol domini, a la vida real cal evitar fer servir TLDs que siguin propietat d'una organització (<code>.edu</code>, <code>.com</code>, <code>.cat</code>, etc.) per a proves internes: podria causar col·lisions o confondre resolvers. Els TLDs que <strong>la IANA reserva expressament per a proves i entorns privats</strong> són (RFC 2606 i RFC 6761):</p>
+<ul>
+<li><code>.test</code> — reservat per a proves.</li>
+<li><code>.example</code> — reservat per a documentació i exemples.</li>
+<li><code>.invalid</code> — reservat per garantir que la resolució sempre falli.</li>
+<li><code>.localhost</code> — sempre s'ha de resoldre al loopback.</li>
+<li><code>.local</code> — reservat de facto per xarxes locals (usat per mDNS/Bonjour; <strong>compte</strong> si convius amb aquests protocols).</li>
+</ul>
+<p>Als exercicis d'aquest mòdul farem servir dominis del tipus <code>cognom.edu</code> (l'alumne substitueix pel seu cognom), però qui vulgui pot triar qualsevol dels TLDs de la llista anterior.</p>
+<h2 id="documentacio-i-referencies">Documentació i referències<a class="headerlink" href="#documentacio-i-referencies" title="Enllaç a aquesta secció">&para;</a></h2>
+<ul>
+<li>Guia clàssica de la comunitat Ubuntu: <a href="https://help.ubuntu.com/community/BIND9ServerHowto">help.ubuntu.com/community/BIND9ServerHowto</a> — pot estar desactualitzada (última revisió important el 2018), però conserva bones explicacions conceptuals.</li>
+<li>Documentació oficial d'ISC (autoritat de bind9): <a href="https://bind9.readthedocs.io/">bind9.readthedocs.io</a>.</li>
+<li>RFCs fundacionals: <strong>RFC 1034</strong> i <strong>RFC 1035</strong> (definició del DNS).</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+          
+          <a href="../../1-RA1-DHCP/practiques/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctiques">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Pràctiques
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../practiques/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctiques">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                Pràctiques
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Joan-mh/MP-0227" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

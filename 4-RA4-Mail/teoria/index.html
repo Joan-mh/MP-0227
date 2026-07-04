@@ -1,0 +1,3118 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material docent del mòdul professional 0227 (CFGM Sistemes Microinformàtics i Xarxes)">
+      
+      
+        <meta name="author" content="Joan Mercadé">
+      
+      
+        <link rel="canonical" href="https://joan-mh.github.io/MP-0227/4-RA4-Mail/teoria/">
+      
+      
+        <link rel="prev" href="../../8-RA8-Proxy/practiques/">
+      
+      
+        <link rel="next" href="../practiques/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Teoria - Serveis de Xarxa — M227</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#serveis-de-xarxa-correu-electronic-postfix-dovecot" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-header__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Serveis de Xarxa — M227
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Teoria
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode fosc"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passar a mode fosc" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passar a mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inici
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../7-RA7-Wifi/teoria/" class="md-tabs__link">
+          
+  
+  
+  RA i ordre d'impartició
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Projectes/Projecte1/" class="md-tabs__link">
+          
+  
+  
+  Projectes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-nav__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Serveis de Xarxa — M227
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inici
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA i ordre d'impartició
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA i ordre d'impartició
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA7 — Wifi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA7 — Wifi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklist d'avaluació
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA6 — SSH
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA6 — SSH
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA1 — DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA1 — DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA2 — DNS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA2 — DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA3 — FTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA3 — FTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA5 — HTTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA5 — HTTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA8 — Proxy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA8 — Proxy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA4 — Correu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA4 — Correu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-historica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducció històrica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-del-correu-mua-mta-mda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitectura del correu: MUA / MTA / MDA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquitectura del correu: MUA / MTA / MDA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flux-tipic-dun-correu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flux típic d'un correu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocols-i-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocols i ports
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocols i ports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diferencia-practica-pop3-vs-imap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferència pràctica POP3 vs. IMAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starttls-vs-tls-directe-smtpsimaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STARTTLS vs. TLS "directe" (SMTPS/IMAPS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registre-mx-al-dns-repas-breu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre MX al DNS (repàs breu)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postfix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Postfix
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Postfix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-9-preguntes-de-lassistent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les 9 preguntes de l'assistent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Les 9 preguntes de l&#39;assistent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-tipus-general-de-configuracio-de-correu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Tipus general de configuració de correu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nom-de-correu-del-sistema-system-mail-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Nom de correu del sistema (System mail name)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-destinatari-del-correu-de-root-i-postmaster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Destinatari del correu de root i postmaster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-altres-destinacions-per-acceptar-correu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Altres destinacions per acceptar correu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-forcar-actualitzacions-sincrones-a-la-cua-de-correu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Forçar actualitzacions síncrones a la cua de correu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-xarxes-locals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Xarxes locals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-limit-de-mida-de-la-bustia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Límit de mida de la bústia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-caracter-dextensio-dadreca-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Caràcter d'extensió d'adreça local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-protocols-dinternet-a-utilitzar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Protocols d'Internet a utilitzar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fitxers-principals-de-postfix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxers principals de Postfix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#format-de-bustia-maildir-vs-mbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format de bústia: Maildir vs. mbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dovecot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dovecot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dovecot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fitxers-principals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxers principals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-minima" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuració mínima
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprovar-dovecot-per-telnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprovar Dovecot per telnet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-comanda-mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La comanda mail
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La comanda mail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enviar-un-correu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enviar un correu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llegir-la-bustia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Llegir la bústia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordres-dins-de-mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordres dins de mail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estats-dels-missatges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estats dels missatges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cifrat-certificats-autofirmats-i-lets-encrypt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cifrat: certificats autofirmats i Let's Encrypt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cifrat: certificats autofirmats i Let&#39;s Encrypt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificat-autofirmat-openssl-el-que-farem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificat autofirmat (OpenSSL) — el que farem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lets-encrypt-acme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let's Encrypt (ACME)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autenticacio-anti-suplantacio-moderna-spf-dkim-dmarc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autenticació anti-suplantació moderna: SPF, DKIM, DMARC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clients-de-correu-thunderbird-i-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clients de correu: Thunderbird i Evolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clients de correu: Thunderbird i Evolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-problema-de-thunderbird-amb-certificats-autofirmats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El problema de Thunderbird amb certificats autofirmats
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referències
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projectes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projectes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 1 (base + Ruta A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 2 (Ruta B)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari base (tots)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Extensio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari extensió Ruta A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari Projecte 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-historica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducció històrica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-del-correu-mua-mta-mda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitectura del correu: MUA / MTA / MDA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquitectura del correu: MUA / MTA / MDA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flux-tipic-dun-correu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flux típic d'un correu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocols-i-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocols i ports
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocols i ports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diferencia-practica-pop3-vs-imap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferència pràctica POP3 vs. IMAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starttls-vs-tls-directe-smtpsimaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STARTTLS vs. TLS "directe" (SMTPS/IMAPS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registre-mx-al-dns-repas-breu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registre MX al DNS (repàs breu)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postfix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Postfix
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Postfix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-9-preguntes-de-lassistent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les 9 preguntes de l'assistent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Les 9 preguntes de l&#39;assistent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-tipus-general-de-configuracio-de-correu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Tipus general de configuració de correu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nom-de-correu-del-sistema-system-mail-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Nom de correu del sistema (System mail name)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-destinatari-del-correu-de-root-i-postmaster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Destinatari del correu de root i postmaster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-altres-destinacions-per-acceptar-correu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Altres destinacions per acceptar correu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-forcar-actualitzacions-sincrones-a-la-cua-de-correu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Forçar actualitzacions síncrones a la cua de correu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-xarxes-locals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Xarxes locals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-limit-de-mida-de-la-bustia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Límit de mida de la bústia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-caracter-dextensio-dadreca-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Caràcter d'extensió d'adreça local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-protocols-dinternet-a-utilitzar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Protocols d'Internet a utilitzar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fitxers-principals-de-postfix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxers principals de Postfix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#format-de-bustia-maildir-vs-mbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format de bústia: Maildir vs. mbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dovecot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dovecot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dovecot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fitxers-principals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitxers principals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-minima" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuració mínima
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprovar-dovecot-per-telnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprovar Dovecot per telnet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-comanda-mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La comanda mail
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La comanda mail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enviar-un-correu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enviar un correu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llegir-la-bustia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Llegir la bústia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordres-dins-de-mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordres dins de mail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estats-dels-missatges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estats dels missatges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cifrat-certificats-autofirmats-i-lets-encrypt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cifrat: certificats autofirmats i Let's Encrypt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cifrat: certificats autofirmats i Let&#39;s Encrypt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificat-autofirmat-openssl-el-que-farem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificat autofirmat (OpenSSL) — el que farem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lets-encrypt-acme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let's Encrypt (ACME)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autenticacio-anti-suplantacio-moderna-spf-dkim-dmarc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autenticació anti-suplantació moderna: SPF, DKIM, DMARC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clients-de-correu-thunderbird-i-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clients de correu: Thunderbird i Evolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clients de correu: Thunderbird i Evolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-problema-de-thunderbird-amb-certificats-autofirmats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El problema de Thunderbird amb certificats autofirmats
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referències
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Joan-mh/MP-0227/edit/main/4-RA4-Mail/teoria.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="serveis-de-xarxa-correu-electronic-postfix-dovecot">Serveis de xarxa — Correu electrònic (Postfix + Dovecot)<a class="headerlink" href="#serveis-de-xarxa-correu-electronic-postfix-dovecot" title="Enllaç a aquesta secció">&para;</a></h1>
+<h2 id="introduccio-historica">Introducció històrica<a class="headerlink" href="#introduccio-historica" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>El correu electrònic és <strong>més antic que Internet</strong>. El primer correu es va enviar el <strong>1962</strong> des del MIT i el 1965 ja existia el servei <code>Mail</code> per enviar missatges entre terminals connectats.</p>
+<p>Quan va arribar ARPANET (1969), la utilitat es va disparar. El <strong>1971</strong> Ray Tomlinson va enviar el primer correu per la xarxa i va introduir la convenció crucial de separar l'usuari de la màquina amb una <strong><code>@</code></strong> (en anglès es llegeix "at", per això <code>joan@terranova.com</code> es llegeix "joan at terranova.com").</p>
+<p>Ràpidament van aparèixer proveïdors grans (Hotmail — abans de Microsoft —, Yahoo, Gmail...) i el correu es va convertir en la primera aplicació d'Internet de masses. A l'estat espanyol el primer correu és del <strong>1985</strong>, però no s'estén com a eina d'ús comú fins a principis dels <strong>2000</strong>.</p>
+<h2 id="arquitectura-del-correu-mua-mta-mda">Arquitectura del correu: MUA / MTA / MDA<a class="headerlink" href="#arquitectura-del-correu-mua-mta-mda" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>El correu no funciona amb una sola màquina ni un sol protocol. Hi ha tres tipus d'actors:</p>
+<table>
+<thead>
+<tr>
+<th>Actor</th>
+<th>Nom complet</th>
+<th>Què fa</th>
+<th>Exemples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MUA</strong></td>
+<td><em>Mail User Agent</em></td>
+<td>Client. El programa amb què l'usuari escriu, envia i llegeix correu.</td>
+<td>Thunderbird, Evolution, Outlook, <code>mail</code></td>
+</tr>
+<tr>
+<td><strong>MTA</strong></td>
+<td><em>Mail Transfer Agent</em></td>
+<td>Servidor. Enruta el correu entre servidors, com un carter.</td>
+<td><strong>Postfix</strong>, Sendmail, QMail, EXIM</td>
+</tr>
+<tr>
+<td><strong>MDA</strong></td>
+<td><em>Mail Delivery Agent</em></td>
+<td>Lliurament final: entrega el correu a la bústia de l'usuari i el serveix quan aquest es connecta.</td>
+<td><strong>Dovecot</strong>, procmail</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dovecot</strong> és MDA + servidor IMAP/POP3 alhora (dona accés a les bústies).</p>
+<h3 id="flux-tipic-dun-correu">Flux típic d'un correu<a class="headerlink" href="#flux-tipic-dun-correu" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Suposem que <code>joan@empresa1.cat</code> escriu a <code>maria@empresa2.cat</code>:</p>
+<ol>
+<li><strong>Joan</strong> escriu el missatge al seu MUA (Thunderbird) i li dona a "Enviar".</li>
+<li>Thunderbird envia el missatge al <strong>MTA d'empresa1</strong> (<code>smtp.empresa1.cat</code>) via <strong>SMTP</strong>.</li>
+<li>L'MTA d'empresa1 consulta el <strong>DNS</strong> buscant el registre <strong>MX</strong> d'<code>empresa2.cat</code> per saber a quin servidor entregar.</li>
+<li>L'MTA d'empresa1 obre una connexió SMTP amb l'MTA d'empresa2 i li lliura el missatge.</li>
+<li>L'MTA d'empresa2 (Postfix) rep el missatge i el passa al <strong>MDA</strong> (Dovecot), que el deixa a la bústia de <code>maria</code>.</li>
+<li><strong>Maria</strong> obre el seu MUA, que es connecta al servidor IMAP/POP3 d'empresa2 (Dovecot) i descarrega el missatge.</li>
+</ol>
+<h2 id="protocols-i-ports">Protocols i ports<a class="headerlink" href="#protocols-i-ports" title="Enllaç a aquesta secció">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Rol</th>
+<th>Port sense TLS</th>
+<th>Port amb TLS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SMTP</strong></td>
+<td>Enviar correu (client → MTA i MTA → MTA)</td>
+<td>25 (MTA↔MTA) / 587 (client, STARTTLS)</td>
+<td>465 (SMTPS, TLS des del principi)</td>
+</tr>
+<tr>
+<td><strong>POP3</strong></td>
+<td>Descarregar la bústia (típicament esborrant-la del servidor)</td>
+<td>110</td>
+<td>995 (POP3S)</td>
+</tr>
+<tr>
+<td><strong>IMAP</strong></td>
+<td>Sincronitzar la bústia (deixa els correus al servidor)</td>
+<td>143</td>
+<td>993 (IMAPS)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diferencia-practica-pop3-vs-imap">Diferència pràctica POP3 vs. IMAP<a class="headerlink" href="#diferencia-practica-pop3-vs-imap" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li><strong>POP3</strong>: descarrega el correu del servidor al dispositiu i (per defecte) l'esborra del servidor. Bo si només consultes des d'un dispositiu i vols estalviar espai al servidor. <strong>Problema</strong>: si obres correu al portàtil i al mòbil, no veus el mateix.</li>
+<li><strong>IMAP</strong>: manté el correu al servidor i sincronitza els canvis (llegits, carpetes, esborrats) entre tots els dispositius. <strong>Estàndard modern</strong>: tots els proveïdors grans (Gmail, Outlook) el fan servir per defecte.</li>
+</ul>
+<p>En qualsevol dels dos casos, l'<strong>enviament</strong> es fa sempre amb <strong>SMTP</strong>.</p>
+<h2 id="starttls-vs-tls-directe-smtpsimaps">STARTTLS vs. TLS "directe" (SMTPS/IMAPS)<a class="headerlink" href="#starttls-vs-tls-directe-smtpsimaps" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Hi ha dues maneres d'afegir xifratge a un protocol antic com SMTP o IMAP:</p>
+<ul>
+<li><strong>STARTTLS</strong>: la connexió comença sense xifrar al port habitual (25/587 per SMTP, 143 per IMAP). El client envia una comanda <code>STARTTLS</code> i, a partir d'aquí, la sessió es xifra.</li>
+<li><strong>TLS directe</strong> (SMTPS, IMAPS, POP3S): la connexió ja s'obre xifrada des del primer byte, en un <strong>port diferent</strong> (465, 993, 995).</li>
+</ul>
+<p>Els proveïdors moderns (Gmail, Outlook) admeten totes dues. En aquest curs farem servir <strong>TLS directe (SMTPS al 465, IMAPS al 993)</strong> perquè és més simple d'entendre.</p>
+<h2 id="registre-mx-al-dns-repas-breu">Registre MX al DNS (repàs breu)<a class="headerlink" href="#registre-mx-al-dns-repas-breu" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Un servidor de correu no es descobreix per nom sinó per <strong>registre MX</strong>. Al fitxer de zona del RA2:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>empresa1.cat.    IN MX 10  mail.empresa1.cat.
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mail             IN A      192.168.50.20
+</span></code></pre></div>
+<p>Interpretació: qui vulgui enviar correu a <code>qualsevol@empresa1.cat</code> ha de consultar el registre MX i acabarà entregant al servidor <code>mail.empresa1.cat</code> (<code>192.168.50.20</code>).</p>
+<p>El número <strong><code>10</code></strong> és la <strong>preferència</strong>: com més baix, més prioritari. Si hi ha diversos MX es proven per ordre de preferència.</p>
+<p>Comprovació:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dig<span class="w"> </span>empresa1.cat<span class="w"> </span>MX
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dig<span class="w"> </span>mail.empresa1.cat
+</span></code></pre></div>
+<h2 id="postfix">Postfix<a class="headerlink" href="#postfix" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><strong>Postfix</strong> és l'MTA que farem servir. És el més utilitzat a servidors Linux moderns (majoritari a Ubuntu, Debian, RedHat). Comparat amb els seus germans:</p>
+<ul>
+<li><strong>Sendmail</strong>: el clàssic. Molt potent però amb sintaxi complexa i quasi mai s'usa a servidors nous.</li>
+<li><strong>EXIM</strong>: per defecte a Debian pur (no Ubuntu). Sintaxi radicalment diferent, més flexible per a configuracions molt específiques.</li>
+<li><strong>Postfix</strong>: escrit als 90s a IBM Research per substituir Sendmail. Modular, segur, sintaxi clara. <strong>És el que farem servir tant a pràctiques com al Projecte 1</strong>.</li>
+</ul>
+<h3 id="installacio">Instal·lació<a class="headerlink" href="#installacio" title="Enllaç a aquesta secció">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>postfix<span class="w"> </span>mailutils
+</span></code></pre></div>
+<p>L'<code>apt</code> obrirà automàticament l'<strong>assistent de configuració</strong> (<code>dpkg-reconfigure</code>). Podeu tornar-lo a llançar en qualsevol moment amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>dpkg-reconfigure<span class="w"> </span>postfix
+</span></code></pre></div>
+<blockquote>
+<p>⚠️ <strong>Avís important</strong>: <code>dpkg-reconfigure postfix</code> <strong>reescriu <code>/etc/postfix/main.cf</code></strong>. Si has fet canvis manuals a aquest fitxer i tornes a executar l'assistent, es perden. Fes una còpia (<code>sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.bck</code>) abans d'executar-lo.</p>
+</blockquote>
+<h3 id="les-9-preguntes-de-lassistent">Les 9 preguntes de l'assistent<a class="headerlink" href="#les-9-preguntes-de-lassistent" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>L'assistent us presentarà 9 pantalles. Aquesta secció explica què triar a cadascuna.</p>
+<h4 id="1-tipus-general-de-configuracio-de-correu">1. Tipus general de configuració de correu<a class="headerlink" href="#1-tipus-general-de-configuracio-de-correu" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Defineix el <strong>rol</strong> del servidor:</p>
+<ul>
+<li><strong>Sense configuració</strong>: no fa res.</li>
+<li><strong>Lloc d'Internet (Internet Site)</strong>: envia i rep directament amb SMTP. Servidor complet i autònom.</li>
+<li><strong>Internet amb smarthost</strong>: rep directament, però tot el correu que <strong>surt</strong> passa per un altre servidor (el <em>smarthost</em>). Útil si el proveïdor bloqueja el port 25.</li>
+<li><strong>Sistema satèl·lit</strong>: <strong>tot</strong> el correu (entrant i sortint) passa per un altre servidor.</li>
+<li><strong>Només local</strong>: correu només entre usuaris de la mateixa màquina.</li>
+</ul>
+<blockquote>
+<p><strong>Escollir</strong>: <strong>Lloc d'Internet</strong>.</p>
+</blockquote>
+<h4 id="2-nom-de-correu-del-sistema-system-mail-name">2. Nom de correu del sistema (System mail name)<a class="headerlink" href="#2-nom-de-correu-del-sistema-system-mail-name" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>El <strong>domini</strong> amb què el servidor s'identificarà. S'afegirà a les adreces sense domini explícit.</p>
+<blockquote>
+<p><strong>Escollir</strong>: el vostre domini, per exemple <code>jmercade.com</code> (el mateix del DNS).</p>
+</blockquote>
+<h4 id="3-destinatari-del-correu-de-root-i-postmaster">3. Destinatari del correu de root i postmaster<a class="headerlink" href="#3-destinatari-del-correu-de-root-i-postmaster" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Els correus de sistema (avisos, alertes) es solen redirigir a un usuari administrador.</p>
+<blockquote>
+<p><strong>Escollir</strong>: <strong>deixar-ho en blanc</strong> per ara. Aniran a <code>root</code>.</p>
+</blockquote>
+<h4 id="4-altres-destinacions-per-acceptar-correu">4. Altres destinacions per acceptar correu<a class="headerlink" href="#4-altres-destinacions-per-acceptar-correu" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Els dominis pels quals Postfix acceptarà correu.</p>
+<blockquote>
+<p><strong>Escollir</strong>: assegureu-vos que el vostre domini hi apareix. Per defecte sol quedar <code>$myhostname, jmercade.com, localhost.localdomain, localhost</code>.</p>
+</blockquote>
+<h4 id="5-forcar-actualitzacions-sincrones-a-la-cua-de-correu">5. Forçar actualitzacions síncrones a la cua de correu<a class="headerlink" href="#5-forcar-actualitzacions-sincrones-a-la-cua-de-correu" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Afecta el rendiment i la integritat.</p>
+<blockquote>
+<p><strong>Escollir</strong>: <strong>No</strong> (millor rendiment, l'estàndard).</p>
+</blockquote>
+<h4 id="6-xarxes-locals">6. Xarxes locals<a class="headerlink" href="#6-xarxes-locals" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Les IPs que Postfix considera <strong>de confiança</strong> per fer <em>relay</em>. Per defecte només <code>127.0.0.0/8</code> (només la mateixa màquina).</p>
+<blockquote>
+<p><strong>Escollir</strong>: afegir la vostra xarxa. Per exemple: <code>127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 192.168.50.0/24</code>.</p>
+</blockquote>
+<h4 id="7-limit-de-mida-de-la-bustia">7. Límit de mida de la bústia<a class="headerlink" href="#7-limit-de-mida-de-la-bustia" title="Enllaç a aquesta secció">&para;</a></h4>
+<p><code>0</code> = sense límit. Recomanat.</p>
+<blockquote>
+<p><strong>Escollir</strong>: <strong><code>0</code></strong>.</p>
+</blockquote>
+<h4 id="8-caracter-dextensio-dadreca-local">8. Caràcter d'extensió d'adreça local<a class="headerlink" href="#8-caracter-dextensio-dadreca-local" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Amb <code>+</code> com a extensió, <code>correu1+notificacions@jmercade.com</code> s'entrega a <code>correu1</code>. Molt útil per filtrar.</p>
+<blockquote>
+<p><strong>Escollir</strong>: <code>+</code> (per defecte).</p>
+</blockquote>
+<h4 id="9-protocols-dinternet-a-utilitzar">9. Protocols d'Internet a utilitzar<a class="headerlink" href="#9-protocols-dinternet-a-utilitzar" title="Enllaç a aquesta secció">&para;</a></h4>
+<ul>
+<li><strong>all</strong>: IPv4 i IPv6.</li>
+<li><strong>ipv4</strong> / <strong>ipv6</strong>: només un dels dos.</li>
+</ul>
+<blockquote>
+<p><strong>Escollir</strong>: <strong>all</strong>.</p>
+</blockquote>
+<h3 id="fitxers-principals-de-postfix">Fitxers principals de Postfix<a class="headerlink" href="#fitxers-principals-de-postfix" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Tot dins <code>/etc/postfix/</code>:</p>
+<ul>
+<li><strong><code>main.cf</code></strong> — configuració principal (paràmetres, TLS, restriccions).</li>
+<li><strong><code>master.cf</code></strong> — quins serveis s'activen i com (SMTP al 25, submission al 587, smtps al 465...).</li>
+<li><strong><code>/etc/mailname</code></strong> — nom de correu del sistema (el que va donar al pas 2 de l'assistent).</li>
+</ul>
+<h3 id="format-de-bustia-maildir-vs-mbox">Format de bústia: Maildir vs. mbox<a class="headerlink" href="#format-de-bustia-maildir-vs-mbox" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li><strong><code>mbox</code></strong> (per defecte): tots els correus d'una bústia en <strong>un únic fitxer</strong> (<code>/var/mail/&lt;usuari&gt;</code>). Simple però lent i propens a corrupció si molts processos hi escriuen alhora.</li>
+<li><strong><code>Maildir</code></strong> (recomanat modern): <strong>un fitxer per correu</strong> dins d'una estructura de directoris (<code>~/Maildir/{new,cur,tmp}</code>). Robust, ràpid, sense bloqueigs.</li>
+</ul>
+<p>Postfix per defecte usa <code>mbox</code>. Per canviar-lo a <code>Maildir</code> a <code>main.cf</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>home_mailbox = Maildir/
+</span></code></pre></div>
+<p>Cal reiniciar el servei. <strong>Dovecot ha d'usar el mateix format</strong> (veure secció Dovecot).</p>
+<h2 id="dovecot">Dovecot<a class="headerlink" href="#dovecot" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><strong>Dovecot</strong> és el nostre servidor <strong>IMAP + POP3</strong> (i alhora fa d'MDA). Instal·lació:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>dovecot-imapd<span class="w"> </span>dovecot-pop3d
+</span></code></pre></div>
+<h3 id="fitxers-principals">Fitxers principals<a class="headerlink" href="#fitxers-principals" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Tot dins <code>/etc/dovecot/</code>:</p>
+<ul>
+<li><strong><code>dovecot.conf</code></strong> — punt d'entrada. Inclou tots els altres.</li>
+<li><strong><code>conf.d/10-mail.conf</code></strong> — on són les bústies. Ha de coincidir amb Postfix.</li>
+<li><strong><code>conf.d/10-auth.conf</code></strong> — mecanismes d'autenticació.</li>
+<li><strong><code>conf.d/10-master.conf</code></strong> — serveis: quin protocol escolta a quin port.</li>
+<li><strong><code>conf.d/10-ssl.conf</code></strong> — configuració TLS.</li>
+</ul>
+<h3 id="configuracio-minima">Configuració mínima<a class="headerlink" href="#configuracio-minima" title="Enllaç a aquesta secció">&para;</a></h3>
+<p><strong><code>10-mail.conf</code></strong> — coincidir amb el format de Postfix:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>mail_location = maildir:~/Maildir
+</span></code></pre></div>
+<p><strong><code>10-auth.conf</code></strong> — permetre autenticació sense TLS <strong>NOMÉS per proves</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>disable_plaintext_auth = no
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>auth_mechanisms = plain login
+</span></code></pre></div>
+<p>En producció, <code>disable_plaintext_auth = yes</code> i només amb TLS.</p>
+<p><strong><code>dovecot.conf</code></strong> — indicar la vostra xarxa local (com a <code>login_trusted_networks</code>) per acceptar autenticacions durant la fase de proves sense TLS:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>login_trusted_networks = 192.168.50.0/24
+</span></code></pre></div>
+<h3 id="comprovar-dovecot-per-telnet">Comprovar Dovecot per telnet<a class="headerlink" href="#comprovar-dovecot-per-telnet" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Els protocols POP3 i IMAP són <strong>de text</strong>: es poden provar amb <code>telnet</code> sense necessitat de cap client.</p>
+<p><strong>POP3 (port 110):</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>telnet<span class="w"> </span>localhost<span class="w"> </span><span class="m">110</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>USER<span class="w"> </span>correu1
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>PASS<span class="w"> </span>&lt;la_contrasenya&gt;
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>STAT
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>LIST
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>RETR<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>QUIT
+</span></code></pre></div>
+<p><strong>IMAP (port 143):</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>telnet<span class="w"> </span>localhost<span class="w"> </span><span class="m">143</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>a<span class="w"> </span>LOGIN<span class="w"> </span>correu1<span class="w"> </span>&lt;contrasenya&gt;
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>a<span class="w"> </span>LIST<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s2">&quot;*&quot;</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>a<span class="w"> </span>SELECT<span class="w"> </span>INBOX
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>a<span class="w"> </span>FETCH<span class="w"> </span><span class="m">1</span><span class="w"> </span>BODY<span class="o">[]</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>a<span class="w"> </span>LOGOUT
+</span></code></pre></div>
+<p>L'<code>a</code> de davant de cada comanda és una <strong>etiqueta</strong> (qualsevol lletra o número): IMAP en necessita una per identificar la resposta de cada comanda.</p>
+<h2 id="la-comanda-mail">La comanda <code>mail</code><a class="headerlink" href="#la-comanda-mail" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><code>mail</code> (paquet <code>mailutils</code>) és un MUA de línia d'ordres. No admet fitxers adjunts però és perfecte per a proves ràpides des del terminal.</p>
+<h3 id="enviar-un-correu">Enviar un correu<a class="headerlink" href="#enviar-un-correu" title="Enllaç a aquesta secció">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola, això és una prova&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>mail<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;Assumpte&quot;</span><span class="w"> </span>correu1@jmercade.com
+</span></code></pre></div>
+<p>Modificadors útils:</p>
+<ul>
+<li><code>-s "text"</code> — assumpte.</li>
+<li><code>-v</code> — verbose (útil per veure què fa).</li>
+<li><code>-a fitxer</code> — adjuntar un fitxer (només amb versions modernes de <code>mailutils</code>).</li>
+</ul>
+<p>Format interactiu:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$ mail correu1@jmercade.com
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Cc:
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>Subject: Test
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>Cos del missatge
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>línia 2
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>^D             (Ctrl+D per finalitzar el missatge)
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>EOT
+</span></code></pre></div>
+<h3 id="llegir-la-bustia">Llegir la bústia<a class="headerlink" href="#llegir-la-bustia" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Un cop tens missatges:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$ mail
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>&quot;/var/mail/joanm&quot;: 3 messages 3 new
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>&gt;N 1 root         Fri Jan 9 05:54  19/817   Missatge 1
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a> N 2 root         Fri Jan 9 05:56  19/783   Missatge 2
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a> N 3 root         Fri Jan 9 05:59  20/895   Missatge 3
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>?
+</span></code></pre></div>
+<p>El símbol <strong><code>&gt;</code></strong> marca el missatge actual (sobre el qual actuaran les ordres si no s'especifica).</p>
+<h3 id="ordres-dins-de-mail">Ordres dins de <code>mail</code><a class="headerlink" href="#ordres-dins-de-mail" title="Enllaç a aquesta secció">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Ordre</th>
+<th>Ús</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code> (o Enter)</td>
+<td>Llegir el següent missatge.</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>Reimprimir el missatge actual.</td>
+</tr>
+<tr>
+<td><code>h</code></td>
+<td>Capçaleres de tots els missatges.</td>
+</tr>
+<tr>
+<td><code>d [num]</code></td>
+<td>Esborrar el missatge actual o el <code>num</code>.</td>
+</tr>
+<tr>
+<td><code>r [num]</code></td>
+<td>Respondre.</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>Sortir preservant els no llegits.</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>Sortir preservant tots els missatges (<strong>inclús els esborrats amb <code>d</code></strong> — no confirma!).</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td>Veure totes les ordres disponibles.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="estats-dels-missatges">Estats dels missatges<a class="headerlink" href="#estats-dels-missatges" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li><strong><code>N</code></strong> — nou (no llegit).</li>
+<li><strong><code>R</code></strong> — llegit.</li>
+<li><strong><code>U</code></strong> — no llegit però conegut (no és nou).</li>
+<li><strong><code>&gt;</code></strong> — missatge actual.</li>
+</ul>
+<h2 id="cifrat-certificats-autofirmats-i-lets-encrypt">Cifrat: certificats autofirmats i Let's Encrypt<a class="headerlink" href="#cifrat-certificats-autofirmats-i-lets-encrypt" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Per xifrar SMTP i IMAP necessitem un <strong>certificat X.509</strong> (com HTTPS). Dues opcions:</p>
+<h3 id="certificat-autofirmat-openssl-el-que-farem">Certificat autofirmat (OpenSSL) — el que farem<a class="headerlink" href="#certificat-autofirmat-openssl-el-que-farem" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Es genera al mateix servidor amb OpenSSL. Vàlid tècnicament, però <strong>no signat per cap autoritat certificadora</strong>: els clients avisaran que "no confien" en el certificat.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-nodes<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span>-keyout<span class="w"> </span>/etc/ssl/private/mail.key<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span>-out<span class="w"> </span>/etc/ssl/certs/mail.crt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span>-subj<span class="w"> </span><span class="s2">&quot;/CN=mail.jmercade.com&quot;</span>
+</span></code></pre></div>
+<p>Ideal per laboratori i xarxes internes. <strong>Els nostres exercicis usen sempre autofirmats.</strong></p>
+<h3 id="lets-encrypt-acme">Let's Encrypt (ACME)<a class="headerlink" href="#lets-encrypt-acme" title="Enllaç a aquesta secció">&para;</a></h3>
+<p><strong>Let's Encrypt</strong> és una autoritat certificadora gratuïta i automatitzada. Emet certificats signats de veritat (els navegadors i clients hi confien sense avisar). S'obtenen amb l'eina <strong><code>certbot</code></strong> o similar.</p>
+<p><strong>Per què no la fem servir aquí</strong>: Let's Encrypt necessita <strong>un domini públic real</strong> i que el servidor sigui <strong>accessible des d'Internet</strong> per verificar la propietat del domini (via HTTP-01 o DNS-01 challenge). Als laboratoris del CFGM treballem amb dominis inventats a xarxes host-only, on no arriba Let's Encrypt. En un servidor de producció amb domini real, seria la primera opció.</p>
+<h2 id="autenticacio-anti-suplantacio-moderna-spf-dkim-dmarc">Autenticació anti-suplantació moderna: SPF, DKIM, DMARC<a class="headerlink" href="#autenticacio-anti-suplantacio-moderna-spf-dkim-dmarc" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Aquests tres registres publiquen al DNS "com identificar" el correu legítim del vostre domini. Els grans proveïdors (Gmail, Outlook) els comproven i marquen com <strong>spam</strong> els correus que no els respectin.</p>
+<ul>
+<li>
+<p><strong>SPF</strong> (<em>Sender Policy Framework</em>, RFC 7208) — un registre <strong>TXT</strong> al DNS que llista quines IPs poden enviar correu en nom del vostre domini. Exemple:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>jmercade.com. IN TXT &quot;v=spf1 mx ~all&quot;
+</span></code></pre></div>
+<p>"El correu legítim ve dels servidors llistats al MX; qualsevol altre (<code>~all</code>) marqueu-lo com a sospitós."</p>
+</li>
+<li>
+<p><strong>DKIM</strong> (<em>DomainKeys Identified Mail</em>, RFC 6376) — signa criptogràficament els correus sortints amb una clau privada. La clau <strong>pública</strong> es publica al DNS com a TXT. El receptor verifica la firma amb aquella clau, garantint que el correu no s'ha alterat i ve realment de qui diu.</p>
+</li>
+<li>
+<p><strong>DMARC</strong> (<em>Domain-based Message Authentication, Reporting and Conformance</em>, RFC 7489) — política que diu al receptor <strong>què fer</strong> amb els correus que fallen SPF o DKIM (acceptar, marcar com a spam, rebutjar) i on enviar els informes.</p>
+</li>
+</ul>
+<p>En aquest RA no els configurarem (requereixen domini públic i coordinació amb el DNS extern), però són <strong>conceptes fonamentals de qualsevol servidor de correu modern</strong> i entren a l'examen.</p>
+<h2 id="clients-de-correu-thunderbird-i-evolution">Clients de correu: Thunderbird i Evolution<a class="headerlink" href="#clients-de-correu-thunderbird-i-evolution" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Els dos són MUAs gràfics disponibles a Ubuntu.</p>
+<ul>
+<li><strong>Thunderbird</strong> — el més popular. Fàcil d'usar, molt configurable.</li>
+<li><strong>Evolution</strong> — més integrat amb GNOME, funcionalitats de calendari/agenda.</li>
+</ul>
+<h3 id="el-problema-de-thunderbird-amb-certificats-autofirmats">El problema de Thunderbird amb certificats autofirmats<a class="headerlink" href="#el-problema-de-thunderbird-amb-certificats-autofirmats" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Les <strong>últimes versions de Thunderbird rebutgen els certificats autofirmats</strong> i, a diferència de com era abans, <strong>no permeten acceptar-los manualment</strong>. Sembla un bug seriós de Thunderbird més que no una decisió deliberada. La versió 0.99 encara funcionava.</p>
+<p>Per als exercicis d'aquest RA:</p>
+<ul>
+<li><strong>Client principal recomanat</strong>: <strong>Evolution</strong> (<code>sudo apt install evolution</code>). Accepta certificats autofirmats sense problemes.</li>
+<li>
+<p>Si voleu comprovar l'autofirmat sense cap client, es pot fer amb <code>openssl s_client</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>openssl<span class="w"> </span>s_client<span class="w"> </span>-connect<span class="w"> </span>mail.jmercade.com:993
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>openssl<span class="w"> </span>s_client<span class="w"> </span>-connect<span class="w"> </span>mail.jmercade.com:465
+</span></code></pre></div>
+<p>Aquesta comanda mostra el certificat i permet parlar el protocol manualment: és la forma més neta de validar que el servidor xifra correctament sense dependre de cap client gràfic.</p>
+</li>
+</ul>
+<h2 id="referencies">Referències<a class="headerlink" href="#referencies" title="Enllaç a aquesta secció">&para;</a></h2>
+<ul>
+<li>Documentació oficial de Postfix: <a href="https://www.postfix.org/documentation.html">postfix.org/documentation.html</a></li>
+<li>Documentació de Dovecot: <a href="https://doc.dovecot.org/">doc.dovecot.org</a></li>
+<li>RFC 5321 — SMTP.</li>
+<li>RFC 3501 — IMAP v4.</li>
+<li>RFC 1939 — POP3.</li>
+<li>RFC 7208 — SPF. RFC 6376 — DKIM. RFC 7489 — DMARC.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+          
+          <a href="../../8-RA8-Proxy/practiques/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctiques">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Pràctiques
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../practiques/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctiques">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                Pràctiques
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Joan-mh/MP-0227" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

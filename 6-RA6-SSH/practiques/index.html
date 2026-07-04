@@ -1,0 +1,2939 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material docent del mòdul professional 0227 (CFGM Sistemes Microinformàtics i Xarxes)">
+      
+      
+        <meta name="author" content="Joan Mercadé">
+      
+      
+        <link rel="canonical" href="https://joan-mh.github.io/MP-0227/6-RA6-SSH/practiques/">
+      
+      
+        <link rel="prev" href="../teoria/">
+      
+      
+        <link rel="next" href="../../1-RA1-DHCP/teoria/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Pràctiques - Serveis de Xarxa — M227</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practiques-ra6-ssh-i-acces-remot" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-header__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Serveis de Xarxa — M227
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pràctiques
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode fosc"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passar a mode fosc" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passar a mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inici
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../7-RA7-Wifi/teoria/" class="md-tabs__link">
+          
+  
+  
+  RA i ordre d'impartició
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Projectes/Projecte1/" class="md-tabs__link">
+          
+  
+  
+  Projectes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-nav__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Serveis de Xarxa — M227
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inici
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA i ordre d'impartició
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA i ordre d'impartició
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA7 — Wifi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA7 — Wifi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklist d'avaluació
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA6 — SSH
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA6 — SSH
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-ssh-basic-scp-i-x11-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 — SSH bàsic, scp i X11 forwarding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — SSH bàsic, scp i X11 forwarding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-installacio-i-comprovacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Instal·lació i comprovació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-primera-connexio-i-known_hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Primera connexió i known_hosts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-simulacio-dun-canvi-de-clau-opcional-pero-molt-didactic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Simulació d'un canvi de clau (opcional però molt didàctic)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-copia-de-fitxers-amb-scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Còpia de fitxers amb scp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-execucio-remota-daplicacions-grafiques-x11-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Execució remota d'aplicacions gràfiques (X11 forwarding)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflexio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reflexió
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-autenticacio-per-clau-securitzacio-i-tunels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 — Autenticació per clau, securització i túnels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 — Autenticació per clau, securització i túnels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-generacio-de-claus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Generació de claus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-copia-de-la-clau-publica-al-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Còpia de la clau pública al servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-copia-manual-de-la-clau-per-si-un-dia-no-tenim-ssh-copy-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Còpia manual de la clau (per si un dia no tenim ssh-copy-id)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-securitzacio-del-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Securització del servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-tallafoc-ufw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tallafoc (UFW)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-proteccio-contra-forca-bruta-amb-fail2ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Protecció contra força bruta amb fail2ban
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-tunel-ssh-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Túnel SSH local
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflexio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reflexió
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-escriptori-remot-vnc-i-rdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3 — Escriptori remot: VNC i RDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Escriptori remot: VNC i RDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entorn-addicional-per-aquesta-part" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entorn addicional per aquesta part
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-preparar-entorn-grafic-minim-al-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Preparar entorn gràfic mínim al servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-windows-linux-remote-desktop-connection-xrdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Windows → Linux (Remote Desktop Connection → xrdp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-linux-windows-remmina-rdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Linux → Windows (Remmina → RDP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-linux-linux-amb-vnc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Linux → Linux amb VNC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacio_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflexio_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reflexió
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA1 — DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA1 — DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA2 — DNS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA2 — DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA3 — FTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA3 — FTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA5 — HTTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA5 — HTTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA8 — Proxy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA8 — Proxy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA4 — Correu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA4 — Correu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projectes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projectes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 1 (base + Ruta A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 2 (Ruta B)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari base (tots)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Extensio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari extensió Ruta A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari Projecte 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-ssh-basic-scp-i-x11-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 — SSH bàsic, scp i X11 forwarding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — SSH bàsic, scp i X11 forwarding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-installacio-i-comprovacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Instal·lació i comprovació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-primera-connexio-i-known_hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Primera connexió i known_hosts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-simulacio-dun-canvi-de-clau-opcional-pero-molt-didactic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Simulació d'un canvi de clau (opcional però molt didàctic)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-copia-de-fitxers-amb-scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Còpia de fitxers amb scp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-execucio-remota-daplicacions-grafiques-x11-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Execució remota d'aplicacions gràfiques (X11 forwarding)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflexio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reflexió
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-autenticacio-per-clau-securitzacio-i-tunels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 — Autenticació per clau, securització i túnels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 — Autenticació per clau, securització i túnels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-generacio-de-claus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Generació de claus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-copia-de-la-clau-publica-al-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Còpia de la clau pública al servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-copia-manual-de-la-clau-per-si-un-dia-no-tenim-ssh-copy-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Còpia manual de la clau (per si un dia no tenim ssh-copy-id)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-securitzacio-del-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Securització del servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-tallafoc-ufw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tallafoc (UFW)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-proteccio-contra-forca-bruta-amb-fail2ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Protecció contra força bruta amb fail2ban
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-tunel-ssh-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Túnel SSH local
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflexio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reflexió
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-escriptori-remot-vnc-i-rdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3 — Escriptori remot: VNC i RDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Escriptori remot: VNC i RDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entorn-addicional-per-aquesta-part" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entorn addicional per aquesta part
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-preparar-entorn-grafic-minim-al-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Preparar entorn gràfic mínim al servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-windows-linux-remote-desktop-connection-xrdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Windows → Linux (Remote Desktop Connection → xrdp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-linux-windows-remmina-rdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Linux → Windows (Remmina → RDP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-linux-linux-amb-vnc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Linux → Linux amb VNC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacio_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflexio_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reflexió
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Joan-mh/MP-0227/edit/main/6-RA6-SSH/practiques.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="practiques-ra6-ssh-i-acces-remot">Pràctiques RA6 — SSH i accés remot<a class="headerlink" href="#practiques-ra6-ssh-i-acces-remot" title="Enllaç a aquesta secció">&para;</a></h1>
+<blockquote>
+<p><strong>Entorn</strong>: dues màquines virtuals a la mateixa xarxa <strong>host-only</strong> de VirtualBox (per exemple, <code>192.168.56.0/24</code>).</p>
+<ul>
+<li><strong>Servidor</strong>: Ubuntu Server (<code>192.168.56.10</code> en els exemples).</li>
+<li><strong>Client</strong>: Ubuntu Desktop (<code>192.168.56.20</code>).</li>
+</ul>
+<p>El <strong>client Windows</strong> és <strong>opcional a les parts 1 i 2</strong> — Windows 10+ ja porta client OpenSSH incorporat, i qui vulgui pot fer-hi les proves. <strong>A la Part 3 sí que cal</strong> un client Windows per fer les combinacions RDP↔Linux i VNC ho podem restringir al parell Linux↔Linux.</p>
+<p>Al llarg de totes les pràctiques, cada vegada que modifiquem <code>/etc/ssh/sshd_config</code> seguirem aquest ritual:</p>
+<ol>
+<li>Fer còpia de seguretat: <code>sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak</code>.</li>
+<li>Editar el fitxer.</li>
+<li>Validar la sintaxi: <code>sudo sshd -t</code> (silenci = tot correcte).</li>
+<li>Reiniciar el servei: <code>sudo systemctl restart ssh</code>.</li>
+<li><strong>No tancar la sessió actual</strong> fins comprovar amb una <strong>segona sessió nova</strong> que la configuració funciona.</li>
+</ol>
+</blockquote>
+<h2 id="part-1-ssh-basic-scp-i-x11-forwarding">Part 1 — SSH bàsic, <code>scp</code> i X11 forwarding<a class="headerlink" href="#part-1-ssh-basic-scp-i-x11-forwarding" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="objectius">Objectius<a class="headerlink" href="#objectius" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Instal·lar i posar en marxa un servidor OpenSSH.</li>
+<li>Connectar-se al servidor des d'un client Linux.</li>
+<li>Entendre el missatge de primera connexió i el fitxer <code>known_hosts</code>.</li>
+<li>Copiar fitxers entre màquines amb <code>scp</code>.</li>
+<li>Executar aplicacions gràfiques remotes amb X11 forwarding.</li>
+</ul>
+<h3 id="tasques">Tasques<a class="headerlink" href="#tasques" title="Enllaç a aquesta secció">&para;</a></h3>
+<h4 id="1-installacio-i-comprovacio">1. Instal·lació i comprovació<a class="headerlink" href="#1-installacio-i-comprovacio" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al <strong>servidor</strong>, actualitza els repositoris i instal·la el paquet <code>openssh-server</code>.</li>
+<li>Comprova que el servei està actiu: <code>systemctl status ssh</code>.</li>
+<li>Anota la IP del servidor amb <code>ip a</code>.</li>
+<li>Al <strong>client</strong>, comprova que ja hi ha el paquet <code>openssh-client</code> instal·lat (normalment sí, per defecte).</li>
+</ol>
+<h4 id="2-primera-connexio-i-known_hosts">2. Primera connexió i <code>known_hosts</code><a class="headerlink" href="#2-primera-connexio-i-known_hosts" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Des del client, connecta't al servidor amb <code>ssh usuari@IP_SERVIDOR</code>.</li>
+<li>Observa el missatge d'advertència de "authenticity of host can't be established". Contesta <code>yes</code>.</li>
+<li>Un cop dins, mira el contingut de <code>~/.ssh/known_hosts</code> al client. Hi ha d'aparèixer una línia amb la clau pública del servidor.</li>
+<li>Fes <code>exit</code> per sortir. Torna a connectar-te — aquesta vegada <strong>no</strong> ha d'aparèixer cap advertència.</li>
+</ol>
+<h4 id="3-simulacio-dun-canvi-de-clau-opcional-pero-molt-didactic">3. Simulació d'un canvi de clau (opcional però molt didàctic)<a class="headerlink" href="#3-simulacio-dun-canvi-de-clau-opcional-pero-molt-didactic" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al <strong>servidor</strong>, com a root, esborra i regenera les claus de host:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/ssh/ssh_host_*
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>dpkg-reconfigure<span class="w"> </span>openssh-server
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>ssh
+</span></code></pre></div>
+<ol>
+<li>Torna a connectar des del client. Ara ha d'aparèixer el missatge en majúscules <strong><code>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</code></strong>. Fes una <strong>captura de pantalla</strong> al dossier.</li>
+<li>Explica al dossier per què apareix aquest missatge i què significaria si aparegués sense haver reinstal·lat el servidor.</li>
+<li>Neteja l'entrada antiga: <code>ssh-keygen -R IP_SERVIDOR</code>. Torna a connectar i acceptar la nova clau.</li>
+</ol>
+<h4 id="4-copia-de-fitxers-amb-scp">4. Còpia de fitxers amb <code>scp</code><a class="headerlink" href="#4-copia-de-fitxers-amb-scp" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al client, crea un fitxer <code>prova.txt</code> amb qualsevol contingut.</li>
+<li>Copia'l al servidor a <code>/home/usuari/</code>:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scp<span class="w"> </span>prova.txt<span class="w"> </span>usuari@IP_SERVIDOR:/home/usuari/
+</span></code></pre></div>
+<ol>
+<li>Comprova que ha arribat entrant per SSH i fent <code>ls</code>.</li>
+<li>Al servidor, crea el fitxer <code>/etc/hostname_copia.txt</code> amb el contingut de <code>/etc/hostname</code>. Baixa'l al directori actual del client:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>usuari@IP_SERVIDOR:/etc/hostname_copia.txt<span class="w"> </span>.
+</span></code></pre></div>
+<ol>
+<li>Copia tot un directori sencer del client al servidor amb <code>scp -r</code>.</li>
+</ol>
+<h4 id="5-execucio-remota-daplicacions-grafiques-x11-forwarding">5. Execució remota d'aplicacions gràfiques (X11 forwarding)<a class="headerlink" href="#5-execucio-remota-daplicacions-grafiques-x11-forwarding" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al <strong>servidor</strong> (que no té entorn gràfic), instal·la una aplicació gràfica lleugera:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xeyes
+</span></code></pre></div>
+<p><em>(Alternativa: <code>gedit</code>, <code>gimp</code>, <code>nautilus</code>, ... el que vulgueu.)</em></p>
+<ol>
+<li>Comprova que a <code>/etc/ssh/sshd_config</code> la línia <code>X11Forwarding yes</code> <strong>està activa</strong> (per defecte ho està, però ho verifiquem).</li>
+<li>Des del <strong>client</strong> (Linux Desktop), connecta't amb l'opció <code>-X</code>:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh<span class="w"> </span>-X<span class="w"> </span>usuari@IP_SERVIDOR
+</span></code></pre></div>
+<ol>
+<li>Un cop dins, executa <code>xeyes</code>. Ha d'aparèixer la finestra a la <strong>teva</strong> pantalla, tot i que el procés corre al <strong>servidor</strong>. Fes una captura.</li>
+</ol>
+<h3 id="verificacio">Verificació<a class="headerlink" href="#verificacio" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>La connexió SSH funciona sense advertències després de la primera acceptació.</li>
+<li><code>scp</code> copia fitxers en les dues direccions.</li>
+<li>Una aplicació gràfica del servidor es dibuixa a la pantalla del client via <code>-X</code>.</li>
+</ul>
+<h3 id="reflexio">Reflexió<a class="headerlink" href="#reflexio" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Per què el fitxer <code>known_hosts</code> és, en la pràctica, "una CA manual"?</li>
+<li>Quina diferència hi ha entre <code>scp</code> i copiar per una carpeta compartida SMB/NFS?</li>
+</ul>
+<h2 id="part-2-autenticacio-per-clau-securitzacio-i-tunels">Part 2 — Autenticació per clau, securització i túnels<a class="headerlink" href="#part-2-autenticacio-per-clau-securitzacio-i-tunels" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="objectius_1">Objectius<a class="headerlink" href="#objectius_1" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Generar un parell de claus i configurar l'accés SSH sense contrasenya.</li>
+<li>Deshabilitar l'accés amb contrasenya al servidor.</li>
+<li>Aplicar les 4 mesures mínimes de securització (<code>PermitRootLogin no</code>, <code>PasswordAuthentication no</code>, <code>MaxAuthTries 3</code>, <code>AllowUsers</code>).</li>
+<li>Instal·lar i configurar UFW i fail2ban.</li>
+<li>Crear túnels SSH locals per accedir a serveis interns del servidor.</li>
+</ul>
+<h3 id="tasques_1">Tasques<a class="headerlink" href="#tasques_1" title="Enllaç a aquesta secció">&para;</a></h3>
+<h4 id="1-generacio-de-claus">1. Generació de claus<a class="headerlink" href="#1-generacio-de-claus" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al <strong>client</strong>, genera un parell de claus ED25519:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519
+</span></code></pre></div>
+<ol>
+<li>Accepta el camí per defecte (<code>~/.ssh/id_ed25519</code>). Posa una <strong>passphrase</strong> (recomanat) o deixa-la en blanc per aquesta pràctica.</li>
+<li>Comprova el que s'ha generat: <code>ls -l ~/.ssh/</code>. Has de veure <code>id_ed25519</code> (privada) i <code>id_ed25519.pub</code> (pública).</li>
+</ol>
+<h4 id="2-copia-de-la-clau-publica-al-servidor">2. Còpia de la clau pública al servidor<a class="headerlink" href="#2-copia-de-la-clau-publica-al-servidor" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Copia la clau pública al servidor amb <code>ssh-copy-id</code>:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ssh-copy-id<span class="w"> </span>usuari@IP_SERVIDOR
+</span></code></pre></div>
+<ol>
+<li>Comprova al servidor que la clau ha aparegut a <code>~/.ssh/authorized_keys</code> de l'usuari:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cat<span class="w"> </span>~/.ssh/authorized_keys
+</span></code></pre></div>
+<ol>
+<li>Ara prova de tornar a connectar: <code>ssh usuari@IP_SERVIDOR</code>. Ja no ha de demanar contrasenya (només la passphrase de la clau, si n'has posat).</li>
+</ol>
+<h4 id="3-copia-manual-de-la-clau-per-si-un-dia-no-tenim-ssh-copy-id">3. Còpia manual de la clau (per si un dia no tenim <code>ssh-copy-id</code>)<a class="headerlink" href="#3-copia-manual-de-la-clau-per-si-un-dia-no-tenim-ssh-copy-id" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al client, mostra el contingut de la clau pública: <code>cat ~/.ssh/id_ed25519.pub</code>.</li>
+<li>Al servidor, edita el fitxer <code>~/.ssh/authorized_keys</code> a mà i afegeix una nova línia amb aquesta clau. Vigila permisos: <code>chmod 700 ~/.ssh</code> i <code>chmod 600 ~/.ssh/authorized_keys</code>.</li>
+<li>Explica al dossier per què <code>ssh-copy-id</code> és més segur que fer-ho a mà.</li>
+</ol>
+<h4 id="4-securitzacio-del-servidor">4. Securització del servidor<a class="headerlink" href="#4-securitzacio-del-servidor" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Editem <code>/etc/ssh/sshd_config</code> per aplicar les 4 mesures mínimes. Recorda el ritual (còpia de seguretat, editar, <code>sudo sshd -t</code>, reiniciar, comprovar amb sessió nova).</p>
+<ol>
+<li>Descomenta o afegeix les línies següents:</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>PermitRootLogin no
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>PasswordAuthentication no
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>MaxAuthTries 3
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>AllowUsers usuari
+</span></code></pre></div>
+<p>(Substitueix <code>usuari</code> pel teu nom d'usuari real al servidor.)</p>
+<ol>
+<li>Reinicia el servei i <strong>des d'una segona sessió</strong> verifica:</li>
+<li>Que continues podent entrar amb la clau.</li>
+<li>Que <code>ssh root@IP_SERVIDOR</code> <strong>no</strong> deixa entrar (missatge de "Permission denied").</li>
+<li>Que si intentes forçar contrasenya amb <code>ssh -o PubkeyAuthentication=no usuari@IP_SERVIDOR</code> <strong>no</strong> funciona.</li>
+</ol>
+<h4 id="5-tallafoc-ufw">5. Tallafoc (UFW)<a class="headerlink" href="#5-tallafoc-ufw" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al servidor, instal·la UFW si no hi és: <code>sudo apt install ufw</code>.</li>
+<li>Permet només el port SSH:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span>ssh
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+</span></code></pre></div>
+<ol>
+<li>Comprova l'estat: <code>sudo ufw status</code>.</li>
+<li>Prova des del client que la connexió SSH continua funcionant.</li>
+</ol>
+<h4 id="6-proteccio-contra-forca-bruta-amb-fail2ban">6. Protecció contra força bruta amb fail2ban<a class="headerlink" href="#6-proteccio-contra-forca-bruta-amb-fail2ban" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al servidor, instal·la fail2ban: <code>sudo apt install fail2ban</code>.</li>
+<li>Comprova l'estat del filtre SSH:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>fail2ban-client<span class="w"> </span>status<span class="w"> </span>sshd
+</span></code></pre></div>
+<ol>
+<li>Des del client, provoca uns quants intents fallits (per exemple, connecta't com a un usuari inexistent unes 5-6 vegades):</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ssh<span class="w"> </span>usuariinexistent@IP_SERVIDOR
+</span></code></pre></div>
+<ol>
+<li>Torna a executar <code>sudo fail2ban-client status sshd</code> al servidor i observa si la IP del client apareix a la llista de bloquejats.</li>
+<li>Per desbloquejar-te: <code>sudo fail2ban-client set sshd unbanip IP_CLIENT</code>.</li>
+</ol>
+<h4 id="7-tunel-ssh-local">7. Túnel SSH local<a class="headerlink" href="#7-tunel-ssh-local" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Volem accedir a un servei que només escolta a <code>localhost</code> del servidor —típicament una base de dades o un panell d'administració intern. Simulem-ho amb un servidor web mínim.</p>
+<ol>
+<li>Al servidor, instal·la un web server ràpid i posa'l a escoltar només a localhost:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8080</span><span class="w"> </span>--bind<span class="w"> </span><span class="m">127</span>.0.0.1
+</span></code></pre></div>
+<p>Deixa la comanda oberta a una terminal del servidor.</p>
+<ol>
+<li>Comprova al servidor que el servei respon: <code>curl http://127.0.0.1:8080</code>.</li>
+<li>Comprova al <strong>client</strong> que <strong>NO</strong> hi ha resposta si intenta directament: <code>curl http://IP_SERVIDOR:8080</code> (ha de fallar — el servei no escolta a la IP externa).</li>
+<li>Ara, des del client, obre un túnel SSH:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">9090</span>:localhost:8080<span class="w"> </span>usuari@IP_SERVIDOR
+</span></code></pre></div>
+<ol>
+<li>Deixa aquesta sessió oberta. A una altra terminal del client, prova <code>curl http://localhost:9090</code>. Ara sí que arriba, a través del túnel.</li>
+<li>Explica al dossier què està passant, dibuixant l'esquema client ↔ servidor amb els ports 9090 (client) i 8080 (servidor).</li>
+</ol>
+<h3 id="verificacio_1">Verificació<a class="headerlink" href="#verificacio_1" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>L'entrada per contrasenya al servidor està desactivada; només s'entra amb clau.</li>
+<li><code>root</code> no pot entrar directament.</li>
+<li>Només l'usuari llistat a <code>AllowUsers</code> pot entrar.</li>
+<li>Intents fallits repetits queden bloquejats per fail2ban.</li>
+<li>Un servei intern al servidor és accessible des del client a través d'un túnel <code>-L</code>.</li>
+</ul>
+<h3 id="reflexio_1">Reflexió<a class="headerlink" href="#reflexio_1" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Per què <em>canviar el port SSH</em> NO és una mesura de seguretat real?</li>
+<li>Quins són els riscos d'un <code>PasswordAuthentication no</code> mal fet (com et pots quedar bloquejat fora)?</li>
+<li>En quins casos reals de la vida professional creus que faries servir un túnel <code>-L</code>?</li>
+</ul>
+<h2 id="part-3-escriptori-remot-vnc-i-rdp">Part 3 — Escriptori remot: VNC i RDP<a class="headerlink" href="#part-3-escriptori-remot-vnc-i-rdp" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="objectius_2">Objectius<a class="headerlink" href="#objectius_2" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Configurar <code>xrdp</code> al servidor per rebre connexions RDP des de Windows.</li>
+<li>Utilitzar Remmina al Linux Desktop per controlar un Windows via RDP.</li>
+<li>Muntar un servidor VNC en un Linux i encapsular la connexió dins un túnel SSH.</li>
+</ul>
+<h3 id="entorn-addicional-per-aquesta-part">Entorn addicional per aquesta part<a class="headerlink" href="#entorn-addicional-per-aquesta-part" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Cal disposar de:</p>
+<ul>
+<li>El <strong>Servidor Ubuntu</strong> de les parts anteriors (però ara amb un entorn gràfic mínim instal·lat — XFCE, per lleuger).</li>
+<li>El <strong>Client Ubuntu Desktop</strong>.</li>
+<li>Un <strong>Client Windows</strong> (Windows 10 o 11 Pro; l'edició Home fa de client RDP però no de servidor).</li>
+</ul>
+<h3 id="tasques_2">Tasques<a class="headerlink" href="#tasques_2" title="Enllaç a aquesta secció">&para;</a></h3>
+<h4 id="1-preparar-entorn-grafic-minim-al-servidor">1. Preparar entorn gràfic mínim al servidor<a class="headerlink" href="#1-preparar-entorn-grafic-minim-al-servidor" title="Enllaç a aquesta secció">&para;</a></h4>
+<p><code>xrdp</code> necessita un entorn d'escriptori instal·lat al servidor. Farem servir XFCE per la seva lleugeresa.</p>
+<ol>
+<li>Al servidor, instal·la XFCE:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xfce4<span class="w"> </span>xfce4-goodies
+</span></code></pre></div>
+<ol>
+<li>Instal·la <code>xrdp</code>:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xrdp
+</span></code></pre></div>
+<ol>
+<li>Fes que <code>xrdp</code> fagi servir XFCE. Al fitxer <code>~/.xsession</code> del teu usuari:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;xfce4-session&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/.xsession
+</span></code></pre></div>
+<ol>
+<li>Reinicia <code>xrdp</code>:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>xrdp
+</span></code></pre></div>
+<ol>
+<li>Obre el port 3389 al tallafoc: <code>sudo ufw allow 3389/tcp</code>.</li>
+</ol>
+<h4 id="2-windows-linux-remote-desktop-connection-xrdp">2. Windows → Linux (Remote Desktop Connection → <code>xrdp</code>)<a class="headerlink" href="#2-windows-linux-remote-desktop-connection-xrdp" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al client Windows, obre "Conexión a Escritorio remoto" (<code>mstsc</code>).</li>
+<li>Escriu la IP del servidor Ubuntu i connecta.</li>
+<li>Introdueix l'usuari i contrasenya del servidor. Ha d'aparèixer un escriptori XFCE.</li>
+<li>Fes una <strong>captura de pantalla</strong> amb l'escriptori del servidor visible al Windows.</li>
+<li>Tanca la sessió correctament (menú de XFCE → Log Out).</li>
+</ol>
+<h4 id="3-linux-windows-remmina-rdp">3. Linux → Windows (Remmina → RDP)<a class="headerlink" href="#3-linux-windows-remmina-rdp" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al client Windows, ves a <strong>Configuració → Sistema → Escritorio remoto</strong> i <strong>habilita</strong> l'escriptori remot. (Cal Windows Pro o superior.)</li>
+<li>Comprova la IP del Windows amb <code>ipconfig</code>.</li>
+<li>Al <strong>client Linux Desktop</strong>, obre <strong>Remmina</strong> (<code>sudo apt install remmina remmina-plugin-rdp</code> si no hi és).</li>
+<li>Crea una nova connexió:</li>
+<li><strong>Protocol</strong>: RDP</li>
+<li><strong>Server</strong>: IP del Windows</li>
+<li><strong>User name</strong> / <strong>Password</strong>: les del Windows</li>
+<li>Marca "Use client resolution" per a pantalla completa.</li>
+<li>Connecta. Ha d'aparèixer l'escriptori de Windows.</li>
+<li>Captura de pantalla al dossier.</li>
+</ol>
+<h4 id="4-linux-linux-amb-vnc">4. Linux → Linux amb VNC<a class="headerlink" href="#4-linux-linux-amb-vnc" title="Enllaç a aquesta secció">&para;</a></h4>
+<p><strong>Objectiu</strong>: connectar-nos des del client Linux a l'escriptori del servidor Linux via VNC, però <strong>encapsulant el trànsit dins un túnel SSH</strong>, tal com es fa a producció.</p>
+<ol>
+<li>Al <strong>servidor</strong>, instal·la <code>tigervnc-standalone-server</code>:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>tigervnc-standalone-server
+</span></code></pre></div>
+<ol>
+<li>Configura la contrasenya VNC:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>vncpasswd
+</span></code></pre></div>
+<ol>
+<li>Inicia una sessió VNC escoltant <strong>només a localhost</strong> (per seguretat):</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>vncserver<span class="w"> </span>-localhost<span class="w"> </span>yes<span class="w"> </span>:1
+</span></code></pre></div>
+<p>Això crea una sessió VNC al port 5901 accessible només des de dins del servidor.</p>
+<ol>
+<li>
+<p>Verifica que està en marxa: <code>ss -tlnp | grep 5901</code> — ha d'escoltar només a <code>127.0.0.1:5901</code>.</p>
+</li>
+<li>
+<p>Al <strong>client</strong>, obre un túnel SSH cap al port VNC:</p>
+</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">5901</span>:localhost:5901<span class="w"> </span>usuari@IP_SERVIDOR
+</span></code></pre></div>
+<ol>
+<li>En una altra terminal del client, obre el visor VNC:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>remmina-plugin-vnc
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>remmina<span class="w"> </span>-c<span class="w"> </span>vnc://localhost:5901
+</span></code></pre></div>
+<p>O bé directament amb <code>xtigervncviewer localhost:5901</code>.</p>
+<ol>
+<li>Introdueix la contrasenya VNC. Ha d'aparèixer un escriptori del servidor.</li>
+<li>Captura al dossier.</li>
+</ol>
+<p>Per acabar, atura el servidor VNC al servidor:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>vncserver<span class="w"> </span>-kill<span class="w"> </span>:1
+</span></code></pre></div>
+<h3 id="verificacio_2">Verificació<a class="headerlink" href="#verificacio_2" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Windows → Linux amb <code>xrdp</code> funciona (escriptori XFCE del servidor visible al Windows).</li>
+<li>Linux → Windows amb Remmina funciona (escriptori de Windows visible al Linux).</li>
+<li>Linux → Linux amb VNC funciona, i el trànsit <strong>passa per dins d'un túnel SSH</strong> (podeu comprovar-ho amb <code>sudo ss -tnp | grep 5901</code> — la connexió entrant al servidor ve de <code>127.0.0.1</code>, no de la IP del client).</li>
+</ul>
+<h3 id="reflexio_2">Reflexió<a class="headerlink" href="#reflexio_2" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Per què és tan mala idea exposar directament el port 5900/5901 a Internet?</li>
+<li>Quan triaries RDP i quan VNC?</li>
+<li>Què aporta el túnel SSH davant la contrasenya de VNC?</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+          
+          <a href="../teoria/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Teoria">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Teoria
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../1-RA1-DHCP/teoria/" class="md-footer__link md-footer__link--next" aria-label="Següent: Teoria">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                Teoria
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Joan-mh/MP-0227" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

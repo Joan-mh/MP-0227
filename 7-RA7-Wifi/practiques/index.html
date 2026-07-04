@@ -1,0 +1,2597 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material docent del mòdul professional 0227 (CFGM Sistemes Microinformàtics i Xarxes)">
+      
+      
+        <meta name="author" content="Joan Mercadé">
+      
+      
+        <link rel="canonical" href="https://joan-mh.github.io/MP-0227/7-RA7-Wifi/practiques/">
+      
+      
+        <link rel="prev" href="../teoria/">
+      
+      
+        <link rel="next" href="../checklist/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Pràctiques - Serveis de Xarxa — M227</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practiques-ra7-wifi-i-adaptador-pont" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-header__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Serveis de Xarxa — M227
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pràctiques
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode fosc"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passar a mode fosc" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passar a mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inici
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../teoria/" class="md-tabs__link">
+          
+  
+  
+  RA i ordre d'impartició
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Projectes/Projecte1/" class="md-tabs__link">
+          
+  
+  
+  Projectes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-nav__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Serveis de Xarxa — M227
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inici
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA i ordre d'impartició
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA i ordre d'impartició
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA7 — Wifi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA7 — Wifi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-adaptador-pont-a-virtualbox-cablejat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 — Adaptador pont a VirtualBox (cablejat)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — Adaptador pont a VirtualBox (cablejat)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configurar-el-mode-pont-a-les-dues-vms-cablejat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configurar el mode pont a les dues VMs (cablejat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-arrencar-i-comprovar-la-ip-rebuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Arrencar i comprovar la IP rebuda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-comprovar-la-connectivitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Comprovar la connectivitat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-configuracio-del-punt-dacces-wifi-d-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 — Configuració del punt d'accés wifi D-Link
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 — Configuració del punt d&#39;accés wifi D-Link">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-reiniciar-lap-a-valors-de-fabrica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Reiniciar l'AP a valors de fàbrica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurar-la-interficie-lan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configurar la interfície LAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-activar-el-servidor-dhcp-integrat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Activar el servidor DHCP integrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configurar-el-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Configurar el wifi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-connexio-de-les-vms-via-bridge-cap-al-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3 — Connexió de les VMs via bridge cap al wifi
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Connexió de les VMs via bridge cap al wifi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-connectar-el-host-a-lap-per-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Connectar el host a l'AP per wifi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-reconfigurar-el-pont-de-les-vms-cap-al-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Reconfigurar el pont de les VMs cap al wifi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-verificar-la-ip-rebuda-a-les-vms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Verificar la IP rebuda a les VMs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ping-entre-vms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Ping entre VMs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-consultar-la-taula-de-clients-de-lap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Consultar la taula de clients de l'AP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preguntes-de-reflexio-per-anotar-al-dossier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preguntes de reflexió (per anotar al dossier)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklist d'avaluació
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA6 — SSH
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA6 — SSH
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA1 — DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA1 — DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA2 — DNS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA2 — DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA3 — FTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA3 — FTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA5 — HTTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA5 — HTTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA8 — Proxy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA8 — Proxy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA4 — Correu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA4 — Correu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projectes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projectes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 1 (base + Ruta A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 2 (Ruta B)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari base (tots)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Extensio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari extensió Ruta A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari Projecte 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-adaptador-pont-a-virtualbox-cablejat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 — Adaptador pont a VirtualBox (cablejat)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — Adaptador pont a VirtualBox (cablejat)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configurar-el-mode-pont-a-les-dues-vms-cablejat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configurar el mode pont a les dues VMs (cablejat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-arrencar-i-comprovar-la-ip-rebuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Arrencar i comprovar la IP rebuda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-comprovar-la-connectivitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Comprovar la connectivitat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-configuracio-del-punt-dacces-wifi-d-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 — Configuració del punt d'accés wifi D-Link
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 — Configuració del punt d&#39;accés wifi D-Link">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-reiniciar-lap-a-valors-de-fabrica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Reiniciar l'AP a valors de fàbrica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurar-la-interficie-lan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configurar la interfície LAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-activar-el-servidor-dhcp-integrat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Activar el servidor DHCP integrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configurar-el-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Configurar el wifi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-connexio-de-les-vms-via-bridge-cap-al-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3 — Connexió de les VMs via bridge cap al wifi
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Connexió de les VMs via bridge cap al wifi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectius_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-connectar-el-host-a-lap-per-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Connectar el host a l'AP per wifi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-reconfigurar-el-pont-de-les-vms-cap-al-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Reconfigurar el pont de les VMs cap al wifi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-verificar-la-ip-rebuda-a-les-vms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Verificar la IP rebuda a les VMs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ping-entre-vms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Ping entre VMs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-consultar-la-taula-de-clients-de-lap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Consultar la taula de clients de l'AP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preguntes-de-reflexio-per-anotar-al-dossier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preguntes de reflexió (per anotar al dossier)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Joan-mh/MP-0227/edit/main/7-RA7-Wifi/practiques.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="practiques-ra7-wifi-i-adaptador-pont">Pràctiques RA7 — Wifi i adaptador pont<a class="headerlink" href="#practiques-ra7-wifi-i-adaptador-pont" title="Enllaç a aquesta secció">&para;</a></h1>
+<blockquote>
+<p><strong>Material del laboratori</strong>:</p>
+<ul>
+<li>Punt d'accés wifi <strong>D-Link</strong> (amb servidor DHCP integrat).</li>
+<li>Un switch físic si convé, per compartir l'AP entre diversos alumnes.</li>
+<li>PC amb VirtualBox instal·lat i <strong>dues màquines virtuals</strong>: una amb Ubuntu Desktop i una altra amb Windows 10/11.</li>
+<li>Connexió bàsica a Internet (opcional, per validar DNS i gateway).</li>
+</ul>
+<p><strong>Idea general</strong>: comprovar experimentalment que wifi i cable són equivalents a nivell lògic. Ho farem en tres passes de dificultat creixent.</p>
+</blockquote>
+<h2 id="part-1-adaptador-pont-a-virtualbox-cablejat">Part 1 — Adaptador pont a VirtualBox (cablejat)<a class="headerlink" href="#part-1-adaptador-pont-a-virtualbox-cablejat" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="objectius">Objectius<a class="headerlink" href="#objectius" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Configurar dues VMs (Ubuntu Desktop i Windows) amb <strong>mode pont</strong> a VirtualBox, connectades a l'adaptador <strong>Ethernet</strong> del host.</li>
+<li>Comprovar que les dues VMs reben una IP del router/AP de l'aula, com si fossin dispositius físics de la LAN.</li>
+<li>Verificar la connectivitat entre les dues VMs i cap a Internet.</li>
+</ul>
+<h3 id="tasques">Tasques<a class="headerlink" href="#tasques" title="Enllaç a aquesta secció">&para;</a></h3>
+<h4 id="1-configurar-el-mode-pont-a-les-dues-vms-cablejat">1. Configurar el mode pont a les dues VMs (cablejat)<a class="headerlink" href="#1-configurar-el-mode-pont-a-les-dues-vms-cablejat" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al VirtualBox, atura les dues VMs (Ubuntu i Windows).</li>
+<li>A cadascuna, ves a <strong>Configuració → Xarxa → Adaptador 1</strong>:</li>
+<li><strong>Enable Network Adapter</strong>: activat.</li>
+<li><strong>Attached to</strong>: <code>Bridged Adapter</code>.</li>
+<li><strong>Name</strong>: escull l'<strong>adaptador Ethernet físic</strong> del host (per exemple <code>eno1</code>, <code>enp3s0</code>, ... — el nom depèn del PC).</li>
+<li>Deixa la resta de valors per defecte.</li>
+</ol>
+<h4 id="2-arrencar-i-comprovar-la-ip-rebuda">2. Arrencar i comprovar la IP rebuda<a class="headerlink" href="#2-arrencar-i-comprovar-la-ip-rebuda" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Arrenca les dues VMs.</li>
+<li>Al <strong>Ubuntu</strong>, obre una terminal i executa:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ip<span class="w"> </span>a
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ip<span class="w"> </span>route
+</span></code></pre></div>
+<ol>
+<li>Al <strong>Windows</strong>, obre <code>cmd</code> i executa:</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ipconfig /all
+</span></code></pre></div>
+<ol>
+<li>Anota per a cada VM: IP rebuda, màscara, porta d'enllaç i servidor DNS.</li>
+<li>
+<p>Compara amb la IP del <strong>host</strong> (des d'un altre terminal del host: <code>ip a</code> a Linux o <code>ipconfig</code> a Windows).</p>
+<p>Totes tres han d'estar a la <strong>mateixa xarxa</strong> — mateix rang, mateix gateway.</p>
+</li>
+</ol>
+<h4 id="3-comprovar-la-connectivitat">3. Comprovar la connectivitat<a class="headerlink" href="#3-comprovar-la-connectivitat" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Des del Ubuntu, fes <code>ping</code> a la IP del Windows.</li>
+<li>Des del Windows, fes <code>ping</code> a la IP del Ubuntu.</li>
+<li>Des de tots dos, fes <code>ping www.google.com</code> per validar sortida a Internet i DNS.</li>
+</ol>
+<h3 id="verificacio">Verificació<a class="headerlink" href="#verificacio" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Les dues VMs han rebut IP dins del rang de la LAN del laboratori, es veuen entre elles i tenen sortida a Internet. El pont ha funcionat: la VM és, a efectes pràctics, un dispositiu més de la LAN.</p>
+<h2 id="part-2-configuracio-del-punt-dacces-wifi-d-link">Part 2 — Configuració del punt d'accés wifi D-Link<a class="headerlink" href="#part-2-configuracio-del-punt-dacces-wifi-d-link" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="objectius_1">Objectius<a class="headerlink" href="#objectius_1" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Reiniciar l'AP D-Link a valors de fàbrica.</li>
+<li>Configurar-hi la interfície LAN amb IP fixa.</li>
+<li>Activar i configurar el <strong>servidor DHCP integrat</strong> de l'AP.</li>
+</ul>
+<h3 id="tasques_1">Tasques<a class="headerlink" href="#tasques_1" title="Enllaç a aquesta secció">&para;</a></h3>
+<h4 id="1-reiniciar-lap-a-valors-de-fabrica">1. Reiniciar l'AP a valors de fàbrica<a class="headerlink" href="#1-reiniciar-lap-a-valors-de-fabrica" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Consulta el manual del D-Link (o la etiqueta física) per veure com fer un <strong>reset de fàbrica</strong> (típicament, prémer el botó de reset amb un clip mentre s'engega, uns 10 segons).</li>
+<li>Un cop reiniciat, connecta't per <strong>cable Ethernet</strong> des del teu PC a un dels ports LAN de l'AP.</li>
+<li>Configura el teu PC amb una IP del rang per defecte del D-Link (o deixa DHCP si el punt d'accés en porta un actiu de fàbrica).</li>
+<li>Obre el navegador i entra a l'adreça d'administració web (normalment <code>http://192.168.0.1</code> o similar; comprova el manual).</li>
+<li>Fes login amb l'usuari/contrasenya per defecte.</li>
+</ol>
+<h4 id="2-configurar-la-interficie-lan">2. Configurar la interfície LAN<a class="headerlink" href="#2-configurar-la-interficie-lan" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al menú <strong>LAN Setup</strong> (o similar), assigna a l'AP una IP fixa: <code>192.168.100.1/24</code>.</li>
+<li>Desa i espera que l'AP es reiniciï. Comprovarà que ara l'admin està a <code>http://192.168.100.1</code>.</li>
+<li>Torna a configurar el teu PC perquè agafi IP per DHCP i comprova que rebi una IP del nou rang.</li>
+</ol>
+<h4 id="3-activar-el-servidor-dhcp-integrat">3. Activar el servidor DHCP integrat<a class="headerlink" href="#3-activar-el-servidor-dhcp-integrat" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Al menú <strong>DHCP Server</strong> (o similar):</p>
+<ul>
+<li><strong>Enable DHCP Server</strong>: activat.</li>
+<li><strong>Rang d'IPs</strong>: <code>192.168.100.50</code> – <code>192.168.100.150</code>.</li>
+<li><strong>Subnet Mask</strong>: <code>255.255.255.0</code>.</li>
+<li><strong>Gateway</strong>: <code>192.168.100.1</code> (el mateix AP).</li>
+<li><strong>Primary DNS</strong>: <code>8.8.8.8</code>.</li>
+<li><strong>Secondary DNS</strong>: <code>1.1.1.1</code>.</li>
+<li><strong>Lease Time</strong>: 1 hora (3600 segons).</li>
+</ul>
+<p>Desa la configuració.</p>
+<h4 id="4-configurar-el-wifi">4. Configurar el wifi<a class="headerlink" href="#4-configurar-el-wifi" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Al menú <strong>Wireless</strong>:</p>
+<ul>
+<li><strong>SSID</strong>: <code>Practica_RA7_grupN</code> (substitueix N pel teu grup).</li>
+<li><strong>Seguretat</strong>: WPA2-PSK (o WPA3-PSK si el D-Link ho suporta).</li>
+<li><strong>Contrasenya</strong>: la que trieu; comuniqueu-la al grup.</li>
+</ul>
+<p>Desa.</p>
+<h3 id="verificacio_1">Verificació<a class="headerlink" href="#verificacio_1" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>L'AP està emetent un SSID visible, i el servidor DHCP integrat està preparat per assignar IPs del rang <code>192.168.100.50–150</code>.</p>
+<h2 id="part-3-connexio-de-les-vms-via-bridge-cap-al-wifi">Part 3 — Connexió de les VMs via bridge cap al wifi<a class="headerlink" href="#part-3-connexio-de-les-vms-via-bridge-cap-al-wifi" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="objectius_2">Objectius<a class="headerlink" href="#objectius_2" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Canviar l'adaptador pont de les dues VMs perquè faci pont sobre l'<strong>adaptador wifi</strong> del host.</li>
+<li>Comprovar que les VMs reben IP del <strong>DHCP integrat de l'AP</strong> (rang 192.168.100.50–150).</li>
+<li>Consultar la <strong>taula de clients DHCP</strong> de l'AP i verificar que hi apareixen les VMs.</li>
+</ul>
+<h3 id="tasques_2">Tasques<a class="headerlink" href="#tasques_2" title="Enllaç a aquesta secció">&para;</a></h3>
+<h4 id="1-connectar-el-host-a-lap-per-wifi">1. Connectar el host a l'AP per wifi<a class="headerlink" href="#1-connectar-el-host-a-lap-per-wifi" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al <strong>host</strong>, desconnecta el cable Ethernet (o desactiva l'adaptador Ethernet).</li>
+<li>Connecta't al SSID <code>Practica_RA7_grupN</code> amb la contrasenya configurada.</li>
+<li>Comprova que el host ha rebut una IP dins de <code>192.168.100.50–150</code> (<code>ip a</code> o <code>ipconfig</code>).</li>
+</ol>
+<h4 id="2-reconfigurar-el-pont-de-les-vms-cap-al-wifi">2. Reconfigurar el pont de les VMs cap al wifi<a class="headerlink" href="#2-reconfigurar-el-pont-de-les-vms-cap-al-wifi" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Atura les dues VMs.</li>
+<li>Torna a <strong>Configuració → Xarxa → Adaptador 1</strong> de cadascuna:</li>
+<li><strong>Attached to</strong>: <code>Bridged Adapter</code>.</li>
+<li><strong>Name</strong>: aquesta vegada, l'<strong>adaptador wifi</strong> del host (per exemple <code>wlp3s0</code>, <code>wlan0</code>, ...).</li>
+<li>Desa i arrenca-les.</li>
+</ol>
+<h4 id="3-verificar-la-ip-rebuda-a-les-vms">3. Verificar la IP rebuda a les VMs<a class="headerlink" href="#3-verificar-la-ip-rebuda-a-les-vms" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Al <strong>Ubuntu</strong> VM:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ip<span class="w"> </span>a
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ip<span class="w"> </span>route
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>resolvectl<span class="w"> </span>status
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>ping<span class="w"> </span><span class="m">192</span>.168.100.1
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ping<span class="w"> </span>www.google.com
+</span></code></pre></div>
+<ol>
+<li>Al <strong>Windows</strong> VM:</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ipconfig /all
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ping 192.168.100.1
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ping www.google.com
+</span></code></pre></div>
+<ol>
+<li>Confirma que:</li>
+<li>La IP està dins del rang <code>192.168.100.50–150</code>.</li>
+<li>El gateway és <code>192.168.100.1</code> (l'AP).</li>
+<li>Els DNS són <code>8.8.8.8</code> i <code>1.1.1.1</code>.</li>
+</ol>
+<h4 id="4-ping-entre-vms">4. Ping entre VMs<a class="headerlink" href="#4-ping-entre-vms" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Fes ping entre l'Ubuntu VM i el Windows VM. Ha de funcionar: totes dues estan a la mateixa xarxa <code>192.168.100.0/24</code>, ara servida per l'AP wifi.</p>
+<h4 id="5-consultar-la-taula-de-clients-de-lap">5. Consultar la taula de clients de l'AP<a class="headerlink" href="#5-consultar-la-taula-de-clients-de-lap" title="Enllaç a aquesta secció">&para;</a></h4>
+<ol>
+<li>Des del host, torna a la interfície d'administració de l'AP (<code>http://192.168.100.1</code>).</li>
+<li>Ves a <strong>Status → DHCP Clients</strong> (o similar).</li>
+<li>Identifica les entrades corresponents a:</li>
+<li>Ubuntu VM (per la seva MAC).</li>
+<li>Windows VM (per la seva MAC).</li>
+<li>El propi host.</li>
+<li>Anota el <strong>lease time</strong> restant per a cada un.</li>
+<li>Reinicia una de les VMs i comprova com es renova el lease.</li>
+</ol>
+<h3 id="preguntes-de-reflexio-per-anotar-al-dossier">Preguntes de reflexió (per anotar al dossier)<a class="headerlink" href="#preguntes-de-reflexio-per-anotar-al-dossier" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li>Quina diferència hi ha, des del punt de vista del client, entre rebre IP per un cable de coure o per una xarxa wifi?</li>
+<li>Quina diferència hi ha entre el DHCP integrat de l'AP i el servei <code>isc-dhcp-server</code> que veurem a RA1? Fixa't sobretot en la seva <strong>finalitat</strong> i el seu <strong>rol</strong> dins d'una infraestructura més gran.</li>
+<li>Què passaria si es connectés un altre servidor DHCP a la mateixa xarxa? (<strong>Pista</strong>: DHCP no té autenticació.)</li>
+<li>Per què hem hagut de canviar l'adaptador físic del pont entre la Part 1 i la Part 3?</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+          
+          <a href="../teoria/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Teoria">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Teoria
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../checklist/" class="md-footer__link md-footer__link--next" aria-label="Següent: Checklist d&#39;avaluació">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                Checklist d'avaluació
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Joan-mh/MP-0227" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

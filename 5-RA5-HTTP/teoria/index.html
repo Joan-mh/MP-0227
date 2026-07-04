@@ -1,0 +1,3122 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material docent del mòdul professional 0227 (CFGM Sistemes Microinformàtics i Xarxes)">
+      
+      
+        <meta name="author" content="Joan Mercadé">
+      
+      
+        <link rel="canonical" href="https://joan-mh.github.io/MP-0227/5-RA5-HTTP/teoria/">
+      
+      
+        <link rel="prev" href="../../3-RA3-FTP/practiques/">
+      
+      
+        <link rel="next" href="../practiques/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Teoria - Serveis de Xarxa — M227</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#serveis-de-xarxa-http-apache" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-header__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Serveis de Xarxa — M227
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Teoria
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode fosc"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passar a mode fosc" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passar a mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inici
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../7-RA7-Wifi/teoria/" class="md-tabs__link">
+          
+  
+  
+  RA i ordre d'impartició
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Projectes/Projecte1/" class="md-tabs__link">
+          
+  
+  
+  Projectes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-nav__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Serveis de Xarxa — M227
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inici
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA i ordre d'impartició
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA i ordre d'impartició
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA7 — Wifi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA7 — Wifi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklist d'avaluació
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA6 — SSH
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA6 — SSH
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-RA6-SSH/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA1 — DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA1 — DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA2 — DNS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA2 — DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA3 — FTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA3 — FTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA5 — HTTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA5 — HTTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-que-es-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducció: què és HTTP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció: què és HTTP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servidors-web-apache-vs-nginx-vs-iis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors web: Apache vs. Nginx vs. IIS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-estructura-del-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apache: estructura del servidor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Apache: estructura del servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestio-del-servei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestió del servei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructura-de-fitxers-a-etcapache2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura de fitxers a /etc/apache2/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directori-de-continguts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directori de continguts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moduls-dapache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mòduls d'Apache
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mòduls d&#39;Apache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#moduls-essencials-que-activarem-o-ja-estan-actius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mòduls essencials (que activarem o ja estan actius)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activardesactivar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activar/desactivar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directives-principals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directives principals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Directives principals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globals-a-apache2conf-o-portsconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Globals (a apache2.conf o ports.conf)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-lloc-virtual-dins-virtualhost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per lloc virtual (dins &lt;VirtualHost&gt;)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servidors-virtuals-virtualhosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors virtuals (VirtualHosts)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#userdir-pagines-web-personals-per-usuari" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        userdir: pàgines web personals per usuari
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autenticacio-basica-moderna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autenticació bàsica moderna
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Autenticació bàsica moderna">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#per-que-evitar-htaccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per què evitar .htaccess
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directives-modernes-apache-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directives modernes (Apache 2.4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-fitxer-htpasswd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El fitxer .htpasswd
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#https-certificats-i-configuracio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPS: certificats i configuració
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTPS: certificats i configuració">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificat-autofirmat-el-que-farem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificat autofirmat (el que farem)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-certificat-snakeoil-dubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El certificat "snakeoil" d'Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lets-encrypt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let's Encrypt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redireccio-http-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redirecció HTTP → HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capcaleres-de-seguretat-i-bones-practiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capçaleres de seguretat i bones pràctiques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capçaleres de seguretat i bones pràctiques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servertokens-prod-serversignature-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ServerTokens Prod + ServerSignature Off
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hsts-strict-transport-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HSTS (Strict-Transport-Security)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP/2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-a-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducció a Nginx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció a Nginx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diferencies-basiques-respecte-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferències bàsiques respecte Apache
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integracio-amb-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integració amb PHP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referències
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA8 — Proxy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA8 — Proxy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA4 — Correu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA4 — Correu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projectes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projectes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 1 (base + Ruta A)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enunciat Projecte 2 (Ruta B)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari base (tots)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte1-Extensio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari extensió Ruta A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projectes/Questionari-Projecte2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qüestionari Projecte 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-que-es-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducció: què és HTTP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció: què és HTTP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servidors-web-apache-vs-nginx-vs-iis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors web: Apache vs. Nginx vs. IIS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-estructura-del-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apache: estructura del servidor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Apache: estructura del servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestio-del-servei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestió del servei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructura-de-fitxers-a-etcapache2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura de fitxers a /etc/apache2/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directori-de-continguts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directori de continguts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moduls-dapache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mòduls d'Apache
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mòduls d&#39;Apache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#moduls-essencials-que-activarem-o-ja-estan-actius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mòduls essencials (que activarem o ja estan actius)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activardesactivar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activar/desactivar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directives-principals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directives principals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Directives principals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globals-a-apache2conf-o-portsconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Globals (a apache2.conf o ports.conf)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-lloc-virtual-dins-virtualhost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per lloc virtual (dins &lt;VirtualHost&gt;)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servidors-virtuals-virtualhosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidors virtuals (VirtualHosts)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#userdir-pagines-web-personals-per-usuari" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        userdir: pàgines web personals per usuari
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autenticacio-basica-moderna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autenticació bàsica moderna
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Autenticació bàsica moderna">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#per-que-evitar-htaccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per què evitar .htaccess
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directives-modernes-apache-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directives modernes (Apache 2.4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-fitxer-htpasswd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El fitxer .htpasswd
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#https-certificats-i-configuracio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPS: certificats i configuració
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTPS: certificats i configuració">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificat-autofirmat-el-que-farem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificat autofirmat (el que farem)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-certificat-snakeoil-dubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El certificat "snakeoil" d'Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lets-encrypt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let's Encrypt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redireccio-http-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redirecció HTTP → HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capcaleres-de-seguretat-i-bones-practiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capçaleres de seguretat i bones pràctiques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capçaleres de seguretat i bones pràctiques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servertokens-prod-serversignature-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ServerTokens Prod + ServerSignature Off
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hsts-strict-transport-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HSTS (Strict-Transport-Security)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP/2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-a-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducció a Nginx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció a Nginx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diferencies-basiques-respecte-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferències bàsiques respecte Apache
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integracio-amb-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integració amb PHP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referències
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Joan-mh/MP-0227/edit/main/5-RA5-HTTP/teoria.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="serveis-de-xarxa-http-apache">Serveis de xarxa — HTTP (Apache)<a class="headerlink" href="#serveis-de-xarxa-http-apache" title="Enllaç a aquesta secció">&para;</a></h1>
+<h2 id="introduccio-que-es-http">Introducció: què és HTTP<a class="headerlink" href="#introduccio-que-es-http" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><strong>HTTP</strong> (<em>HyperText Transfer Protocol</em>) és el protocol de transferència de la web. És un protocol de la <strong>capa d'aplicació</strong> que segueix el model <strong>client-servidor</strong>: un client (habitualment un navegador) fa una <strong>petició</strong> a un servidor i aquest li retorna una <strong>resposta</strong> amb el contingut sol·licitat.</p>
+<p>Punts clau:</p>
+<ul>
+<li>És un protocol <strong>sense estat</strong> (<em>stateless</em>): cada petició és independent, el servidor no recorda les anteriors. La sessió (login, carret de la compra...) es simula amb <strong>cookies</strong>.</li>
+<li>Utilitza per defecte el <strong>port 80</strong>.</li>
+<li>La versió original (HTTP/1.0) és del <strong>1996</strong>, HTTP/1.1 del 1997, <strong>HTTP/2</strong> del 2015 i <strong>HTTP/3</strong> del 2022. Avui la majoria de servidors admeten 1.1 i 2 alhora.</li>
+<li>És un protocol de <strong>text pla</strong> — el podem experimentar amb <code>telnet</code> o <code>curl -v</code>.</li>
+</ul>
+<p>Mireu aquest vídeo introductori:
+<a href="https://drive.google.com/file/d/1CO42hU3SjmlgNtv38xMY8bmNZBCOMNSH/view?usp=share_link">Funcionament del protocol HTTP</a></p>
+<h3 id="https">HTTPS<a class="headerlink" href="#https" title="Enllaç a aquesta secció">&para;</a></h3>
+<p><strong>HTTPS</strong> és HTTP dins d'una connexió xifrada amb <strong>TLS</strong> (l'evolució moderna de SSL). Utilitza per defecte el <strong>port 443</strong>. Un cop establerta la sessió TLS, els bytes que van amunt i avall són exactament HTTP normal — TLS només afegeix xifratge i verificació d'identitat (via certificat X.509).</p>
+<p>Vídeo:
+<a href="https://drive.google.com/file/d/19GmTzgcrd-mTGR9h7Blq4ZRMEHs67-Pt/view?usp=share_link">Funcionament del protocol HTTPS</a></p>
+<p><strong>Important</strong>: no confongueu <strong>HTTP</strong> (protocol) amb <strong>HTML</strong> (llenguatge). HTTP transporta qualsevol tipus de contingut (HTML, imatges, JSON, vídeo, PDF...) — HTML és només un d'aquests continguts.</p>
+<h2 id="servidors-web-apache-vs-nginx-vs-iis">Servidors web: Apache vs. Nginx vs. IIS<a class="headerlink" href="#servidors-web-apache-vs-nginx-vs-iis" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Els tres principals servidors web que trobareu a Internet:</p>
+<table>
+<thead>
+<tr>
+<th>Servidor</th>
+<th>Origen</th>
+<th>Fort en</th>
+<th>Feble en</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Apache</strong></td>
+<td>1995, Apache Foundation. Codi obert.</td>
+<td>Configuració modular, <code>.htaccess</code>, PHP amb <code>mod_php</code>, popularitat i documentació.</td>
+<td>Rendiment amb moltes connexions simultànies (procés/fil per connexió).</td>
+</tr>
+<tr>
+<td><strong>Nginx</strong></td>
+<td>2004, Igor Sysoev. Codi obert. Nom es llegeix "engine X".</td>
+<td>Rendiment amb moltíssimes connexions (arquitectura d'esdeveniments), servei de contingut estàtic, proxy invers.</td>
+<td>Sense equivalent tan simple a <code>.htaccess</code>; PHP obligat a passar per PHP-FPM.</td>
+</tr>
+<tr>
+<td><strong>IIS</strong></td>
+<td>Microsoft. Tancat, només Windows Server.</td>
+<td>Integració amb l'ecosistema Microsoft (.NET, Active Directory).</td>
+<td>No multiplataforma.</td>
+</tr>
+</tbody>
+</table>
+<p>Nginx va ser creat per resoldre el <strong>problema C10K</strong> (<a href="https://es.wikipedia.org/wiki/Problema_C10k">wiki</a>): com atendre 10.000 connexions simultànies. Apache tradicionalment obre un procés o un fil per connexió; amb 10.000 clients això és inviable. Nginx atén milers de connexions amb un únic procés gràcies a un model orientat a esdeveniments.</p>
+<p>Per això és molt habitual el patró <strong>Nginx al davant + Apache al darrere</strong> (proxy invers). Aquest patró es cobreix al <strong>RA8 (Proxy)</strong>, no aquí.</p>
+<p>En aquest RA:</p>
+<ul>
+<li><strong>Pràctiques</strong>: Apache com a servidor web principal + Nginx només com a comparativa (Part 4).</li>
+<li><strong>Projecte 1</strong>: el servidor web pot ser Nginx (u altre) segons decisió del projecte.</li>
+</ul>
+<h2 id="apache-estructura-del-servidor">Apache: estructura del servidor<a class="headerlink" href="#apache-estructura-del-servidor" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="installacio">Instal·lació<a class="headerlink" href="#installacio" title="Enllaç a aquesta secció">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>apache2<span class="w"> </span>-v
+</span></code></pre></div>
+<p>Es pot comprovar amb un navegador (o <code>lynx localhost</code>, <code>curl localhost</code>) que ja mostra la pàgina per defecte "Apache2 Default Page".</p>
+<h3 id="gestio-del-servei">Gestió del servei<a class="headerlink" href="#gestio-del-servei" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Ordres bàsiques amb <code>systemctl</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>apache2
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>apache2
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>apache2<span class="w">      </span><span class="c1"># recarrega config sense tallar sessions</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>apache2
+</span></code></pre></div>
+<p>També hi ha l'ordre històrica <code>apachectl</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apachectl<span class="w"> </span>restart
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apachectl<span class="w"> </span>graceful<span class="w">            </span><span class="c1"># equivalent a reload, no desconnecta</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>apachectl<span class="w"> </span>configtest<span class="w">          </span><span class="c1"># valida sintaxi ABANS de reiniciar</span>
+</span></code></pre></div>
+<p><strong>Consell important</strong>: sempre <code>configtest</code> abans de reiniciar. Si hi ha un error de sintaxi, Apache no arrenca i tot el servei queda caigut.</p>
+<h3 id="estructura-de-fitxers-a-etcapache2">Estructura de fitxers a <code>/etc/apache2/</code><a class="headerlink" href="#estructura-de-fitxers-a-etcapache2" title="Enllaç a aquesta secció">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/etc/apache2/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── apache2.conf              # fitxer principal (inclou els altres)
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── envvars                   # variables d&#39;entorn (usuari, grup)
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>├── ports.conf                # ports on escolta (Listen 80)
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>├── magic                     # signatures MIME
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>├── conf-available/           # fragments de configuració disponibles
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│   └── *.conf
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>├── conf-enabled/             # enllaços simbòlics als anteriors (actius)
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>├── mods-available/           # tots els mòduls disponibles
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>│   └── *.load / *.conf
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>├── mods-enabled/             # enllaços simbòlics dels mòduls actius
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>├── sites-available/          # tots els llocs virtuals disponibles
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>│   └── *.conf
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>└── sites-enabled/            # enllaços simbòlics dels llocs actius
+</span></code></pre></div>
+<p>La convenció Debian/Ubuntu: <strong>tot es prepara a <code>*-available/</code></strong> i s'<strong>activa</strong> amb un enllaç simbòlic a <code>*-enabled/</code>. Hi ha ordres per fer-ho fàcilment:</p>
+<table>
+<thead>
+<tr>
+<th>Ordre</th>
+<th>Fa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a2enmod &lt;nom&gt;</code></td>
+<td>Activa un mòdul (link a <code>mods-enabled/</code>).</td>
+</tr>
+<tr>
+<td><code>a2dismod &lt;nom&gt;</code></td>
+<td>Desactiva el mòdul.</td>
+</tr>
+<tr>
+<td><code>a2ensite &lt;nom&gt;</code></td>
+<td>Activa un lloc virtual.</td>
+</tr>
+<tr>
+<td><code>a2dissite &lt;nom&gt;</code></td>
+<td>Desactiva'l.</td>
+</tr>
+<tr>
+<td><code>a2enconf &lt;nom&gt;</code></td>
+<td>Activa un fragment de configuració.</td>
+</tr>
+<tr>
+<td><code>a2disconf &lt;nom&gt;</code></td>
+<td>Desactiva'l.</td>
+</tr>
+</tbody>
+</table>
+<p>Un cop activat cal <code>sudo systemctl reload apache2</code> (o <code>restart</code>).</p>
+<h3 id="directori-de-continguts">Directori de continguts<a class="headerlink" href="#directori-de-continguts" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li><strong><code>/var/www/html/</code></strong> — arrel dels continguts servits pel lloc per defecte.</li>
+<li>Es pot canviar amb la directiva <code>DocumentRoot</code>.</li>
+</ul>
+<h2 id="moduls-dapache">Mòduls d'Apache<a class="headerlink" href="#moduls-dapache" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Apache carrega funcionalitats com a <strong>mòduls</strong> independents. La convenció de nom és <code>mod_&lt;nom&gt;</code> (per exemple, <code>mod_rewrite</code>, <code>mod_ssl</code>).</p>
+<p>Llistar els mòduls actius:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>apache2ctl<span class="w"> </span>-M
+</span></code></pre></div>
+<h3 id="moduls-essencials-que-activarem-o-ja-estan-actius">Mòduls essencials (que activarem o ja estan actius)<a class="headerlink" href="#moduls-essencials-que-activarem-o-ja-estan-actius" title="Enllaç a aquesta secció">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Mòdul</th>
+<th>Què fa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dir</code></td>
+<td>Serveix un fitxer índex (<code>index.html</code>, <code>index.php</code>) quan es demana un directori.</td>
+</tr>
+<tr>
+<td><code>alias</code></td>
+<td>Permet mapejar URLs a directoris del disc (<code>Alias</code>, <code>ScriptAlias</code>).</td>
+</tr>
+<tr>
+<td><code>autoindex</code></td>
+<td>Genera un llistat automàtic si no hi ha <code>index.html</code>.</td>
+</tr>
+<tr>
+<td><code>mime</code></td>
+<td>Assigna el <code>Content-Type</code> correcte segons l'extensió del fitxer.</td>
+</tr>
+<tr>
+<td><code>deflate</code></td>
+<td>Comprimeix les respostes (gzip).</td>
+</tr>
+<tr>
+<td><code>userdir</code></td>
+<td>Serveix pàgines des de <code>/home/&lt;usuari&gt;/public_html/</code> accessibles com <code>/~usuari</code>.</td>
+</tr>
+<tr>
+<td><code>rewrite</code></td>
+<td>Reescriu URLs (per redireccions, URLs amigables).</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td>Manipula les capçaleres HTTP de resposta.</td>
+</tr>
+<tr>
+<td><code>ssl</code></td>
+<td>Suport HTTPS (TLS).</td>
+</tr>
+<tr>
+<td><code>http2</code></td>
+<td>Habilita HTTP/2 (necessita <code>ssl</code>).</td>
+</tr>
+<tr>
+<td><code>auth_basic</code></td>
+<td>Autenticació HTTP bàsica (usuari + contrasenya).</td>
+</tr>
+<tr>
+<td><code>authn_file</code></td>
+<td>Backend d'autenticació basat en fitxer (<code>.htpasswd</code>).</td>
+</tr>
+<tr>
+<td><code>authz_core</code></td>
+<td>Autoritzacions modernes (<code>Require valid-user</code>, <code>Require ip</code>).</td>
+</tr>
+<tr>
+<td><code>socache_shmcb</code></td>
+<td>Cache de sessió TLS a memòria compartida (rendiment HTTPS).</td>
+</tr>
+</tbody>
+</table>
+<p>Els mòduls oficials: <a href="https://httpd.apache.org/docs/2.4/mod/">httpd.apache.org/docs/2.4/mod/</a>.</p>
+<h3 id="activardesactivar">Activar/desactivar<a class="headerlink" href="#activardesactivar" title="Enllaç a aquesta secció">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>a2enmod<span class="w"> </span>ssl<span class="w"> </span>headers<span class="w"> </span>rewrite
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>apache2
+</span></code></pre></div>
+<h2 id="directives-principals">Directives principals<a class="headerlink" href="#directives-principals" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Les <strong>directives</strong> són instruccions que s'escriuen als fitxers de configuració. Format:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>NomDirectiva valor
+</span></code></pre></div>
+<h3 id="globals-a-apache2conf-o-portsconf">Globals (a <code>apache2.conf</code> o <code>ports.conf</code>)<a class="headerlink" href="#globals-a-apache2conf-o-portsconf" title="Enllaç a aquesta secció">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Directiva</th>
+<th>Ús</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Listen 80</code></td>
+<td>Port on escolta Apache. Es poden posar diversos.</td>
+</tr>
+<tr>
+<td><code>ServerName cognom.edu</code></td>
+<td>Nom principal del servidor.</td>
+</tr>
+<tr>
+<td><code>ServerAdmin admin@cognom.edu</code></td>
+<td>Correu de contacte que Apache posa a les pàgines d'error.</td>
+</tr>
+<tr>
+<td><code>Timeout 60</code></td>
+<td>Segons abans de tallar una connexió inactiva.</td>
+</tr>
+<tr>
+<td><code>KeepAlive On</code></td>
+<td>Reutilitzar la mateixa connexió TCP per a diverses peticions.</td>
+</tr>
+<tr>
+<td><code>MaxKeepAliveRequests 100</code></td>
+<td>Nombre màxim de peticions en una connexió.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="per-lloc-virtual-dins-virtualhost">Per lloc virtual (dins <code>&lt;VirtualHost&gt;</code>)<a class="headerlink" href="#per-lloc-virtual-dins-virtualhost" title="Enllaç a aquesta secció">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Directiva</th>
+<th>Ús</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DocumentRoot /var/www/lloc1</code></td>
+<td>Arrel dels continguts d'aquest lloc.</td>
+</tr>
+<tr>
+<td><code>ServerName www.lloc1.edu</code></td>
+<td>Nom pel qual s'accedeix.</td>
+</tr>
+<tr>
+<td><code>ServerAlias lloc1.edu</code></td>
+<td>Àlies addicionals.</td>
+</tr>
+<tr>
+<td><code>DirectoryIndex index.html index.php</code></td>
+<td>Fitxer(s) que es serveixen per defecte.</td>
+</tr>
+<tr>
+<td><code>ErrorLog ${APACHE_LOG_DIR}/lloc1_error.log</code></td>
+<td>Fitxer de log d'errors.</td>
+</tr>
+<tr>
+<td><code>CustomLog ${APACHE_LOG_DIR}/lloc1_access.log combined</code></td>
+<td>Fitxer de log d'accessos.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="servidors-virtuals-virtualhosts">Servidors virtuals (VirtualHosts)<a class="headerlink" href="#servidors-virtuals-virtualhosts" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Un servidor Apache pot allotjar <strong>múltiples llocs web</strong> en la mateixa màquina i la mateixa IP, distingint-los pel <strong>nom</strong> amb què el client hi accedeix (capçalera <code>Host:</code> de la petició HTTP).</p>
+<p>Estructura habitual:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/var/www/
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>├── virt1.edu/
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│   └── index.html
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>├── virt2.edu/
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│   └── index.html
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>└── virt3.edu/
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    └── index.html
+</span></code></pre></div>
+<p>I un fitxer per cada lloc a <code>/etc/apache2/sites-available/</code>:</p>
+<div class="language-apache highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">*:80</span><span class="nt">&gt;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nb">ServerName</span><span class="w"> </span>www.virt1.edu
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nb">ServerAlias</span><span class="w"> </span>virt1.edu
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="nb">DocumentRoot</span><span class="w"> </span><span class="sx">/var/www/virt1.edu</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nb">ErrorLog</span><span class="w"> </span>${APACHE_LOG_DIR}/virt1_error.log
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="nb">CustomLog</span><span class="w"> </span>${APACHE_LOG_DIR}/virt1_access.log<span class="w"> </span>combined
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nt">&lt;/VirtualHost&gt;</span>
+</span></code></pre></div>
+<p>S'activen amb <code>a2ensite virt1</code> i cal reiniciar Apache. Perquè els clients hi arribin, el <strong>DNS ha de resoldre els noms</strong> — no fem servir <code>/etc/hosts</code> en aquest mòdul (veure RA2).</p>
+<h2 id="userdir-pagines-web-personals-per-usuari"><code>userdir</code>: pàgines web personals per usuari<a class="headerlink" href="#userdir-pagines-web-personals-per-usuari" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Amb el mòdul <strong><code>userdir</code></strong> cada usuari del sistema pot tenir la seva pàgina personal accessible com <code>http://servidor/~usuari/</code>. Els fitxers viuen a <code>~/public_html/</code>.</p>
+<p>Activació:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>a2enmod<span class="w"> </span>userdir
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>apache2
+</span></code></pre></div>
+<p>L'usuari només ha de crear:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>mkdir<span class="w"> </span>~/public_html
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola, sóc l&#39;usuari X&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/public_html/index.html
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>~/public_html
+</span></code></pre></div>
+<p>Per defecte, la pàgina és accessible via <code>http://servidor/~usuariX/</code>.</p>
+<h2 id="autenticacio-basica-moderna">Autenticació bàsica moderna<a class="headerlink" href="#autenticacio-basica-moderna" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Apache pot protegir directoris amb un usuari+contrasenya. En Apache <strong>2.4+</strong> la forma <strong>recomanada</strong> és fer-ho <strong>directament al fitxer de configuració del site</strong> amb un bloc <code>&lt;Directory&gt;</code>, <strong>no</strong> amb <code>.htaccess</code>.</p>
+<h3 id="per-que-evitar-htaccess">Per què evitar <code>.htaccess</code><a class="headerlink" href="#per-que-evitar-htaccess" title="Enllaç a aquesta secció">&para;</a></h3>
+<p><code>.htaccess</code> és el fitxer que Apache llegeix a cada petició dins d'un directori. Té dos inconvenients:</p>
+<ul>
+<li><strong>Rendiment</strong>: Apache el consulta a <strong>cada petició</strong> per veure si hi ha canvis. <code>&lt;Directory&gt;</code> es llegeix un cop en carregar la configuració.</li>
+<li><strong>Seguretat</strong>: <code>AllowOverride All</code> deixa que qui pugui escriure al directori canviï el comportament del servidor. Un vector d'atac clàssic.</li>
+</ul>
+<p><code>.htaccess</code> només val la pena quan <strong>no controlem la configuració global</strong> del servidor (per exemple, un hosting compartit). En un servidor propi, mai. En aquest RA farem servir el <strong>mètode modern</strong> — vosaltres controleu la configuració.</p>
+<h3 id="directives-modernes-apache-24">Directives modernes (Apache 2.4)<a class="headerlink" href="#directives-modernes-apache-24" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li><code>AuthType Basic</code> — mecanisme (Basic o Digest).</li>
+<li><code>AuthName "Zona restringida"</code> — text que apareix al popup del navegador.</li>
+<li><code>AuthUserFile /etc/apache2/.htpasswd</code> — fitxer amb usuaris i contrasenyes.</li>
+<li><code>Require valid-user</code> — qualsevol usuari del fitxer, autenticat. També hi ha <code>Require user joan maria</code>, <code>Require ip 192.168.50.0/24</code>, etc.</li>
+</ul>
+<h3 id="el-fitxer-htpasswd">El fitxer <code>.htpasswd</code><a class="headerlink" href="#el-fitxer-htpasswd" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Es genera amb l'eina <strong><code>htpasswd</code></strong> (paquet <code>apache2-utils</code>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Crear el fitxer i afegir el primer usuari</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/apache2/.htpasswd<span class="w"> </span>usuari1
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Afegir més usuaris (SENSE -c, si no destrueix el fitxer!)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>/etc/apache2/.htpasswd<span class="w"> </span>usuari2
+</span></code></pre></div>
+<p><strong>Compte</strong> amb <code>-c</code>: si el poses una segona vegada, esborra el fitxer i el torna a crear amb només l'usuari nou.</p>
+<h2 id="https-certificats-i-configuracio">HTTPS: certificats i configuració<a class="headerlink" href="#https-certificats-i-configuracio" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Per servir HTTPS necessitem un <strong>certificat X.509</strong> i la seva <strong>clau privada</strong>. Dues opcions:</p>
+<h3 id="certificat-autofirmat-el-que-farem">Certificat autofirmat (el que farem)<a class="headerlink" href="#certificat-autofirmat-el-que-farem" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Generat amb OpenSSL al mateix servidor. Tècnicament vàlid però <strong>no signat per cap CA</strong>: els navegadors avisaran d'"amenaça de seguretat" i cal acceptar-lo manualment.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-nodes<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span>-keyout<span class="w"> </span>/etc/ssl/private/apache-mercade.key<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span>-out<span class="w"> </span>/etc/ssl/certs/apache-mercade.crt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span>-subj<span class="w"> </span><span class="s2">&quot;/CN=www.mercade.edu&quot;</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/etc/ssl/private/apache-mercade.key
+</span></code></pre></div>
+<h3 id="el-certificat-snakeoil-dubuntu">El certificat "snakeoil" d'Ubuntu<a class="headerlink" href="#el-certificat-snakeoil-dubuntu" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Ubuntu ja instal·la un certificat autofirmat de mostra amb el paquet <code>ssl-cert</code>:</p>
+<ul>
+<li><code>/etc/ssl/certs/ssl-cert-snakeoil.pem</code></li>
+<li><code>/etc/ssl/private/ssl-cert-snakeoil.key</code></li>
+</ul>
+<p>És el que fa servir el site <code>default-ssl</code> quan l'actives. Funciona però és <strong>poc didàctic</strong>: no aprens a generar-ne un, no té el teu domini al CN, i és compartit amb qualsevol Ubuntu. Al laboratori generem el nostre — es veu clarament al navegador quin CN té.</p>
+<h3 id="lets-encrypt">Let's Encrypt<a class="headerlink" href="#lets-encrypt" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Autoritat certificadora gratuïta i automatitzada. Emet certificats <strong>de veritat signats</strong>. <strong>No la fem servir aquí</strong> perquè necessita un domini públic real accessible des d'Internet (com al RA4).</p>
+<h2 id="redireccio-http-https">Redirecció HTTP → HTTPS<a class="headerlink" href="#redireccio-http-https" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>En un servidor modern normalment <strong>tot el trànsit del port 80 es redirigeix al 443</strong>. Es fa amb un VirtualHost del port 80 que només conté una redirecció:</p>
+<div class="language-apache highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">*:80</span><span class="nt">&gt;</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="nb">ServerName</span><span class="w"> </span>www.mercade.edu
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="nb">Redirect</span><span class="w"> </span>permanent<span class="w"> </span>/<span class="w"> </span>https://www.mercade.edu/
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nt">&lt;/VirtualHost&gt;</span>
+</span></code></pre></div>
+<p>Amb <code>Redirect permanent</code> s'envia una resposta <strong>301</strong> al client, indicant-li que canviï la URL a HTTPS per sempre (el navegador ho recorda).</p>
+<p>Alternativa amb <code>mod_rewrite</code>:</p>
+<div class="language-apache highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">RewriteEngine</span><span class="w"> </span><span class="k">On</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">RewriteCond</span><span class="w"> </span>%{HTTPS}<span class="w"> </span>!=on
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nb">RewriteRule</span><span class="w"> </span>^/?(.*)<span class="w"> </span>https://%{SERVER_NAME}/$1<span class="w"> </span>[R=301,L]
+</span></code></pre></div>
+<h2 id="capcaleres-de-seguretat-i-bones-practiques">Capçaleres de seguretat i bones pràctiques<a class="headerlink" href="#capcaleres-de-seguretat-i-bones-practiques" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="servertokens-prod-serversignature-off"><code>ServerTokens Prod</code> + <code>ServerSignature Off</code><a class="headerlink" href="#servertokens-prod-serversignature-off" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Per defecte Apache posa capçaleres del tipus <code>Server: Apache/2.4.52 (Ubuntu)</code> a cada resposta, i afegeix una signatura a les pàgines d'error. Això dona pistes a un atacant sobre la versió. A <code>/etc/apache2/conf-available/security.conf</code>:</p>
+<div class="language-apache highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">ServerTokens</span><span class="w"> </span>Prod
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">ServerSignature</span><span class="w"> </span><span class="k">Off</span>
+</span></code></pre></div>
+<p>Ara la capçalera passa a ser només <code>Server: Apache</code>.</p>
+<h3 id="hsts-strict-transport-security">HSTS (Strict-Transport-Security)<a class="headerlink" href="#hsts-strict-transport-security" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Un cop l'usuari ha entrat una vegada per HTTPS, HSTS obliga el navegador a <strong>no acceptar mai més HTTP</strong> per aquell domini (durant el temps indicat). Protegeix contra atacs de <em>downgrade</em>.</p>
+<div class="language-apache highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">Header</span><span class="w"> </span>always<span class="w"> </span>set<span class="w"> </span>Strict-Transport-Security<span class="w"> </span><span class="s2">&quot;max-age=31536000; includeSubDomains&quot;</span>
+</span></code></pre></div>
+<p>Cal <code>sudo a2enmod headers</code>.</p>
+<h3 id="http2">HTTP/2<a class="headerlink" href="#http2" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Suporta multiplexació (moltes peticions dins una única connexió) i comprimeix les capçaleres. Millora la velocitat de càrrega.</p>
+<p>Activació:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>a2enmod<span class="w"> </span>http2
+</span></code></pre></div>
+<p>Al VirtualHost HTTPS:</p>
+<div class="language-apache highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">Protocols</span><span class="w"> </span>h2<span class="w"> </span>http/1.1
+</span></code></pre></div>
+<p>HTTP/2 <strong>només funciona amb HTTPS</strong> als navegadors — el pla és inaccessible.</p>
+<h2 id="introduccio-a-nginx">Introducció a Nginx<a class="headerlink" href="#introduccio-a-nginx" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Nginx, com Apache, és un servidor web capaç de servir contingut estàtic i actuar com a proxy invers, balancejador de càrrega, cache HTTP i intermediari per a fastcgi (PHP).</p>
+<ul>
+<li>Instal·lació: <code>sudo apt install nginx</code></li>
+<li>Fitxer principal: <code>/etc/nginx/nginx.conf</code></li>
+<li>Llocs disponibles/actius: <code>/etc/nginx/sites-available/</code> i <code>/etc/nginx/sites-enabled/</code></li>
+</ul>
+<h3 id="diferencies-basiques-respecte-apache">Diferències bàsiques respecte Apache<a class="headerlink" href="#diferencies-basiques-respecte-apache" title="Enllaç a aquesta secció">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Aspecte</th>
+<th>Apache</th>
+<th>Nginx</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fitxer principal</td>
+<td><code>apache2.conf</code></td>
+<td><code>nginx.conf</code></td>
+</tr>
+<tr>
+<td>Blocs</td>
+<td><code>&lt;VirtualHost&gt;</code></td>
+<td><code>server { ... }</code></td>
+</tr>
+<tr>
+<td>Fitxer per directori</td>
+<td><code>&lt;Directory&gt;</code></td>
+<td><code>location { ... }</code></td>
+</tr>
+<tr>
+<td>Autenticació bàsica</td>
+<td><code>auth_basic</code> (mòdul)</td>
+<td><code>auth_basic</code> (directiva)</td>
+</tr>
+<tr>
+<td>PHP</td>
+<td><code>mod_php</code> (dins Apache)</td>
+<td>Ha de passar per PHP-FPM</td>
+</tr>
+<tr>
+<td><code>.htaccess</code></td>
+<td>Sí</td>
+<td>No existeix</td>
+</tr>
+<tr>
+<td>Ports</td>
+<td><code>Listen</code> a <code>ports.conf</code></td>
+<td><code>listen</code> dins <code>server</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>A pràctiques</strong>: Nginx només com a servidor web pur (Part 4). El seu rol com a proxy invers i balancejador es cobreix al <strong>RA8</strong>.</p>
+<h2 id="integracio-amb-php">Integració amb PHP<a class="headerlink" href="#integracio-amb-php" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><strong>PHP</strong> és el llenguatge dinàmic més estès als servidors web. Es pot integrar amb Apache de dues formes:</p>
+<ul>
+<li><strong><code>mod_php</code> (o <code>libapache2-mod-php</code>)</strong> — el PHP s'executa dins del mateix procés d'Apache. Més simple, més ràpid per llocs petits, però el PHP consumeix memòria d'Apache sempre.</li>
+<li><strong>PHP-FPM</strong> — el PHP s'executa en un <strong>pool de processos separats</strong>. Apache/Nginx els parla via <strong>FastCGI</strong>. Millor rendiment i aïllament. És l'estàndard modern.</li>
+</ul>
+<p>A pràctiques farem la instal·lació més senzilla (<code>libapache2-mod-php</code>) i un fitxer <code>phpinfo.php</code> per comprovar que Apache serveix PHP. Al Projecte 1 pot canviar l'aproximació.</p>
+<h2 id="referencies">Referències<a class="headerlink" href="#referencies" title="Enllaç a aquesta secció">&para;</a></h2>
+<ul>
+<li>Documentació oficial d'Apache 2.4: <a href="https://httpd.apache.org/docs/2.4/">httpd.apache.org/docs/2.4/</a></li>
+<li>Guia d'Ubuntu sobre Apache: <a href="https://ubuntu.com/server/docs/web-servers-apache">ubuntu.com/server/docs/web-servers-apache</a></li>
+<li>Documentació oficial de Nginx: <a href="https://nginx.org/en/docs/">nginx.org/en/docs/</a></li>
+<li>RFC 7230-7237 — HTTP/1.1.</li>
+<li>RFC 7540 — HTTP/2.</li>
+<li>RFC 9114 — HTTP/3.</li>
+<li><a href="https://es.wikipedia.org/wiki/Problema_C10k">Problema C10K</a> — l'origen de Nginx.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+          
+          <a href="../../3-RA3-FTP/practiques/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctiques">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Pràctiques
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../practiques/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctiques">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                Pràctiques
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Joan-mh/MP-0227" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
