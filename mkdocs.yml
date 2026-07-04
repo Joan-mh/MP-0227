@@ -103,9 +103,6 @@ nav:
   - Projectes:
     - Enunciat Projecte 1 (base + Ruta A): Projectes/Projecte1.md
     - Enunciat Projecte 2 (Ruta B): Projectes/Projecte2.md
-    - Qüestionari base (tots): Projectes/Questionari-Projecte1-Base.md
-    - Qüestionari extensió Ruta A: Projectes/Questionari-Projecte1-Extensio.md
-    - Qüestionari Projecte 2: Projectes/Questionari-Projecte2.md
 
 extra:
   social:
