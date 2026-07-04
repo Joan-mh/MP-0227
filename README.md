@@ -11,16 +11,16 @@ Material docent obert del mòdul professional **0227 Serveis de Xarxa** del cicl
 
 L'ordre no és el numèric dels RA — està pensat perquè cada mòdul reforci coneixements del previ:
 
-| Ordre | RA | Servei | Pes | Enllaç |
-|:-:|:-:|---|:-:|---|
-| 1 | RA7 | Wifi (repàs TCP/IP + adaptador pont) | 10% | [7-RA7-Wifi/](7-RA7-Wifi/) |
-| 2 | RA6 | SSH i accés remot | 10% | [6-RA6-SSH/](6-RA6-SSH/) |
-| 3 | RA1 | DHCP | 15% | [1-RA1-DHCP/](1-RA1-DHCP/) |
-| 4 | RA2 | DNS | 15% | [2-RA2-DNS/](2-RA2-DNS/) |
-| 5 | RA3 | FTP | 10% | [3-RA3-FTP/](3-RA3-FTP/) |
-| 6 | RA5 | HTTP | 15% | [5-RA5-HTTP/](5-RA5-HTTP/) |
-| 7 | RA8 | Proxy | 10% | [8-RA8-Proxy/](8-RA8-Proxy/) |
-| 8 | RA4 | Correu (Postfix + Dovecot) | 15% | [4-RA4-Mail/](4-RA4-Mail/) |
+| Ordre | RA | Servei | Pes | Teoria | Pràctiques |
+|:-:|:-:|---|:-:|:-:|:-:|
+| 1 | RA7 | Wifi (repàs TCP/IP + adaptador pont) | 10% | [teoria](7-RA7-Wifi/teoria.md) | [pràctiques](7-RA7-Wifi/practiques.md) |
+| 2 | RA6 | SSH i accés remot | 10% | [teoria](6-RA6-SSH/teoria.md) | [pràctiques](6-RA6-SSH/practiques.md) |
+| 3 | RA1 | DHCP | 15% | [teoria](1-RA1-DHCP/teoria.md) | [pràctiques](1-RA1-DHCP/practiques.md) |
+| 4 | RA2 | DNS | 15% | [teoria](2-RA2-DNS/teoria.md) | [pràctiques](2-RA2-DNS/practiques.md) |
+| 5 | RA3 | FTP | 10% | [teoria](3-RA3-FTP/teoria.md) | [pràctiques](3-RA3-FTP/practiques.md) |
+| 6 | RA5 | HTTP | 15% | [teoria](5-RA5-HTTP/teoria.md) | [pràctiques](5-RA5-HTTP/practiques.md) |
+| 7 | RA8 | Proxy | 10% | [teoria](8-RA8-Proxy/teoria.md) | [pràctiques](8-RA8-Proxy/practiques.md) |
+| 8 | RA4 | Correu (Postfix + Dovecot) | 15% | [teoria](4-RA4-Mail/teoria.md) | [pràctiques](4-RA4-Mail/practiques.md) |
 
 Les carpetes mantenen la numeració oficial dels RA (`1-RA1-DHCP`, `2-RA2-DNS`, ...) independentment de l'ordre real d'impartició.
 
