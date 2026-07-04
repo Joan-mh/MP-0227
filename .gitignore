@@ -3,14 +3,18 @@
 **/solucions.md
 **/solucions-examens.md
 
-# Meta-documentació interna (no és per als alumnes)
+# Carpeta de treball intern del professor (no és per als alumnes)
+_professor/
+
+# CLAUDE.md (meta-documentació per l'agent, ha de romandre a l'arrel)
 CLAUDE.md
-PrimerPromptChat.md
-programacion_didactica.md
-TODO.md
-**/TODO.md
-Preguntes*.md
+
+# Preguntes*.md dins de carpetes de RA (si en creem)
 **/Preguntes*.md
+**/TODO.md
+
+# Solucions dels projectes (privades del professor)
+Projectes/solucions/
 
 # Carpetes heretades amb material font original (encara per repartir per RA)
 Examens/
