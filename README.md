@@ -75,17 +75,6 @@ Enllaços:
 | Escriptori remot web | — | Proxmox VE + Apache Guacamole | Només al Projecte 2 (Ruta B) |
 | Panel d'ISP | — | Virtualmin | Només al Projecte 1 extensió (Ruta A) |
 
-## Material privat
-
-Els fitxers següents **no** són al repositori públic, ni ho seran mai:
-
-- `solucions.md` de cada RA — solucions de les pràctiques.
-- `examens.md` i `solucions-examens.md` de cada RA — enunciats i correccions.
-- `Projectes/solucions/` — solucions dels projectes.
-- Material intern del professor (notes personals, esborranys, decisions didàctiques).
-
-Aquest material es genera i s'entrega individualment. Si en sou docent i el voleu, contacteu amb el mantenidor.
-
 ## Llicència
 
 Els materials estan alliberats sota llicència [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). Podeu utilitzar-los, adaptar-los i distribuir-los, sempre reconeixent l'autoria original i mantenint la mateixa llicència.
