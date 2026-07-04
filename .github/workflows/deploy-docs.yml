@@ -26,8 +26,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Prepare index page from README
-        run: cp README.md index.md
+      - name: Prepare docs directory
+        run: |
+          mkdir -p docs
+          cp README.md docs/index.md
+          cp -r 1-RA1-DHCP 2-RA2-DNS 3-RA3-FTP 4-RA4-Mail \
+                5-RA5-HTTP 6-RA6-SSH 7-RA7-Wifi 8-RA8-Proxy \
+                Projectes docs/
 
       - name: Deploy to gh-pages
         run: mkdocs gh-deploy --force

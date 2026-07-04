@@ -7,7 +7,7 @@ repo_url: https://github.com/Joan-mh/MP-0227
 repo_name: Joan-mh/MP-0227
 edit_uri: edit/main/
 
-docs_dir: .
+docs_dir: docs
 site_dir: site
 
 theme:
@@ -71,19 +71,6 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-
-exclude_docs: |
-  _professor/
-  _originals/
-  **/_originals/
-  **/solucions*.md
-  **/examens*.md
-  Projectes/solucions/
-  .github/
-  site/
-  Examens/
-  CLAUDE.md
-  README.md
 
 nav:
   - Inici: index.md
