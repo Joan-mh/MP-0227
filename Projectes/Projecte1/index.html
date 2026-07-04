@@ -2165,6 +2165,10 @@
 <li>A més de la nota del projecte, cada membre del grup ha de contestar el <strong>questionari</strong> corresponent (<code>Questionari-Projecte1-Base.md</code> per a tothom i, si feu Ruta A, també <code>Questionari-Projecte1-Extensio.md</code>). Serveix per validar que <strong>cada membre</strong> ha treballat i coneix el projecte.</li>
 </ol>
 <h2 id="escenari-de-xarxa">Escenari de xarxa<a class="headerlink" href="#escenari-de-xarxa" title="Enllaç a aquesta secció">&para;</a></h2>
+<p><img alt="Esquema de xarxa del Projecte 1" src="../esquema-projecte1.png" /></p>
+<blockquote>
+<p>L'esquema és una <strong>simplificació</strong>: mostra el servidor com un únic bloc "DHCP + DNS + FTP + Mail" i les MVs internes com a clients. Al Projecte 1 fusionat, el mateix servidor també allotja <strong>Nginx</strong> com a frontal HTTP/HTTPS, amb <strong>2 backends Apache</strong> dins de la LAN interna. Els grups de Ruta A hi afegeixen a més <strong>Squid</strong> i <strong>Virtualmin</strong>.</p>
+</blockquote>
 <p>L'aula simula Internet. El professor gestiona un <strong>DNS Root</strong> que fa d'"arrel de la simulació" i té assignada una IP fixa a la WAN de l'aula.</p>
 <p>Cada grup munta la seva pròpia infraestructura:</p>
 <ul>
