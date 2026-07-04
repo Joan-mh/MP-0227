@@ -2141,7 +2141,7 @@
 <h2 id="nucli-obligatori-per-a-tothom">Nucli obligatori (per a tothom)<a class="headerlink" href="#nucli-obligatori-per-a-tothom" title="Enllaç a aquesta secció">&para;</a></h2>
 <h3 id="dhcp-intern">DHCP intern<a class="headerlink" href="#dhcp-intern" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
-<li>Configureu <strong><code>isc-dhcp-server</code></strong> al vostre servidor perquè assigni IPs dinàmiques a les màquines de la vostra LAN interna.</li>
+<li>Configureu <strong><code>Kea DHCP</code></strong> al vostre servidor perquè assigni IPs dinàmiques a les màquines de la vostra LAN interna.</li>
 <li>Rang aprox. <code>192.168.&lt;numGrup&gt;.50</code> – <code>.150</code>.</li>
 <li><strong>Gateway</strong> = la IP del servidor a la LAN interna (<code>.1</code>).</li>
 <li><strong>DNS servers</strong> = el vostre propi servidor DNS (una vegada configurat) + fallback opcional.</li>
@@ -2149,7 +2149,7 @@
 <h3 id="dns">DNS<a class="headerlink" href="#dns" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
 <li>Configureu <strong>BIND9</strong> com a servidor <strong>autoritatiu</strong> per als vostres dominis.</li>
-<li>Trieu <strong>3 dominis</strong> (sempre acabats en <code>.edu</code> per limitacions del DNS Root) — per exemple <code>grup5.edu</code>, <code>mercats.edu</code>, <code>bicis.edu</code>.</li>
+<li>Trieu <strong>3 dominis</strong> (sempre acabats en <code>.edu</code> per limitacions del DNS Root) — per exemple <code>grup5.edu</code>, <code>mercade.edu</code>, <code>bicis.edu</code>.</li>
 <li>Demaneu al professor que els <strong>doni d'alta</strong> al DNS Root. Us donarà la IP que faran servir els clients externs per arribar-hi.</li>
 <li>El vostre DNS ha de <strong>reenviar</strong> al DNS Root qualsevol consulta que no sàpiga (forwarders) i ser <strong>autoritatiu</strong> per als vostres dominis.</li>
 <li>Configureu <strong>registres A</strong> (per als serveis: <code>www</code>, <code>ftp</code>, <code>mail</code>), <strong>MX</strong> (per al mail), i el registre <code>PTR</code> si voleu tenir reverse DNS.</li>
