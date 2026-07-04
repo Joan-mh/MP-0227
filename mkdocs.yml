@@ -1,10 +1,10 @@
 site_name: Serveis de Xarxa — M227
 site_description: Material docent del mòdul professional 0227 (CFGM Sistemes Microinformàtics i Xarxes)
 site_author: Joan Mercadé
-site_url: https://joan-mh.github.io/MP227/
+site_url: https://joan-mh.github.io/MP-0227/
 
-repo_url: https://github.com/Joan-mh/MP227
-repo_name: Joan-mh/MP227
+repo_url: https://github.com/Joan-mh/MP-0227
+repo_name: Joan-mh/MP-0227
 edit_uri: edit/main/
 
 docs_dir: .
@@ -123,4 +123,4 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/Joan-mh/MP227
+      link: https://github.com/Joan-mh/MP-0227
