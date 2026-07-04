@@ -26,6 +26,24 @@ Idèntica al Projecte 1:
 
 ## Escenari
 
+Topologia bàsica:
+
+```
+                          ┌──────────────────────────────────────────┐
+                          │       ORDINADOR FÍSIC (Proxmox VE)       │
+                          │                                          │
+                          │  ┌───────────┐  ┌──────────┐  ┌────────┐ │
+                          │  │ VM Guaca- │  │ VM Win-  │  │ VM Ub. │ │
+   Usuari                 │  │  mole     │  │  dows 10 │  │ Desktop│ │
+   Extern    ── HTTPS ──► │  │ (Ubuntu   │  │  (RDP)   │  │ (xrdp) │ │
+   (navega-               │  │  Server)  │  │          │  │        │ │
+   dor web)               │  └─────┬─────┘  └────▲─────┘  └───▲────┘ │
+                          │        │             │            │      │
+                          │        └── RDP/VNC ──┴────────────┘      │
+                          │           (vmbr1, xarxa interna)         │
+                          └──────────────────────────────────────────┘
+```
+
 - **1 ordinador físic** proporcionat pel professor amb capacitat per instal·lar-hi Proxmox VE (no és una VM: Proxmox és el sistema operatiu **base** de la màquina).
 - Dins de Proxmox, creareu **almenys 3 màquines virtuals**:
   - **VM Guacamole**: Ubuntu Server on hi correrà el servei Guacamole (frontal web + connectors).

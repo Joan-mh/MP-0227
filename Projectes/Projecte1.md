@@ -38,6 +38,10 @@ Cada grup tria **una** de les dues rutes següents, i s'hi manté fins al final:
 
 ## Escenari de xarxa
 
+![Esquema de xarxa del Projecte 1](esquema-projecte1.png)
+
+> L'esquema és una **simplificació**: mostra el servidor com un únic bloc "DHCP + DNS + FTP + Mail" i les MVs internes com a clients. Al Projecte 1 fusionat, el mateix servidor també allotja **Nginx** com a frontal HTTP/HTTPS, amb **2 backends Apache** dins de la LAN interna. Els grups de Ruta A hi afegeixen a més **Squid** i **Virtualmin**.
+
 L'aula simula Internet. El professor gestiona un **DNS Root** que fa d'"arrel de la simulació" i té assignada una IP fixa a la WAN de l'aula.
 
 Cada grup munta la seva pròpia infraestructura:
