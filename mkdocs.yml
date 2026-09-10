@@ -74,6 +74,7 @@ markdown_extensions:
 
 nav:
   - Inici: index.md
+  - Preparació de l'entorn (Pt0): 0-RA0-PrepEntorn/practiques.md
   - RA i ordre d'impartició:
     - RA7 — Wifi:
       - Teoria: 7-RA7-Wifi/teoria.md
@@ -100,9 +101,6 @@ nav:
     - RA4 — Correu:
       - Teoria: 4-RA4-Mail/teoria.md
       - Pràctiques: 4-RA4-Mail/practiques.md
-  - Projectes:
-    - Enunciat Projecte 1 (base + Ruta A): Projectes/Projecte1.md
-    - Enunciat Projecte 2 (Ruta B): Projectes/Projecte2.md
 
 extra:
   social:

@@ -1,3 +1,4 @@
+
 # Serveis de xarxa — DNS
 
 ## Introducció: història i necessitat del DNS

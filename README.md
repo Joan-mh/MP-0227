@@ -7,6 +7,12 @@ Material docent obert del mòdul professional **0227 Serveis de Xarxa** del cicl
 - **Sistema operatiu del client**: Ubuntu Desktop, Windows 10/11 o el que trieu (indicat a cada pràctica)
 - **Format**: Markdown pur, pensat per llegir-se directament a GitHub
 
+## Preparació prèvia
+
+Abans de començar cal tenir l'entorn de treball a punt (VirtualBox, Git, màquines virtuals del curs, adaptadors de xarxa). Aquesta preparació **no puntua** però és **obligatòria**:
+
+- [Pt0 — Preparació de l'entorn](0-RA0-PrepEntorn/practiques.md)
+
 ## Ordre real d'impartició
 
 L'ordre no és el numèric dels RA — està pensat perquè cada mòdul reforci coneixements del previ:
@@ -35,22 +41,6 @@ N-RAx-Servei/
 ```
 
 Al RA7 hi ha, a més, un `checklist.md` amb els punts observables en directe (aquest RA no té examen escrit).
-
-## Projectes finals
-
-Al final del mòdul es fa un projecte de 36 hores. Cada grup tria una de les dues rutes:
-
-- **Ruta A — Projecte 1 complet**: DHCP + DNS + FTP + HTTP + Correu (**Postfix + Dovecot amb TLS**) + Squid (proxy directe) + **Virtualmin** (panel d'ISP).
-- **Ruta B — Projecte 1 parcial + Projecte 2**: DHCP + DNS + FTP + HTTP + Correu + **Proxmox VE + Apache Guacamole** (escriptori remot des del navegador).
-
-Enllaços:
-
-- [Projectes/Projecte1.md](Projectes/Projecte1.md) — nucli obligatori + secció final "Extensió Ruta A".
-- [Projectes/Projecte2.md](Projectes/Projecte2.md) — Proxmox + Guacamole (només Ruta B).
-- Qüestionaris (10 preguntes obertes cadascun, per validar que **cada membre** del grup coneix la feina):
-    - [Questionari-Projecte1-Base.md](Projectes/Questionari-Projecte1-Base.md) — respon tothom.
-    - [Questionari-Projecte1-Extensio.md](Projectes/Questionari-Projecte1-Extensio.md) — només Ruta A.
-    - [Questionari-Projecte2.md](Projectes/Questionari-Projecte2.md) — només Ruta B.
 
 ## Com fer servir aquest repositori
 
