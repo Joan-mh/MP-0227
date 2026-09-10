@@ -80,21 +80,21 @@ nav:
       - Teoria: 7-RA7-Wifi/teoria.md
       - Pràctiques: 7-RA7-Wifi/practiques.md
       - Checklist d'avaluació: 7-RA7-Wifi/checklist.md
-    - RA6 — SSH:
-      - Teoria: 6-RA6-SSH/teoria.md
-      - Pràctiques: 6-RA6-SSH/practiques.md
     - RA1 — DHCP:
       - Teoria: 1-RA1-DHCP/teoria.md
       - Pràctiques: 1-RA1-DHCP/practiques.md
     - RA2 — DNS:
       - Teoria: 2-RA2-DNS/teoria.md
       - Pràctiques: 2-RA2-DNS/practiques.md
-    - RA3 — FTP:
-      - Teoria: 3-RA3-FTP/teoria.md
-      - Pràctiques: 3-RA3-FTP/practiques.md
+    - RA6 — SSH:
+      - Teoria: 6-RA6-SSH/teoria.md
+      - Pràctiques: 6-RA6-SSH/practiques.md
     - RA5 — HTTP:
       - Teoria: 5-RA5-HTTP/teoria.md
       - Pràctiques: 5-RA5-HTTP/practiques.md
+    - RA3 — FTP:
+      - Teoria: 3-RA3-FTP/teoria.md
+      - Pràctiques: 3-RA3-FTP/practiques.md
     - RA8 — Proxy:
       - Teoria: 8-RA8-Proxy/teoria.md
       - Pràctiques: 8-RA8-Proxy/practiques.md
