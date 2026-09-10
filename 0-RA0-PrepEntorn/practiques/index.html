@@ -12,26 +12,28 @@
         <meta name="author" content="Joan Mercadé">
       
       
-        <link rel="canonical" href="https://joan-mh.github.io/MP-0227/Projectes/Projecte2/">
+        <link rel="canonical" href="https://joan-mh.github.io/MP-0227/0-RA0-PrepEntorn/practiques/">
       
       
-        <link rel="prev" href="../Projecte1/">
+        <link rel="prev" href="../..">
       
+      
+        <link rel="next" href="../../7-RA7-Wifi/teoria/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Enunciat Projecte 2 (Ruta B) - Serveis de Xarxa — M227</title>
+        <title>Preparació de l'entorn (Pt0) - Serveis de Xarxa — M227</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#projecte-2-escriptori-remot-amb-proxmox-i-guacamole" class="md-skip">
+        <a href="#pt0-preparacio-de-lentorn" class="md-skip">
           Salta el contingut
         </a>
       
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Enunciat Projecte 2 (Ruta B)
+              Preparació de l'entorn (Pt0)
             
           </span>
         </div>
@@ -242,6 +244,27 @@
   
   
   
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Preparació de l'entorn (Pt0)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
   
     
     
@@ -264,28 +287,6 @@
     
   
 
-    
-  
-
-      
-        
-  
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../Projecte1/" class="md-tabs__link">
-          
-  
-  
-  Projectes
-
-        </a>
-      </li>
     
   
 
@@ -366,6 +367,341 @@
       
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparació de l'entorn (Pt0)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparació de l'entorn (Pt0)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectius
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eines-a-installar-al-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eines a instal·lar al host
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eines a instal·lar al host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#virtualbox-obligatori" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VirtualBox (obligatori)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-obligatori" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git (obligatori)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compte-github-recomanable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compte GitHub (recomanable)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obsidian-recomanable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obsidian (recomanable)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maquines-virtuals-del-curs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Màquines virtuals del curs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Màquines virtuals del curs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recomanacions-generals-al-crear-cada-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomanacions generals al crear cada VM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptadors-de-xarxa-a-virtualbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adaptadors de xarxa a VirtualBox
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptadors de xarxa a VirtualBox">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xarxa-interna-internal-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xarxa interna (Internal Network)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-only-adaptador-nomes-amfitrio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host-only (Adaptador només amfitrió)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptador-pont-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adaptador pont (Bridge)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-concreta-dadaptadors-per-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuració concreta d'adaptadors per VM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuració concreta d&#39;adaptadors per VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-server-3-adaptadors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubuntu Server (3 adaptadors)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clients-ubuntu-desktop-i-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clients (Ubuntu Desktop i Windows)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-dels-sistemes-operatius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació dels sistemes operatius
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instal·lació dels sistemes operatius">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-server-components-a-installar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubuntu Server: components a instal·lar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-desactivar-el-tallafoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows: desactivar el tallafoc
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guest-additions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guest Additions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacio-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificació final
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     
@@ -382,10 +718,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -403,8 +739,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -434,10 +770,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
-          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
             
   
   
@@ -455,8 +791,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -578,10 +914,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   
@@ -599,8 +935,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -694,10 +1030,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
             
   
   
@@ -715,8 +1051,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -810,10 +1146,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
             
   
   
@@ -831,8 +1167,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -926,10 +1262,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
         
           
-          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
             
   
   
@@ -947,8 +1283,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1042,10 +1378,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
         
           
-          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
             
   
   
@@ -1063,8 +1399,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1158,10 +1494,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
         
           
-          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
             
   
   
@@ -1179,8 +1515,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1274,10 +1610,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
         
           
-          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
             
   
   
@@ -1295,8 +1631,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1377,311 +1713,6 @@
   
 
     
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Projectes
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Projectes
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Projecte1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Enunciat Projecte 1 (base + Ruta A)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Enunciat Projecte 2 (Ruta B)
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Enunciat Projecte 2 (Ruta B)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Taula de continguts
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#objectius" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Objectius
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metodologia-de-treball" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Metodologia de treball
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#escenari" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escenari
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#etapes-del-projecte" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Etapes del projecte
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Etapes del projecte">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fase-1-installacio-de-proxmox-ve" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fase 1 — Instal·lació de Proxmox VE
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-2-crear-les-vms-a-proxmox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fase 2 — Crear les VMs a Proxmox
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-3-preparar-les-vms-per-acces-remot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fase 3 — Preparar les VMs per accés remot
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-4-installar-apache-guacamole" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fase 4 — Instal·lar Apache Guacamole
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-5-configurar-connexions-a-guacamole" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fase 5 — Configurar connexions a Guacamole
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-6-documentar-i-entregar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fase 6 — Documentar i entregar
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entrega" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entrega
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recursos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recursos
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -1720,44 +1751,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metodologia-de-treball" class="md-nav__link">
+  <a href="#eines-a-installar-al-host" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Metodologia de treball
+        Eines a instal·lar al host
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#escenari" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escenari
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#etapes-del-projecte" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Etapes del projecte
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Etapes del projecte">
+    <nav class="md-nav" aria-label="Eines a instal·lar al host">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fase-1-installacio-de-proxmox-ve" class="md-nav__link">
+  <a href="#virtualbox-obligatori" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fase 1 — Instal·lació de Proxmox VE
+        VirtualBox (obligatori)
       
     </span>
   </a>
@@ -1765,10 +1774,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fase-2-crear-les-vms-a-proxmox" class="md-nav__link">
+  <a href="#git-obligatori" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fase 2 — Crear les VMs a Proxmox
+        Git (obligatori)
       
     </span>
   </a>
@@ -1776,10 +1785,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fase-3-preparar-les-vms-per-acces-remot" class="md-nav__link">
+  <a href="#compte-github-recomanable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fase 3 — Preparar les VMs per accés remot
+        Compte GitHub (recomanable)
       
     </span>
   </a>
@@ -1787,32 +1796,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fase-4-installar-apache-guacamole" class="md-nav__link">
+  <a href="#obsidian-recomanable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fase 4 — Instal·lar Apache Guacamole
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-5-configurar-connexions-a-guacamole" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fase 5 — Configurar connexions a Guacamole
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-6-documentar-i-entregar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fase 6 — Documentar i entregar
+        Obsidian (recomanable)
       
     </span>
   </a>
@@ -1825,10 +1812,177 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#entrega" class="md-nav__link">
+  <a href="#maquines-virtuals-del-curs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Entrega
+        Màquines virtuals del curs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Màquines virtuals del curs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recomanacions-generals-al-crear-cada-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomanacions generals al crear cada VM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptadors-de-xarxa-a-virtualbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adaptadors de xarxa a VirtualBox
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptadors de xarxa a VirtualBox">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xarxa-interna-internal-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xarxa interna (Internal Network)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-only-adaptador-nomes-amfitrio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host-only (Adaptador només amfitrió)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptador-pont-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adaptador pont (Bridge)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-concreta-dadaptadors-per-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuració concreta d'adaptadors per VM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuració concreta d&#39;adaptadors per VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-server-3-adaptadors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubuntu Server (3 adaptadors)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clients-ubuntu-desktop-i-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clients (Ubuntu Desktop i Windows)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-dels-sistemes-operatius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instal·lació dels sistemes operatius
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instal·lació dels sistemes operatius">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-server-components-a-installar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubuntu Server: components a instal·lar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-desactivar-el-tallafoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows: desactivar el tallafoc
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guest-additions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guest Additions
       
     </span>
   </a>
@@ -1836,10 +1990,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recursos" class="md-nav__link">
+  <a href="#verificacio-final" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recursos
+        Verificació final
       
     </span>
   </a>
@@ -1863,7 +2017,7 @@
 
 
   
-    <a href="https://github.com/Joan-mh/MP-0227/edit/main/Projectes/Projecte2.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/Joan-mh/MP-0227/edit/main/0-RA0-PrepEntorn/practiques.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -1871,128 +2025,181 @@
   
 
 
-<h1 id="projecte-2-escriptori-remot-amb-proxmox-i-guacamole">Projecte 2 — Escriptori remot amb Proxmox i Guacamole<a class="headerlink" href="#projecte-2-escriptori-remot-amb-proxmox-i-guacamole" title="Enllaç a aquesta secció">&para;</a></h1>
-<blockquote>
-<p><strong>Aquest projecte només el fan els grups que han triat la Ruta B</strong> (Projecte 1 parcial + Projecte 2). Els grups de Ruta A no fan aquest document; ja han fet Squid + Virtualmin com a extensió del Projecte 1.</p>
-</blockquote>
-<p><strong>Durada</strong>: aproximadament 15 hores dins del total de 36 h combinades amb el Projecte 1 (parcial).</p>
+<h1 id="pt0-preparacio-de-lentorn">Pt0 — Preparació de l'entorn<a class="headerlink" href="#pt0-preparacio-de-lentorn" title="Enllaç a aquesta secció">&para;</a></h1>
+<p>Aquesta pràctica <strong>no puntua</strong> i no pertany a cap RA, però és <strong>obligatòria</strong> per poder fer la resta del curs. L'objectiu és tenir a punt totes les eines i les màquines virtuals que utilitzarem durant l'any.</p>
 <h2 id="objectius">Objectius<a class="headerlink" href="#objectius" title="Enllaç a aquesta secció">&para;</a></h2>
-<p>Crear un prototip d'una plataforma d'aules virtuals — semblant a l'entorn Isard que feu servir al centre, però construït pel vostre grup des de zero:</p>
 <ul>
-<li>Muntar un hipervisor <strong>Proxmox VE</strong> amb diverses màquines virtuals.</li>
-<li>Muntar un servidor <strong>Apache Guacamole</strong> que permeti als usuaris accedir a les seves VMs des d'un navegador web, sense instal·lar cap client.</li>
-<li>Assignar diferents màquines a diferents usuaris.</li>
+<li>Instal·lar les eines de treball al vostre equip amfitrió (host).</li>
+<li>Crear i configurar les màquines virtuals del curs a VirtualBox.</li>
+<li>Entendre els diferents tipus d'adaptadors de xarxa de VirtualBox.</li>
+<li>Comprovar que les màquines es "veuen" entre elles i que podeu controlar el servidor per SSH des del host.</li>
 </ul>
-<p>Aquest projecte reprèn la teoria d'accés remot (RA6: SSH, VNC, RDP) però aplicada dins d'una plataforma d'escriptori remot web.</p>
-<h2 id="metodologia-de-treball">Metodologia de treball<a class="headerlink" href="#metodologia-de-treball" title="Enllaç a aquesta secció">&para;</a></h2>
-<p>Idèntica al Projecte 1:</p>
-<ol>
-<li>Grups de <strong>2 o 3 persones</strong>.</li>
-<li><strong>Portaveu setmanal</strong> per consultes al professor a la seva taula.</li>
-<li>Entrega: <strong>PDF</strong> amb instruccions + <strong>vídeo</strong> de funcionament.</li>
-<li>Nota ponderada: 20% autoavaluació + 30% co-avaluació + 50% professor. Diferència de 3 o més punts entre alumne i professor → no compta la de l'alumne.</li>
-<li>Cada membre del grup entrega individualment el <code>Questionari-Projecte2.md</code>.</li>
-</ol>
-<h2 id="escenari">Escenari<a class="headerlink" href="#escenari" title="Enllaç a aquesta secció">&para;</a></h2>
-<p>Topologia bàsica:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                          ┌──────────────────────────────────────────┐
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                          │       ORDINADOR FÍSIC (Proxmox VE)       │
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                          │                                          │
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                          │  ┌───────────┐  ┌──────────┐  ┌────────┐ │
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                          │  │ VM Guaca- │  │ VM Win-  │  │ VM Ub. │ │
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   Usuari                 │  │  mole     │  │  dows 10 │  │ Desktop│ │
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   Extern    ── HTTPS ──► │  │ (Ubuntu   │  │  (RDP)   │  │ (xrdp) │ │
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   (navega-               │  │  Server)  │  │          │  │        │ │
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   dor web)               │  └─────┬─────┘  └────▲─────┘  └───▲────┘ │
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>                          │        │             │            │      │
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                          │        └── RDP/VNC ──┴────────────┘      │
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                          │           (vmbr1, xarxa interna)         │
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                          └──────────────────────────────────────────┘
+<h2 id="eines-a-installar-al-host">Eines a instal·lar al host<a class="headerlink" href="#eines-a-installar-al-host" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="virtualbox-obligatori">VirtualBox (obligatori)<a class="headerlink" href="#virtualbox-obligatori" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Descarregueu i instal·leu <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> per al vostre sistema operatiu. Instal·leu també el <strong>Extension Pack</strong> (mateixa pàgina) — permet USB 2.0/3.0 i RDP integrat.</p>
+<h3 id="git-obligatori">Git (obligatori)<a class="headerlink" href="#git-obligatori" title="Enllaç a aquesta secció">&para;</a></h3>
+<ul>
+<li><strong>Windows</strong>: instal·leu <a href="https://git-scm.com/download/win">Git for Windows</a> (inclou Git Bash).</li>
+<li><strong>Linux</strong>: <code>sudo apt install git</code>.</li>
+<li><strong>macOS</strong>: <code>brew install git</code> o instal·leu les Xcode Command Line Tools.</li>
+</ul>
+<p>Configureu el vostre nom i correu:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"El vostre nom"</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"el.vostre@correu.cat"</span>
 </span></code></pre></div>
+<h3 id="compte-github-recomanable">Compte GitHub (recomanable)<a class="headerlink" href="#compte-github-recomanable" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>No és obligatori, però és <strong>molt recomanable</strong> obrir un compte a <a href="https://github.com">github.com</a> per publicar-hi les vostres pràctiques i tenir un porfoli. És gratuït.</p>
+<h3 id="obsidian-recomanable">Obsidian (recomanable)<a class="headerlink" href="#obsidian-recomanable" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>No és obligatori, però <a href="https://obsidian.md">Obsidian</a> és una eina excel·lent per prendre apunts en Markdown (el mateix format en què està escrit tot el material del curs). Us permetrà tenir els vostres apunts organitzats i enllaçats.</p>
+<h2 id="maquines-virtuals-del-curs">Màquines virtuals del curs<a class="headerlink" href="#maquines-virtuals-del-curs" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Farem servir <strong>tres</strong> màquines virtuals a VirtualBox:</p>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Sistema operatiu</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Servidor</td>
+<td><strong>Ubuntu Server 24.04 LTS</strong> o superior</td>
+<td>La màquina on configurarem tots els serveis.</td>
+</tr>
+<tr>
+<td>Client Linux</td>
+<td>Ubuntu Desktop (o qualsevol distribució Linux)</td>
+<td>Les guies estan pensades per Ubuntu, però podeu triar.</td>
+</tr>
+<tr>
+<td>Client Windows</td>
+<td><strong>Windows 10 o 11</strong></td>
+<td>Windows 7 <strong>no recomanat</strong> (problemes amb certificats i navegadors moderns).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota</strong>: al curs anterior es feia servir també un Windows Server. Enguany <strong>no</strong> el fem servir, perquè cap pràctica el requereix.</p>
+</blockquote>
+<h3 id="recomanacions-generals-al-crear-cada-vm">Recomanacions generals al crear cada VM<a class="headerlink" href="#recomanacions-generals-al-crear-cada-vm" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
-<li><strong>1 ordinador físic</strong> proporcionat pel professor amb capacitat per instal·lar-hi Proxmox VE (no és una VM: Proxmox és el sistema operatiu <strong>base</strong> de la màquina).</li>
-<li>Dins de Proxmox, creareu <strong>almenys 3 màquines virtuals</strong>:</li>
-<li><strong>VM Guacamole</strong>: Ubuntu Server on hi correrà el servei Guacamole (frontal web + connectors).</li>
-<li><strong>VM Windows 10</strong> (o 11): serveix com a "màquina d'usuari" accessible per RDP.</li>
-<li><strong>VM Ubuntu Desktop</strong>: serveix com a "màquina d'usuari" accessible per VNC o RDP (<code>xrdp</code>).</li>
-<li>Els usuaris finals accediran a <strong>Guacamole</strong> des del navegador i, un cop autenticats, veuran les VMs que tenen assignades.</li>
+<li><strong>Disc dinàmic</strong>: no reserva tot l'espai de cop, només el que necessita.</li>
+<li>Si treballeu amb un portàtil sense gaire disc, guardeu els discs de les VMs en un <strong>disc dur extern</strong>.</li>
+<li>RAM recomanada: 2 GB per Ubuntu Server, 4 GB per Ubuntu Desktop i Windows.</li>
 </ul>
-<h2 id="etapes-del-projecte">Etapes del projecte<a class="headerlink" href="#etapes-del-projecte" title="Enllaç a aquesta secció">&para;</a></h2>
-<h3 id="fase-1-installacio-de-proxmox-ve">Fase 1 — Instal·lació de Proxmox VE<a class="headerlink" href="#fase-1-installacio-de-proxmox-ve" title="Enllaç a aquesta secció">&para;</a></h3>
+<h2 id="adaptadors-de-xarxa-a-virtualbox">Adaptadors de xarxa a VirtualBox<a class="headerlink" href="#adaptadors-de-xarxa-a-virtualbox" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Aquest és el punt més important d'aquesta preparació. Configurar malament la xarxa <strong>pot interferir amb la xarxa del centre</strong> quan al llarg del curs muntem serveis com DHCP o DNS.</p>
+<p>VirtualBox ofereix diversos modes d'adaptador. Els que farem servir són:</p>
+<h3 id="nat">NAT<a class="headerlink" href="#nat" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>La VM surt a Internet <strong>a través del host</strong>, com si fos una aplicació més. VirtualBox li dóna una IP privada (normalment 10.0.2.15) i fa NAT.</p>
 <ul>
-<li>Baixeu la <strong><a href="https://www.proxmox.com/en/downloads/category/iso-images-pve">ISO oficial de Proxmox VE</a></strong>.</li>
-<li>Prepareu un pendrive d'arrencada.</li>
-<li>Instal·leu Proxmox VE a la màquina física. La instal·lació és semblant a la d'un Debian Server.</li>
-<li>Un cop instal·lat, accediu a la interfície web a <code>https://&lt;IP_Proxmox&gt;:8006</code>.</li>
-<li>Registreu com a mínim l'usuari <code>root</code> i el certificat autofirmat de Proxmox.</li>
+<li>Cap altra VM ni el host la pot "veure" directament.</li>
+<li>Serveix bàsicament per <strong>actualitzar paquets</strong> i descarregar programari.</li>
 </ul>
-<h3 id="fase-2-crear-les-vms-a-proxmox">Fase 2 — Crear les VMs a Proxmox<a class="headerlink" href="#fase-2-crear-les-vms-a-proxmox" title="Enllaç a aquesta secció">&para;</a></h3>
+<h3 id="xarxa-interna-internal-network">Xarxa interna (<em>Internal Network</em>)<a class="headerlink" href="#xarxa-interna-internal-network" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Una xarxa <strong>totalment aïllada</strong> entre VMs. Les VMs que estan a la mateixa xarxa interna es veuen entre elles, però ni el host ni Internet hi tenen accés.</p>
 <ul>
-<li>Pugeu les ISOs necessàries (Ubuntu Server, Ubuntu Desktop, Windows 10/11) a l'<strong>Emmagatzematge → ISO Images</strong>.</li>
-<li>Creeu les 3 VMs assignant recursos mínims (2 GB RAM, 20 GB disc, 1 vCPU per començar).</li>
-<li>Instal·leu els sistemes operatius.</li>
-<li>Configureu la xarxa interna de Proxmox (<code>vmbr0</code> o <code>vmbr1</code>) perquè totes les VMs es vegin entre elles.</li>
+<li>Ideal per simular la LAN interna del nostre "laboratori", <strong>sense risc</strong> d'interferir amb la xarxa del centre.</li>
+<li>Cal donar-li un <strong>nom</strong> (per exemple <code>intnet-lab</code>) i totes les VMs que hi hagin de connectar han de fer servir el mateix nom.</li>
 </ul>
-<h3 id="fase-3-preparar-les-vms-per-acces-remot">Fase 3 — Preparar les VMs per accés remot<a class="headerlink" href="#fase-3-preparar-les-vms-per-acces-remot" title="Enllaç a aquesta secció">&para;</a></h3>
+<h3 id="host-only-adaptador-nomes-amfitrio">Host-only (<em>Adaptador només amfitrió</em>)<a class="headerlink" href="#host-only-adaptador-nomes-amfitrio" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Una xarxa privada entre el <strong>host i les VMs</strong>. El host veu les VMs (per SSH, RDP, navegador...) i les VMs veuen el host, però no surten a Internet.</p>
 <ul>
-<li>A la <strong>VM Windows</strong>: habiliteu <strong>Escriptori remot</strong> (Configuració → Sistema → Escriptori remot → activat). Requereix Windows Pro o superior.</li>
-<li>A la <strong>VM Ubuntu Desktop</strong>: instal·leu <code>xrdp</code> (RA6, Part 3), o bé configureu VNC amb <code>tigervnc-server</code>. Comproveu que us hi podeu connectar amb un client de la mateixa xarxa (Remmina o similar).</li>
+<li>Perfecta per <strong>controlar el servidor amb SSH</strong> des del vostre sistema operatiu principal.</li>
+<li>A <code>Fitxer → Eines → Gestor de xarxa</code> de VirtualBox podeu veure/crear la xarxa host-only (normalment <code>vboxnet0</code>).</li>
 </ul>
-<h3 id="fase-4-installar-apache-guacamole">Fase 4 — Instal·lar Apache Guacamole<a class="headerlink" href="#fase-4-installar-apache-guacamole" title="Enllaç a aquesta secció">&para;</a></h3>
-<p>Aquí és on hi ha més feina. <strong>Nota</strong>: la <a href="https://guacamole.apache.org/doc/gug/installing-guacamole.html">instal·lació moderna de Guacamole</a> és més complexa que la que descrivien manuals antics per Ubuntu 16. No proveu de fer servir procediments d'Ubuntu 16.04 sobre Ubuntu Server 22+/24.</p>
-<p>Opcions per instal·lar Guacamole:</p>
+<h3 id="adaptador-pont-bridge">Adaptador pont (<em>Bridge</em>)<a class="headerlink" href="#adaptador-pont-bridge" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>La VM apareix a la xarxa física del host <strong>com si fos un ordinador més</strong>. Rep IP del router del centre.</p>
 <ul>
-<li>
-<p><strong>Opció A (recomanada per la vostra primera vegada)</strong> — instal·lació <strong>via Docker</strong>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>docker.io<span class="w"> </span>docker-compose
+<li><strong>No la farem servir en general</strong> perquè xocaria amb la xarxa del centre.</li>
+<li>Sí que la farem servir puntualment al RA7 (Wifi), amb un punt d'accés propi.</li>
+</ul>
+<h2 id="configuracio-concreta-dadaptadors-per-vm">Configuració concreta d'adaptadors per VM<a class="headerlink" href="#configuracio-concreta-dadaptadors-per-vm" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="ubuntu-server-3-adaptadors">Ubuntu Server (3 adaptadors)<a class="headerlink" href="#ubuntu-server-3-adaptadors" title="Enllaç a aquesta secció">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Adaptador</th>
+<th>Mode</th>
+<th>Nom</th>
+<th>Ús</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>NAT</td>
+<td>—</td>
+<td>Sortida a Internet (actualitzacions, <code>apt</code>).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Xarxa interna</td>
+<td><code>intnet-lab</code></td>
+<td>Servir els clients (DHCP, DNS, HTTP...).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Només amfitrió</td>
+<td><code>vboxnet0</code></td>
+<td>Controlar el servidor per SSH des del host.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="clients-ubuntu-desktop-i-windows">Clients (Ubuntu Desktop i Windows)<a class="headerlink" href="#clients-ubuntu-desktop-i-windows" title="Enllaç a aquesta secció">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Adaptador</th>
+<th>Mode</th>
+<th>Nom</th>
+<th>Ús</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Xarxa interna</td>
+<td><code>intnet-lab</code></td>
+<td>Connectar-se al servidor.</td>
+</tr>
+</tbody>
+</table>
+<p>Els clients <strong>no necessiten sortida a Internet</strong> durant les pràctiques. Si en algun moment els cal (per exemple, per instal·lar un navegador), podeu canviar temporalment l'adaptador a NAT i tornar-lo a xarxa interna quan acabeu.</p>
+<h2 id="installacio-dels-sistemes-operatius">Instal·lació dels sistemes operatius<a class="headerlink" href="#installacio-dels-sistemes-operatius" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Descarregueu les ISOs oficials, carregueu-les a la unitat òptica de la VM i inicieu-la. Seguiu l'assistent d'instal·lació.</p>
+<h3 id="ubuntu-server-components-a-installar">Ubuntu Server: components a instal·lar<a class="headerlink" href="#ubuntu-server-components-a-installar" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Durant la instal·lació us demanarà quins components (snaps) voleu instal·lar. <strong>Deixeu-los tots en blanc</strong> — els instal·larem manualment amb <code>apt</code> a mesura que els necessitem al llarg del curs. Això manté el sistema net.</p>
+<p>L'única excepció recomanada és marcar <strong>OpenSSH Server</strong>, així ja podreu connectar-vos al servidor per SSH des del host des del primer moment. Si no el marqueu, també el podreu instal·lar després amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openssh-server
 </span></code></pre></div>
-<p>Aleshores feu servir la imatge oficial <code>guacamole/guacamole</code> i <code>guacamole/guacd</code> amb un <code>docker-compose.yml</code>. És, de llarg, la manera més ràpida i menys frustrant.</p>
-</li>
-<li>
-<p><strong>Opció B</strong> — instal·lació <strong>manual</strong> compilant <code>guacd</code> i muntant Tomcat + MySQL. És l'opció "aprofundeix", però trigareu 5-8 hores només d'entorn i us podeu quedar encallats.</p>
-</li>
+<h3 id="windows-desactivar-el-tallafoc">Windows: desactivar el tallafoc<a class="headerlink" href="#windows-desactivar-el-tallafoc" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Al nostre laboratori podem <strong>desactivar el tallafoc de Windows</strong> sense problema. És necessari perquè per defecte <strong>bloqueja els <code>ping</code> (ICMP)</strong> i no podríeu comprovar la connectivitat.</p>
+<h2 id="guest-additions">Guest Additions<a class="headerlink" href="#guest-additions" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Un cop instal·lats els SOs, instal·leu les <strong>Guest Additions</strong> de VirtualBox — milloren rendiment, resolució de pantalla i integració amb el host.</p>
+<ul>
+<li><strong>Ubuntu Desktop / Windows</strong>: menú <code>Dispositius → Inserir imatge del CD de Guest Additions</code> i seguir l'assistent.</li>
+<li><strong>Ubuntu Server</strong> (sense entorn gràfic):</li>
 </ul>
-<p>Si trieu l'opció B i us encalleu, demaneu ajuda al professor: us donarà un procediment funcional, <strong>però amb una petita reducció de nota</strong> (l'aprenentatge era intentar-ho pel vostre compte primer).</p>
-<h3 id="fase-5-configurar-connexions-a-guacamole">Fase 5 — Configurar connexions a Guacamole<a class="headerlink" href="#fase-5-configurar-connexions-a-guacamole" title="Enllaç a aquesta secció">&para;</a></h3>
-<p>A la interfície web de Guacamole (per defecte <code>http://&lt;IP_VM_Guacamole&gt;:8080/guacamole</code>, usuari/contrasenya <code>guacadmin</code>/<code>guacadmin</code>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>build-essential<span class="w"> </span>dkms<span class="w"> </span>linux-headers-<span class="k">$(</span>uname<span class="w"> </span>-r<span class="k">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/cdrom<span class="w"> </span>/mnt
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sudo<span class="w"> </span>/mnt/VBoxLinuxAdditions.run
+</span></code></pre></div>
+<h2 id="verificacio-final">Verificació final<a class="headerlink" href="#verificacio-final" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Un cop tot instal·lat, comproveu:</p>
 <ol>
-<li>Canvieu la contrasenya per defecte.</li>
-<li>Creeu <strong>connexions</strong> cap a cada VM:<ul>
-<li>Connexió RDP a la VM Windows.</li>
-<li>Connexió RDP (o VNC) a la VM Ubuntu Desktop.</li>
-</ul>
-</li>
-<li>Creeu <strong>usuaris</strong>:<ul>
-<li>Almenys 2 usuaris diferents (per exemple <code>usuari1</code>, <code>usuari2</code>).</li>
-<li>Al primer li assigneu <strong>només</strong> la VM Windows.</li>
-<li>Al segon li assigneu <strong>només</strong> la VM Ubuntu Desktop.</li>
-</ul>
-</li>
-<li>Des d'un client extern (un navegador de l'ordinador que useu de treball, no de dins de Proxmox), entreu a Guacamole com a <code>usuari1</code> i comproveu que veieu la seva VM. Feu el mateix amb <code>usuari2</code>.</li>
+<li><strong>Adreces IP manuals</strong> a tots els adaptadors de xarxa interna (per exemple, el servidor a <code>192.168.100.1/24</code> i els clients a <code>192.168.100.10/24</code>, <code>192.168.100.11/24</code>...). Trieu vosaltres el rang.</li>
+<li><strong>Ping</strong> entre les tres VMs a través de la xarxa interna.</li>
+<li><strong>SSH del host al servidor</strong> per la xarxa host-only:</li>
 </ol>
-<h3 id="fase-6-documentar-i-entregar">Fase 6 — Documentar i entregar<a class="headerlink" href="#fase-6-documentar-i-entregar" title="Enllaç a aquesta secció">&para;</a></h3>
-<h2 id="entrega">Entrega<a class="headerlink" href="#entrega" title="Enllaç a aquesta secció">&para;</a></h2>
-<ul>
-<li><strong>PDF</strong> amb la instal·lació i configuració completa (què heu fet, en quin ordre, quins problemes trobats i com els heu resolt).</li>
-<li><strong>Vídeo</strong> que mostri:<ul>
-<li>Interfície de Proxmox amb les 3 VMs.</li>
-<li>Entrada com a <code>usuari1</code> a Guacamole des d'un navegador → aparegui només la VM Windows i pugueu controlar-la.</li>
-<li>Log out i entrada com a <code>usuari2</code> → aparegui només la VM Ubuntu Desktop i pugueu controlar-la.</li>
-</ul>
-</li>
-<li>Cada membre del grup entrega, individualment, <code>Questionari-Projecte2.md</code>.</li>
-</ul>
-<h2 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Enllaç a aquesta secció">&para;</a></h2>
-<ul>
-<li><a href="https://pve.proxmox.com/pve-docs/">Proxmox VE — documentació oficial</a></li>
-<li><a href="https://www.proxmox.com/en/downloads/category/iso-images-pve">Proxmox VE — instal·lació ISO</a></li>
-<li><a href="https://guacamole.apache.org/doc/gug/getting-started.html">Apache Guacamole — Getting Started</a></li>
-<li><a href="https://guacamole.apache.org/doc/gug/guacamole-docker.html">Guacamole amb Docker</a></li>
-<li>Referències dels RA:<ul>
-<li><strong>RA6</strong> (SSH, VNC, RDP, xrdp) per entendre què transmeten les connexions per sota de Guacamole.</li>
-</ul>
-</li>
-</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ssh<span class="w"> </span>usuari@&lt;ip-host-only-del-servidor&gt;
+</span></code></pre></div>
+<ol>
+<li>El servidor té <strong>sortida a Internet</strong> (<code>ping 8.8.8.8</code> i <code>apt update</code> funcionen).</li>
+</ol>
+<p>Si tot això respon correctament, l'entorn està a punt per començar el curs.</p>
 
 
 
@@ -2028,7 +2235,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
         
           
-          <a href="../Projecte1/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Enunciat Projecte 1 (base + Ruta A)">
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Anterior: Inici">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2038,11 +2245,27 @@
                 Anterior
               </span>
               <div class="md-ellipsis">
-                Enunciat Projecte 1 (base + Ruta A)
+                Inici
               </div>
             </div>
           </a>
         
+        
+          
+          <a href="../../7-RA7-Wifi/teoria/" class="md-footer__link md-footer__link--next" aria-label="Següent: Teoria">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                Teoria
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
@@ -2093,7 +2316,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
