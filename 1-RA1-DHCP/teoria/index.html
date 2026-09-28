@@ -2124,62 +2124,85 @@
 <li><strong>NetworkManager</strong>: orientat a entorns d'escriptori. Més fàcil d'utilitzar amb interfície gràfica.</li>
 </ul>
 <p>En entorns de servidor (com Ubuntu Server o WSL), normalment es fa servir <code>networkd</code>.</p>
-<p>Vegem ara una configuració on assignem una IP manualment, típica del servidor:</p>
+<p>Vegem ara dos exemples típics amb IP manual.</p>
+<p><strong>Exemple 1 — Equip amb una sola interfície i IP estàtica completa</strong></p>
+<p>És el cas d'un equip connectat a una xarxa amb un router real: cal indicar-li l'adreça, la porta d'enllaç i els DNS, perquè no els rebrà de ningú.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">network</span><span class="p">:</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">enp0s3</span><span class="p">:</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">enp0s8</span><span class="p">:</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="nt">addresses</span><span class="p">:</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.2.100/24</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">      </span><span class="nt">gateway4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.2.1</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="nt">addresses</span><span class="p">:</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.2.100/24</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="nt">routes</span><span class="p">:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">          </span><span class="nt">via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.2.1</span>
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">      </span><span class="nt">nameservers</span><span class="p">:</span>
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="nt">addresses</span><span class="p">:</span>
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.1.1</span>
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.8.8</span>
 </span></code></pre></div>
-<p>Intervenen dues interfícies (<code>enp0s3</code> i <code>enp0s8</code>): la primera es configura amb DHCP i la segona amb IP estàtica.</p>
+<ul>
+<li><code>addresses</code> → IP i màscara (en format CIDR).</li>
+<li><code>routes</code> amb <code>to: default</code> → la porta d'enllaç (substitueix l'antic <code>gateway4</code>, obsolet).</li>
+<li><code>nameservers</code> → servidors DNS.</li>
+</ul>
+<p><strong>Exemple 2 — El servidor del curs (dues interfícies)</strong></p>
+<p>El nostre servidor té una interfície NAT per sortir a Internet i una altra a la xarxa interna, on donarà servei als clients.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">network</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">enp0s3</span><span class="p">:</span><span class="w">            </span><span class="c1"># NAT → Internet</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">enp0s8</span><span class="p">:</span><span class="w">            </span><span class="c1"># xarxa interna → clients</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="nt">addresses</span><span class="p">:</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.2.1/24</span>
+</span></code></pre></div>
+<ul>
+<li><code>enp0s3</code> rep per DHCP (de VirtualBox) la IP, la porta d'enllaç i els DNS.</li>
+<li><code>enp0s8</code> només necessita la IP: <strong>no li posem <code>routes</code> ni <code>nameservers</code></strong>.</li>
+</ul>
 <blockquote>
+<p><strong>Una sola ruta per defecte</strong>: un equip només ha de tenir una porta d'enllaç per defecte. Si una interfície ja la rep per DHCP (com <code>enp0s3</code>), no en definiu una altra a la resta d'interfícies. Si n'hi ha dues, el sistema no sabrà per on sortir i pot perdre la connexió a Internet.</p>
 <p><strong>Important</strong>: després de modificar un fitxer, cal aplicar els canvis amb <code>sudo netplan apply</code>. Si no surt cap missatge d'error, se suposa que tot ha anat bé, però sempre convé comprovar-ho.</p>
 </blockquote>
 <p>Més informació sobre Netplan: <a href="https://dani-cirvianum.gitbook.io/netplan">dani-cirvianum.gitbook.io/netplan</a>.</p>
 <h3 id="sintaxi-yaml-basica">Sintaxi YAML bàsica<a class="headerlink" href="#sintaxi-yaml-basica" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>YAML significa <em>YAML Ain't Markup Language</em>. És un format de text senzill pensat per a fitxers de configuració. La idea principal és que funciona amb claus i valors:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">nom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Joan</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">edat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">nom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Joan</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">edat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 </span></code></pre></div>
 <p>La jerarquia es marca amb <strong>espais</strong>, mai amb tabuladors. Si s'usen malament els espais, el fitxer donarà error:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">persona</span><span class="p">:</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">nom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Joan</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">edat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">persona</span><span class="p">:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">nom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Joan</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">edat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 </span></code></pre></div>
 <p>També permet llistes amb un guió davant de cada element:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">servidors_dns</span><span class="p">:</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.8.8</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.1.1</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">servidors_dns</span><span class="p">:</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.8.8</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.1.1</span>
 </span></code></pre></div>
 <p>Els comentaris es posen amb el símbol <code>#</code>.</p>
 <h3 id="comprovacio-de-la-configuracio-de-la-xarxa">Comprovació de la configuració de la xarxa<a class="headerlink" href="#comprovacio-de-la-configuracio-de-la-xarxa" title="Enllaç a aquesta secció">&para;</a></h3>
 <p><strong>1. Comprovar l'adreça IP.</strong> Per veure les adreces IP de totes les interfícies:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ip<span class="w"> </span>a
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ip<span class="w"> </span>a
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>2: ens33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 ...
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    inet 192.168.1.50/24 brd 192.168.1.255 scope global ens33
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>2: ens33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 ...
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    inet 192.168.1.50/24 brd 192.168.1.255 scope global ens33
 </span></code></pre></div>
 <p>Aquí tenim la IP <code>192.168.1.50</code> amb màscara <code>255.255.255.0</code>.</p>
 <p><strong>2. Comprovar la porta d'enllaç (gateway).</strong> La porta d'enllaç és el dispositiu que connecta la nostra xarxa local amb una altra xarxa, normalment Internet:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ip<span class="w"> </span>route
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ip<span class="w"> </span>route
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>default via 192.168.1.1 dev ens33 proto dhcp
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>default via 192.168.1.1 dev ens33 proto dhcp
 </span></code></pre></div>
 <p><code>default via 192.168.1.1</code> indica que la porta d'enllaç és el router <code>192.168.1.1</code>, i <code>dev ens33</code> la interfície que utilitza.</p>
 <p><strong>3. Comprovar servidors DNS.</strong> Els servidors DNS resolen noms de domini (<code>www.exemple.com</code>) a adreces IP. Ubuntu modern els gestiona amb <code>systemd-resolved</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>resolvectl<span class="w"> </span>status
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>resolvectl<span class="w"> </span>status
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>nameserver 8.8.8.8
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>nameserver 1.1.1.1
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>nameserver 8.8.8.8
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>nameserver 1.1.1.1
 </span></code></pre></div>
 <p>En alguns sistemes es pot mirar també el fitxer simbòlic <code>/etc/resolv.conf</code> (que no s'ha d'editar directament).</p>
 <h2 id="servei-dhcp">Servei DHCP<a class="headerlink" href="#servei-dhcp" title="Enllaç a aquesta secció">&para;</a></h2>
@@ -2204,8 +2227,8 @@
 <p>Quan treballem amb serveis de xarxa a Ubuntu (Apache2, DHCP, SSH, Samba...) hi ha un conjunt de conceptes i comandes bàsiques que es repeteixen. Entendre'ls és fonamental abans d'entrar en la configuració específica de cada servei.</p>
 <h3 id="installacio-dun-servei">Instal·lació d'un servei<a class="headerlink" href="#installacio-dun-servei" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>La majoria de serveis es troben als repositoris oficials d'Ubuntu i s'instal·len amb <code>apt</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>isc-dhcp-server<span class="w"> </span>-y
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>isc-dhcp-server<span class="w"> </span>-y
 </span></code></pre></div>
 <p>Ordres bàsiques:</p>
 <ul>
@@ -2216,16 +2239,16 @@
 </ul>
 <h3 id="gestio-del-servei-amb-systemctl">Gestió del servei amb systemctl<a class="headerlink" href="#gestio-del-servei-amb-systemctl" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>Ubuntu utilitza <code>systemd</code> per gestionar serveis. Les ordres són sempre les mateixes; només canvia el nom del servei. Exemples amb <code>apache2</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>apache2<span class="w">       </span><span class="c1"># iniciar</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>apache2<span class="w">        </span><span class="c1"># aturar</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2<span class="w">     </span><span class="c1"># reiniciar</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>apache2<span class="w">      </span><span class="c1"># recarregar configuració</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>systemctl<span class="w"> </span>status<span class="w"> </span>apache2<span class="w">           </span><span class="c1"># veure estat</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>apache2<span class="w">      </span><span class="c1"># activar a l'inici</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>apache2<span class="w">     </span><span class="c1"># desactivar a l'inici</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>apache2<span class="w">       </span><span class="c1"># iniciar</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>apache2<span class="w">        </span><span class="c1"># aturar</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2<span class="w">     </span><span class="c1"># reiniciar</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>apache2<span class="w">      </span><span class="c1"># recarregar configuració</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>systemctl<span class="w"> </span>status<span class="w"> </span>apache2<span class="w">           </span><span class="c1"># veure estat</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>apache2<span class="w">      </span><span class="c1"># activar a l'inici</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>apache2<span class="w">     </span><span class="c1"># desactivar a l'inici</span>
 </span></code></pre></div>
 <p>També podem fer servir l'ordre <code>service</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>service<span class="w"> </span>apache2<span class="w"> </span>restart
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>service<span class="w"> </span>apache2<span class="w"> </span>restart
 </span></code></pre></div>
 <h3 id="directori-de-configuracio-etc">Directori de configuració (/etc)<a class="headerlink" href="#directori-de-configuracio-etc" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>La configuració dels serveis de xarxa es troba habitualment dins de <code>/etc</code>:</p>
@@ -2243,17 +2266,17 @@
 <li>Logs d'Apache → <code>/var/log/apache2/</code></li>
 </ul>
 <p>Per veure les últimes 40 línies del log general:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-40<span class="w"> </span>/var/log/syslog
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-40<span class="w"> </span>/var/log/syslog
 </span></code></pre></div>
 <blockquote>
 <p><strong>És molt important consultar el syslog abans de preguntar al professor.</strong></p>
 </blockquote>
 <p>Quan el syslog s'omple molt, es pot buidar:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>su
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>cat<span class="w"> </span>/dev/null<span class="w"> </span>&gt;<span class="w"> </span>/var/log/syslog
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>su
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>cat<span class="w"> </span>/dev/null<span class="w"> </span>&gt;<span class="w"> </span>/var/log/syslog
 </span></code></pre></div>
 <p>També es poden veure missatges amb <code>journalctl</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>apache2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>apache2
 </span></code></pre></div>
 <h3 id="comandes-utils-generals">Comandes útils generals<a class="headerlink" href="#comandes-utils-generals" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
@@ -2268,15 +2291,15 @@
 <p><strong>Avís</strong>: <code>isc-dhcp-server</code> <strong>ja no rep manteniment actiu</strong> per part d'ISC des de 2022 — el seu substitut oficial és <strong>Kea DHCP</strong> (vegeu més avall). Tot i així, <code>isc-dhcp-server</code> continua sent el paquet més utilitzat en documentació i formació per la seva simplicitat, i és el que farem servir a la major part de les pràctiques d'aquest RA. Al Projecte 1 del mòdul utilitzarem Kea.</p>
 </blockquote>
 <h3 id="installacio">Instal·lació<a class="headerlink" href="#installacio" title="Enllaç a aquesta secció">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>isc-dhcp-server
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>isc-dhcp-server
 </span></code></pre></div>
 <h3 id="assignar-ip-estatica-a-la-interficie">Assignar IP estàtica a la interfície<a class="headerlink" href="#assignar-ip-estatica-a-la-interficie" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>Abans que el servei DHCP funcioni correctament, la interfície de xarxa des de la qual repartirà adreces ha de tenir una IP fixa. Si no, en intentar arrencar el servei donarà error.</p>
 <p>Això es fa editant la configuració de xarxa (Netplan, <code>/etc/netplan/</code>) i assignant una IP estàtica a la interfície corresponent, tal com s'ha explicat abans.</p>
 <h3 id="configuracio-de-etcdefaultisc-dhcp-server">Configuració de /etc/default/isc-dhcp-server<a class="headerlink" href="#configuracio-de-etcdefaultisc-dhcp-server" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>En aquest fitxer s'especifica en quines interfícies escoltarà el servei:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>INTERFACESv4="ens33"
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>INTERFACESv4="ens33"
 </span></code></pre></div>
 <p>Vídeo recomanat abans de continuar: <a href="https://drive.google.com/file/d/1TZKaon7wdZzjqT7iWfv2RkDxhmTIOxgQ/view?usp=drive_link">Configuració bàsica del servei</a>.</p>
 <h3 id="configuracio-principal-etcdhcpdhcpdconf">Configuració principal: /etc/dhcp/dhcpd.conf<a class="headerlink" href="#configuracio-principal-etcdhcpdhcpdconf" title="Enllaç a aquesta secció">&para;</a></h3>
@@ -2288,41 +2311,41 @@
 <li>Opcions per a la xarxa: router (gateway), DNS, broadcast, etc.</li>
 </ul>
 <p>El fitxer que es crea quan s'instal·la el servei és pràcticament un manual amb exemples predefinits. Convé desar-lo abans de modificar-lo:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/dhcp/dhcpd.conf<span class="w"> </span>/etc/dhcp/dhcpd.conf.bck
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/dhcp/dhcpd.conf<span class="w"> </span>/etc/dhcp/dhcpd.conf.bck
 </span></code></pre></div>
 <p>Ara podem cercar l'exemple que millor s'ajusti al que volem fer i modificar-ne només la part necessària.</p>
 <p>Exemple típic:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>default-lease-time 600;
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>max-lease-time 7200;
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>option subnet-mask 255.255.255.0;
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>option broadcast-address 192.168.1.255;
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>option routers 192.168.1.254;
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>option domain-name-servers 192.168.1.1, 192.168.1.2;
-</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>option domain-name "exemple.local";
-</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>
-</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>subnet 192.168.1.0 netmask 255.255.255.0 {
-</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>  range 192.168.1.10 192.168.1.100;
-</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>  range 192.168.1.150 192.168.1.200;
-</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>}
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>default-lease-time 600;
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>max-lease-time 7200;
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>option subnet-mask 255.255.255.0;
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>option broadcast-address 192.168.1.255;
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>option routers 192.168.1.254;
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>option domain-name-servers 192.168.1.1, 192.168.1.2;
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>option domain-name "exemple.local";
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>subnet 192.168.1.0 netmask 255.255.255.0 {
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>  range 192.168.1.10 192.168.1.100;
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>  range 192.168.1.150 192.168.1.200;
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>}
 </span></code></pre></div>
 <p>Les línies <code>option</code> fora del bloc <code>subnet</code> són <strong>opcions globals</strong> que s'apliquen a tots els àmbits. Si volem que una <code>option</code> sigui exclusiva d'un àmbit, s'ha de posar dins de les claus <code>{}</code>.</p>
 <h3 id="permisos">Permisos<a class="headerlink" href="#permisos" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>Possibles errors de permisos: per exemple, que el servei no pugui obrir <code>/etc/dhcp/dhcpd.conf</code> o el fitxer de leases. Cal comprovar que els fitxers tenen permisos i propietari correctes:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>root:root<span class="w"> </span>/etc/dhcp/dhcpd.conf
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">644</span><span class="w"> </span>/etc/dhcp/dhcpd.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>root:root<span class="w"> </span>/etc/dhcp/dhcpd.conf
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">644</span><span class="w"> </span>/etc/dhcp/dhcpd.conf
 </span></code></pre></div>
 <h3 id="gestio-del-servei">Gestió del servei<a class="headerlink" href="#gestio-del-servei" title="Enllaç a aquesta secció">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>isc-dhcp-server
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>isc-dhcp-server
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>isc-dhcp-server
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>isc-dhcp-server
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>isc-dhcp-server
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>isc-dhcp-server
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>isc-dhcp-server
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>isc-dhcp-server
 </span></code></pre></div>
 <p>També es pot usar <code>service</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>service<span class="w"> </span>isc-dhcp-server<span class="w"> </span>start
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo<span class="w"> </span>service<span class="w"> </span>isc-dhcp-server<span class="w"> </span>start
 </span></code></pre></div>
 <p>Per veure les IPs que el servidor ha assignat, es consulta el fitxer de leases:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>cat<span class="w"> </span>/var/lib/dhcp/dhcpd.leases
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>cat<span class="w"> </span>/var/lib/dhcp/dhcpd.leases
 </span></code></pre></div>
 <p>Aquí es guarda:</p>
 <ul>
@@ -2332,61 +2355,58 @@
 <li>L'estat (actiu, lliure, etc.).</li>
 </ul>
 <h3 id="exemple-practic-complet">Exemple pràctic complet<a class="headerlink" href="#exemple-practic-complet" title="Enllaç a aquesta secció">&para;</a></h3>
-<p>Imaginem que tenim una xarxa local <code>192.168.50.0/24</code>. Volem que el servidor DHCP reparteixi adreces de la <code>.10</code> a la <code>.50</code>, que la interfície del servidor tingui IP fixa <code>192.168.50.1</code>, que el gateway sigui <code>192.168.50.254</code> i els DNS <code>8.8.8.8</code> i <code>8.8.4.4</code>.</p>
+<p>Imaginem que tenim una xarxa local <code>192.168.50.0/24</code>. Volem que el servidor DHCP reparteixi adreces de la <code>.10</code> a la <code>.50</code>, que la interfície del servidor tingui IP fixa <code>192.168.50.1</code>, que el gateway dels clients sigui el mateix servidor (<code>192.168.50.1</code>) i els DNS <code>8.8.8.8</code> i <code>8.8.4.4</code>.</p>
 <p><strong>1. Assignar IP estàtica a la interfície (suposem <code>ens33</code>) via Netplan:</strong></p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nt">network</span><span class="p">:</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span><span class="nt">renderer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networkd</span>
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span>
-</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">    </span><span class="nt">ens33</span><span class="p">:</span>
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">      </span><span class="nt">addresses</span><span class="p">:</span>
-</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.50.1/24</span>
-</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">      </span><span class="nt">gateway4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.50.254</span>
-</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">      </span><span class="nt">nameservers</span><span class="p">:</span>
-</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">        </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">8.8.8.8</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">8.8.4.4</span><span class="p p-Indicator">]</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nt">network</span><span class="p">:</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span><span class="nt">renderer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networkd</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">    </span><span class="nt">ens33</span><span class="p">:</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">      </span><span class="nt">addresses</span><span class="p">:</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.50.1/24</span>
 </span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>netplan<span class="w"> </span>apply
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>netplan<span class="w"> </span>apply
 </span></code></pre></div>
 <p><strong>2. Instal·lar isc-dhcp-server:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>isc-dhcp-server
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>isc-dhcp-server
 </span></code></pre></div>
 <p><strong>3. Editar <code>/etc/default/isc-dhcp-server</code>:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>INTERFACESv4="ens33"
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>INTERFACESv4="ens33"
 </span></code></pre></div>
 <p><strong>4. Editar <code>/etc/dhcp/dhcpd.conf</code>:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>default-lease-time 600;
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>max-lease-time 7200;
-</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
-</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>option subnet-mask 255.255.255.0;
-</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>option broadcast-address 192.168.50.255;
-</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>option routers 192.168.50.254;
-</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>option domain-name-servers 8.8.8.8, 8.8.4.4;
-</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>option domain-name "exemple.local";
-</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>
-</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>subnet 192.168.50.0 netmask 255.255.255.0 {
-</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>  range 192.168.50.10 192.168.50.50;
-</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>}
+<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>default-lease-time 600;
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>max-lease-time 7200;
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>option subnet-mask 255.255.255.0;
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>option broadcast-address 192.168.50.255;
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>option routers 192.168.50.1;
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>option domain-name-servers 8.8.8.8, 8.8.4.4;
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>option domain-name "exemple.local";
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>subnet 192.168.50.0 netmask 255.255.255.0 {
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>  range 192.168.50.10 192.168.50.50;
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>}
 </span></code></pre></div>
 <p><strong>5. Comprovar permisos:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>root:root<span class="w"> </span>/etc/dhcp/dhcpd.conf
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">644</span><span class="w"> </span>/etc/dhcp/dhcpd.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>root:root<span class="w"> </span>/etc/dhcp/dhcpd.conf
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">644</span><span class="w"> </span>/etc/dhcp/dhcpd.conf
 </span></code></pre></div>
 <p><strong>6. Activar i arrencar el servei:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>isc-dhcp-server
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>isc-dhcp-server
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>isc-dhcp-server
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>isc-dhcp-server
 </span></code></pre></div>
 <p><strong>7. Comprovar l'estat:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>isc-dhcp-server
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>isc-dhcp-server
 </span></code></pre></div>
-<p><strong>8. Provar des d'un client</strong>: configura un dispositiu per obtenir IP automàticament i comprova que rep una IP dins del rang, i que es pot fer <code>ping</code> al gateway i a una IP externa.</p>
+<p><strong>8. Provar des d'un client</strong>: configura un dispositiu per obtenir IP automàticament i comprova que rep una IP dins del rang, i que es pot fer <code>ping</code> al gateway. El <code>ping</code> a una IP externa (per exemple <code>8.8.8.8</code>) només funcionarà si hi ha sortida a Internet.</p>
 <h2 id="reserves-dip-per-mac">Reserves d'IP per MAC<a class="headerlink" href="#reserves-dip-per-mac" title="Enllaç a aquesta secció">&para;</a></h2>
 <p>Una <strong>reserva</strong> consisteix a assignar sempre la mateixa IP a un client concret, identificat per la seva adreça MAC. Serveix per a dispositius que han de tenir sempre la mateixa adreça (impressores, servidors interns, càmeres IP...) però sense renunciar a la gestió centralitzada del DHCP.</p>
 <p>A <code>isc-dhcp-server</code> es fa amb un bloc <code>host</code> fora del <code>subnet</code> (les reserves s'apliquen globalment al servei, encara que la IP triada pertanyi a un àmbit concret):</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>host impressora-planta1 {
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>  hardware ethernet 00:11:22:33:44:55;
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>  fixed-address 192.168.50.20;
-</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>}
+<div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>host impressora-planta1 {
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>  hardware ethernet 00:11:22:33:44:55;
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>  fixed-address 192.168.50.20;
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>}
 </span></code></pre></div>
 <ul>
 <li><code>hardware ethernet</code> → MAC del client (es pot obtenir amb <code>ip a</code> a Linux o <code>ipconfig /all</code> a Windows).</li>
@@ -2398,7 +2418,7 @@
 <ol>
 <li>
 <p>Llistar totes les interfícies a <code>/etc/default/isc-dhcp-server</code>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>INTERFACESv4="ens33 ens34"
+<div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>INTERFACESv4="ens33 ens34"
 </span></code></pre></div>
 </li>
 <li>
@@ -2458,26 +2478,26 @@
 </tbody>
 </table>
 <p>Exemple mínim de configuració Kea equivalent al <code>dhcpd.conf</code> de l'exemple pràctic anterior (<code>/etc/kea/kea-dhcp4.conf</code>):</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="p">{</span>
-</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="w">  </span><span class="nt">"Dhcp4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">    </span><span class="nt">"interfaces-config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">      </span><span class="nt">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ens33"</span><span class="p">]</span>
-</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">    </span><span class="nt">"valid-lifetime"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span>
-</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="w">    </span><span class="nt">"max-valid-lifetime"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span>
-</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="w">    </span><span class="nt">"subnet4"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="w">      </span><span class="p">{</span>
-</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="w">        </span><span class="nt">"subnet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.50.0/24"</span><span class="p">,</span>
-</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="w">        </span><span class="nt">"pools"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"pool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.50.10 - 192.168.50.50"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
-</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="w">        </span><span class="nt">"option-data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"routers"</span><span class="p">,</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.50.254"</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domain-name-servers"</span><span class="p">,</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.8.8.8, 8.8.4.4"</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="w">        </span><span class="p">]</span>
-</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a><span class="w">      </span><span class="p">}</span>
-</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-35-19"><a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-35-20"><a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="p">{</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="w">  </span><span class="nt">"Dhcp4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="w">    </span><span class="nt">"interfaces-config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">      </span><span class="nt">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ens33"</span><span class="p">]</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="w">    </span><span class="nt">"valid-lifetime"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="w">    </span><span class="nt">"max-valid-lifetime"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="w">    </span><span class="nt">"subnet4"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="w">      </span><span class="p">{</span>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="w">        </span><span class="nt">"subnet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.50.0/24"</span><span class="p">,</span>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="w">        </span><span class="nt">"pools"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"pool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.50.10 - 192.168.50.50"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="w">        </span><span class="nt">"option-data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-36-14"><a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"routers"</span><span class="p">,</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.50.254"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-36-15"><a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domain-name-servers"</span><span class="p">,</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.8.8.8, 8.8.4.4"</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-36-16"><a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-36-17"><a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-36-18"><a id="__codelineno-36-18" name="__codelineno-36-18" href="#__codelineno-36-18"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-36-19"><a id="__codelineno-36-19" name="__codelineno-36-19" href="#__codelineno-36-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-36-20"><a id="__codelineno-36-20" name="__codelineno-36-20" href="#__codelineno-36-20"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>A la Part 4 de <code>practiques.md</code> es fa una introducció mínima a Kea (instal·lació, migració d'un àmbit senzill i comprovació). El <strong>Projecte 1</strong> del mòdul utilitzarà Kea com a servidor DHCP definitiu.</p>
 

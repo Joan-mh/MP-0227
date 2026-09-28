@@ -2397,7 +2397,7 @@
 <h4 id="2-configuracio-del-servidor-dhcp">2. Configuració del servidor DHCP<a class="headerlink" href="#2-configuracio-del-servidor-dhcp" title="Enllaç a aquesta secció">&para;</a></h4>
 <ol>
 <li>Edita el fitxer <code>/etc/default/isc-dhcp-server</code> i indica la interfície de xarxa on escoltarà.</li>
-<li>Edita el fitxer <code>/etc/dhcp/dhcpd.conf</code> i crea un àmbit de classe C inventat.</li>
+<li>Edita el fitxer <code>/etc/dhcp/dhcpd.conf</code> i crea un àmbit de classe C inventat. Defineix-hi també <code>option routers</code> amb la IP del servidor (serà el gateway que rebran els clients).</li>
 <li>Comprova que no hi hagi errors al syslog.</li>
 <li>Reinicia el servei i comprova que està actiu.</li>
 </ol>
