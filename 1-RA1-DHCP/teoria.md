@@ -43,26 +43,53 @@ Ubuntu pot utilitzar dos **renderers** principals:
 
 En entorns de servidor (com Ubuntu Server o WSL), normalment es fa servir `networkd`.
 
-Vegem ara una configuració on assignem una IP manualment, típica del servidor:
+Vegem ara dos exemples típics amb IP manual.
+
+**Exemple 1 — Equip amb una sola interfície i IP estàtica completa**
+
+És el cas d'un equip connectat a una xarxa amb un router real: cal indicar-li l'adreça, la porta d'enllaç i els DNS, perquè no els rebrà de ningú.
 
 ```yaml
 network:
   version: 2
   ethernets:
     enp0s3:
-      dhcp4: true
-    enp0s8:
       dhcp4: false
       addresses:
         - 192.168.2.100/24
-      gateway4: 192.168.2.1
+      routes:
+        - to: default
+          via: 192.168.2.1
       nameservers:
         addresses:
           - 1.1.1.1
           - 8.8.8.8
 ```
 
-Intervenen dues interfícies (`enp0s3` i `enp0s8`): la primera es configura amb DHCP i la segona amb IP estàtica.
+- `addresses` → IP i màscara (en format CIDR).
+- `routes` amb `to: default` → la porta d'enllaç (substitueix l'antic `gateway4`, obsolet).
+- `nameservers` → servidors DNS.
+
+**Exemple 2 — El servidor del curs (dues interfícies)**
+
+El nostre servidor té una interfície NAT per sortir a Internet i una altra a la xarxa interna, on donarà servei als clients.
+
+```yaml
+network:
+  version: 2
+  ethernets:
+    enp0s3:            # NAT → Internet
+      dhcp4: true
+    enp0s8:            # xarxa interna → clients
+      dhcp4: false
+      addresses:
+        - 192.168.2.1/24
+```
+
+- `enp0s3` rep per DHCP (de VirtualBox) la IP, la porta d'enllaç i els DNS.
+- `enp0s8` només necessita la IP: **no li posem `routes` ni `nameservers`**.
+
+> **Una sola ruta per defecte**: un equip només ha de tenir una porta d'enllaç per defecte. Si una interfície ja la rep per DHCP (com `enp0s3`), no en definiu una altra a la resta d'interfícies. Si n'hi ha dues, el sistema no sabrà per on sortir i pot perdre la connexió a Internet.
 
 > **Important**: després de modificar un fitxer, cal aplicar els canvis amb `sudo netplan apply`. Si no surt cap missatge d'error, se suposa que tot ha anat bé, però sempre convé comprovar-ho.
 
@@ -350,7 +377,7 @@ Aquí es guarda:
 
 ### Exemple pràctic complet
 
-Imaginem que tenim una xarxa local `192.168.50.0/24`. Volem que el servidor DHCP reparteixi adreces de la `.10` a la `.50`, que la interfície del servidor tingui IP fixa `192.168.50.1`, que el gateway sigui `192.168.50.254` i els DNS `8.8.8.8` i `8.8.4.4`.
+Imaginem que tenim una xarxa local `192.168.50.0/24`. Volem que el servidor DHCP reparteixi adreces de la `.10` a la `.50`, que la interfície del servidor tingui IP fixa `192.168.50.1`, que el gateway dels clients sigui el mateix servidor (`192.168.50.1`) i els DNS `8.8.8.8` i `8.8.4.4`.
 
 **1. Assignar IP estàtica a la interfície (suposem `ens33`) via Netplan:**
 
@@ -362,9 +389,6 @@ network:
     ens33:
       addresses:
         - 192.168.50.1/24
-      gateway4: 192.168.50.254
-      nameservers:
-        addresses: [8.8.8.8, 8.8.4.4]
 ```
 
 ```bash
@@ -392,7 +416,7 @@ max-lease-time 7200;
 
 option subnet-mask 255.255.255.0;
 option broadcast-address 192.168.50.255;
-option routers 192.168.50.254;
+option routers 192.168.50.1;
 option domain-name-servers 8.8.8.8, 8.8.4.4;
 option domain-name "exemple.local";
 
@@ -421,7 +445,7 @@ sudo systemctl start isc-dhcp-server
 sudo systemctl status isc-dhcp-server
 ```
 
-**8. Provar des d'un client**: configura un dispositiu per obtenir IP automàticament i comprova que rep una IP dins del rang, i que es pot fer `ping` al gateway i a una IP externa.
+**8. Provar des d'un client**: configura un dispositiu per obtenir IP automàticament i comprova que rep una IP dins del rang, i que es pot fer `ping` al gateway. El `ping` a una IP externa (per exemple `8.8.8.8`) només funcionarà si hi ha sortida a Internet.
 
 ## Reserves d'IP per MAC
 

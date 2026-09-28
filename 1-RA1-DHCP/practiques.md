@@ -18,7 +18,7 @@
 #### 2. Configuració del servidor DHCP
 
 1. Edita el fitxer `/etc/default/isc-dhcp-server` i indica la interfície de xarxa on escoltarà.
-2. Edita el fitxer `/etc/dhcp/dhcpd.conf` i crea un àmbit de classe C inventat.
+2. Edita el fitxer `/etc/dhcp/dhcpd.conf` i crea un àmbit de classe C inventat. Defineix-hi també `option routers` amb la IP del servidor (serà el gateway que rebran els clients).
 3. Comprova que no hi hagi errors al syslog.
 4. Reinicia el servei i comprova que està actiu.
 
