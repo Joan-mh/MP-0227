@@ -2463,8 +2463,9 @@
 <li>Obre i revisa el fitxer <code>/var/lib/dhcp/dhcpd.leases</code>.</li>
 <li>Identifica:</li>
 <li>Les entrades actives per a cada client.</li>
-<li>Les entrades de les reserves.</li>
+<li>Comprova que les IPs reservades <strong>no hi apareixen</strong> i explica per què.</li>
 <li>El temps de lease i l'estat de cada entrada.</li>
+<li>Verifica al log del servidor que s'han assignat les IPs reservades: <code>journalctl -u isc-dhcp-server | grep DHCPACK</code>.</li>
 </ol>
 <h3 id="resultats-esperats_1">Resultats esperats<a class="headerlink" href="#resultats-esperats_1" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
