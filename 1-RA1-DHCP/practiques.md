@@ -87,8 +87,9 @@
 1. Obre i revisa el fitxer `/var/lib/dhcp/dhcpd.leases`.
 2. Identifica:
    - Les entrades actives per a cada client.
-   - Les entrades de les reserves.
+   - Comprova que les IPs reservades **no hi apareixen** i explica per què.
    - El temps de lease i l'estat de cada entrada.
+3. Verifica al log del servidor que s'han assignat les IPs reservades: `journalctl -u isc-dhcp-server | grep DHCPACK`.
 
 ### Resultats esperats
 
