@@ -29,3 +29,6 @@ _originals/
 site/
 docs/
 
+
+# Configuració local de Claude
+.claude/
