@@ -2680,9 +2680,9 @@
 </span></code></pre></div>
 <p>Escolta al port local del client i envia tot el trànsit, a través de la connexió SSH, al <code>HOST_DESTÍ:PORT_DESTÍ</code> (accedit <em>des del servidor SSH</em>).</p>
 <p>Exemple: accedir a un servei web intern d'una empresa que només es veu des del servidor de l'empresa:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">8080</span>:intranet.empresa.local:80<span class="w"> </span>usuari@servidor.empresa.local
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">8080</span>:intranet.empresa.edu:80<span class="w"> </span>usuari@servidor.empresa.edu
 </span></code></pre></div>
-<p>Ara, al navegador local, <code>http://localhost:8080</code> mostra el que veuria <code>intranet.empresa.local:80</code> accedint des del servidor.</p>
+<p>Ara, al navegador local, <code>http://localhost:8080</code> mostra el que veuria <code>intranet.empresa.edu:80</code> accedint des del servidor.</p>
 <h4 id="tunel-remot-r">Túnel remot (<code>-R</code>)<a class="headerlink" href="#tunel-remot-r" title="Enllaç a aquesta secció">&para;</a></h4>
 <p>Fa el contrari: obre un port al servidor SSH que reenvia trànsit cap al client. Útil per exposar temporalment un servei local a un servidor.</p>
 <p>Els túnels són especialment útils per protegir protocols que no tenen xifratge propi. Un exemple clàssic (que veurem a la pràctica): <strong>VNC</strong> dins un túnel SSH.</p>

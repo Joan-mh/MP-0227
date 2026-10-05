@@ -2695,8 +2695,8 @@
 <p>Als inicis d'ARPANET, la xarxa predecessora d'Internet, la resolució de noms d'ordinador no era automàtica. Tots els nodes feien servir un fitxer anomenat <strong><code>hosts.txt</code></strong>, mantingut de manera centralitzada per la Stanford Research Institute (SRI).</p>
 <p>Aquest fitxer contenia una llista de totes les adreces IP existents i els noms associats. Cada ordinador descarregava periòdicament una còpia actualitzada del fitxer i l'utilitzava per traduir noms a adreces IP.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>127.0.0.1       localhost
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>192.168.1.10    servidor1.exemple.local servidor1
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>192.168.1.20    impressora.exemple.local impressora
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>192.168.1.10    servidor1.exemple.edu servidor1
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>192.168.1.20    impressora.exemple.edu impressora
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>8.8.8.8         google-dns
 </span></code></pre></div>
 <p>Aquest sistema funcionava bé mentre la xarxa era petita, amb pocs centenars de màquines. A mesura que ARPANET creixia i es transformava en l'Internet que coneixem, aquest model manual va començar a mostrar greus limitacions:</p>
@@ -2866,11 +2866,11 @@
 <li><strong><code>db.&lt;xarxa-inversa&gt;</code></strong> — fitxer de zona inversa (registres <code>PTR</code>).</li>
 </ul>
 <h3 id="exemple-basic-complet">Exemple bàsic complet<a class="headerlink" href="#exemple-basic-complet" title="Enllaç a aquesta secció">&para;</a></h3>
-<p>Suposem que volem servir el domini <code>exemple.local</code> a la xarxa <code>192.168.50.0/24</code>, amb <code>ns1.exemple.local = 192.168.50.1</code> i <code>www.exemple.local = 192.168.50.10</code>.</p>
+<p>Suposem que volem servir el domini <code>exemple.edu</code> a la xarxa <code>192.168.50.0/24</code>, amb <code>ns1.exemple.edu = 192.168.50.1</code> i <code>www.exemple.edu = 192.168.50.10</code>.</p>
 <p><strong>1. Declaració de les zones a <code>/etc/bind/named.conf.local</code>:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>zone "exemple.local" {
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>zone "exemple.edu" {
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    type master;
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    file "/etc/bind/db.exemple.local";
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    file "/etc/bind/db.exemple.edu";
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>};
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>zone "50.168.192.in-addr.arpa" {
@@ -2897,45 +2897,45 @@
 </span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>};
 </span></code></pre></div>
 <p>Els <strong>forwarders</strong> són els servidors DNS externs als quals bind9 preguntarà si li arriba una consulta sobre un domini del qual <strong>no és autoritatiu</strong> i no té la resposta en caché.</p>
-<p><strong>3. Zona directa <code>/etc/bind/db.exemple.local</code>:</strong></p>
+<p><strong>3. Zona directa <code>/etc/bind/db.exemple.edu</code>:</strong></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$TTL    604800
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>@       IN      SOA     ns1.exemple.local. admin.exemple.local. (
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>@       IN      SOA     ns1.exemple.edu. admin.exemple.edu. (
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>                              1         ; Serial
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>                              604800    ; Refresh
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>                              86400     ; Retry
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>                              2419200   ; Expire
 </span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>                              604800 )  ; Negative Cache TTL
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        IN      NS      ns1.exemple.local.
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        IN      NS      ns1.exemple.edu.
 </span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>ns1     IN      A       192.168.50.1
 </span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>www     IN      A       192.168.50.10
 </span></code></pre></div>
 <p><strong>4. Zona inversa <code>/etc/bind/db.192.168.50</code>:</strong></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$TTL    604800
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>@       IN      SOA     ns1.exemple.local. admin.exemple.local. (
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>@       IN      SOA     ns1.exemple.edu. admin.exemple.edu. (
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>                              1         ; Serial
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>                              604800    ; Refresh
 </span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>                              86400     ; Retry
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>                              2419200   ; Expire
 </span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>                              604800 )  ; Negative Cache TTL
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>@       IN      NS      ns1.exemple.local.
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>1       IN      PTR     ns1.exemple.local.
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>10      IN      PTR     www.exemple.local.
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>@       IN      NS      ns1.exemple.edu.
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>1       IN      PTR     ns1.exemple.edu.
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>10      IN      PTR     www.exemple.edu.
 </span></code></pre></div>
 <p><strong>5. Reiniciar el servei i comprovar l'estat:</strong></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>bind9
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>bind9
 </span></code></pre></div>
-<p>Amb aquesta configuració, qualsevol client que faci servir aquest servidor DNS podrà resoldre <code>www.exemple.local</code> a la IP <code>192.168.50.10</code> i la IP <code>192.168.50.10</code> a <code>www.exemple.local</code>.</p>
+<p>Amb aquesta configuració, qualsevol client que faci servir aquest servidor DNS podrà resoldre <code>www.exemple.edu</code> a la IP <code>192.168.50.10</code> i la IP <code>192.168.50.10</code> a <code>www.exemple.edu</code>.</p>
 <h3 id="detalls-importants-sobre-la-sintaxi-dels-fitxers-de-zona">Detalls importants sobre la sintaxi dels fitxers de zona<a class="headerlink" href="#detalls-importants-sobre-la-sintaxi-dels-fitxers-de-zona" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
-<li><strong>El punt final és obligatori</strong> en noms totalment qualificats (<code>ns1.exemple.local.</code>). Sense el punt, bind9 hi afegeix el nom de la zona: escriure <code>ns1.exemple.local</code> (sense punt) es converteix en <code>ns1.exemple.local.exemple.local.</code> — error habitual.</li>
+<li><strong>El punt final és obligatori</strong> en noms totalment qualificats (<code>ns1.exemple.edu.</code>). Sense el punt, bind9 hi afegeix el nom de la zona: escriure <code>ns1.exemple.edu</code> (sense punt) es converteix en <code>ns1.exemple.edu.exemple.edu.</code> — error habitual.</li>
 <li>El símbol <code>@</code> representa el nom de la zona actual.</li>
 <li>El <strong>serial</strong> del SOA s'ha d'incrementar <strong>cada cop que es modifica la zona</strong>. Convenció habitual: <code>AAAAMMDDNN</code> (any-mes-dia-versió).</li>
 </ul>
 <h3 id="eines-de-validacio">Eines de validació<a class="headerlink" href="#eines-de-validacio" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>Abans de reiniciar bind9, val la pena validar els fitxers:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>named-checkconf<span class="w">                                     </span><span class="c1"># valida named.conf*</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo<span class="w"> </span>named-checkzone<span class="w"> </span>exemple.local<span class="w"> </span>/etc/bind/db.exemple.local
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo<span class="w"> </span>named-checkzone<span class="w"> </span>exemple.edu<span class="w"> </span>/etc/bind/db.exemple.edu
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>sudo<span class="w"> </span>named-checkzone<span class="w"> </span><span class="m">50</span>.168.192.in-addr.arpa<span class="w"> </span>/etc/bind/db.192.168.50
 </span></code></pre></div>
 <p>Un <code>OK</code> significa que la zona s'ha carregat correctament (mostra el serial detectat).</p>
@@ -2944,17 +2944,17 @@
 <h3 id="dig"><code>dig</code><a class="headerlink" href="#dig" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>Mostra la resposta completa de la consulta, capçaleres incloses. Molt útil per depurar.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dig<span class="w"> </span>www.google.com<span class="w">                        </span><span class="c1"># consulta al DNS configurat al sistema</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dig<span class="w"> </span>@192.168.50.1<span class="w"> </span>www.exemple.local<span class="w">       </span><span class="c1"># consulta un servidor concret</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dig<span class="w"> </span>@192.168.50.1<span class="w"> </span>www.exemple.edu<span class="w">       </span><span class="c1"># consulta un servidor concret</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>dig<span class="w"> </span>-x<span class="w"> </span><span class="m">192</span>.168.50.10<span class="w">                      </span><span class="c1"># resolució inversa</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>dig<span class="w"> </span>www.exemple.local<span class="w"> </span>+short<span class="w">              </span><span class="c1"># només la resposta neta</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>dig<span class="w"> </span>www.exemple.edu<span class="w"> </span>+short<span class="w">              </span><span class="c1"># només la resposta neta</span>
 </span></code></pre></div>
 <h3 id="nslookup"><code>nslookup</code><a class="headerlink" href="#nslookup" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>Més senzill i universal (existeix també a Windows). Ideal per comprovacions ràpides:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>nslookup<span class="w"> </span>www.exemple.local
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>nslookup<span class="w"> </span>www.exemple.local<span class="w"> </span><span class="m">192</span>.168.50.1<span class="w">     </span><span class="c1"># forçar un servidor concret</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>nslookup<span class="w"> </span>www.exemple.edu
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>nslookup<span class="w"> </span>www.exemple.edu<span class="w"> </span><span class="m">192</span>.168.50.1<span class="w">     </span><span class="c1"># forçar un servidor concret</span>
 </span></code></pre></div>
 <p>A Windows:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>nslookup www.exemple.local
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>nslookup www.exemple.edu
 </span></code></pre></div>
 <h2 id="zones-inverses">Zones inverses<a class="headerlink" href="#zones-inverses" title="Enllaç a aquesta secció">&para;</a></h2>
 <p>La zona inversa serveix per resoldre <strong>d'IP a nom</strong>. S'expressa amb el domini especial <code>in-addr.arpa</code> (per IPv4) o <code>ip6.arpa</code> (per IPv6). El nom de la zona s'escriu invertint els octets de la xarxa.</p>
@@ -2982,8 +2982,8 @@
 </tbody>
 </table>
 <p>Dins de la zona, cada host s'identifica només pel seu <strong>últim octet</strong> (o els octets que quedin fora de la part de xarxa):</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>1       IN      PTR     ns1.exemple.local.
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>10      IN      PTR     www.exemple.local.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>1       IN      PTR     ns1.exemple.edu.
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>10      IN      PTR     www.exemple.edu.
 </span></code></pre></div>
 <p>Un mateix nom pot tenir molts <code>A</code> (per exemple, per repartir càrrega), però un <code>PTR</code> normalment només apunta a un nom canònic. Per això la resolució directa i la inversa <strong>no sempre són simètriques</strong> a la vida real.</p>
 <h3 id="nota-sobre-ipv6">Nota sobre IPv6<a class="headerlink" href="#nota-sobre-ipv6" title="Enllaç a aquesta secció">&para;</a></h3>
@@ -3009,9 +3009,11 @@
 <li><code>.example</code> — reservat per a documentació i exemples.</li>
 <li><code>.invalid</code> — reservat per garantir que la resolució sempre falli.</li>
 <li><code>.localhost</code> — sempre s'ha de resoldre al loopback.</li>
-<li><code>.local</code> — reservat de facto per xarxes locals (usat per mDNS/Bonjour; <strong>compte</strong> si convius amb aquests protocols).</li>
 </ul>
-<p>Als exercicis d'aquest mòdul farem servir dominis del tipus <code>cognom.edu</code> (l'alumne substitueix pel seu cognom), però qui vulgui pot triar qualsevol dels TLDs de la llista anterior.</p>
+<blockquote>
+<p>⚠️ <strong>No feu servir <code>.local</code> amb bind9.</strong> <code>.local</code> està reservat per a <strong>mDNS</strong> (Multicast DNS, RFC 6762: Avahi, Bonjour). Els clients moderns no envien les consultes <code>*.local</code> al servidor DNS configurat sinó per multicast a la xarxa local: a Ubuntu, <code>systemd-resolved</code> (el resolver <code>127.0.0.53</code>) les envia a mDNS i la resolució falla, encara que la zona estigui ben configurada a bind9. Només funcionaria preguntant directament al servidor (<code>dig @192.168.50.1 ...</code>), cosa que confon molt a l'hora de depurar.</p>
+</blockquote>
+<p>Als exercicis d'aquest mòdul farem servir dominis del tipus <code>cognom.edu</code> (l'alumne substitueix pel seu cognom), però qui vulgui pot fer servir <code>.test</code> (per exemple, <code>cognom.test</code>). <strong>Mai <code>.local</code>.</strong></p>
 <h2 id="documentacio-i-referencies">Documentació i referències<a class="headerlink" href="#documentacio-i-referencies" title="Enllaç a aquesta secció">&para;</a></h2>
 <ul>
 <li>Guia clàssica de la comunitat Ubuntu: <a href="https://help.ubuntu.com/community/BIND9ServerHowto">help.ubuntu.com/community/BIND9ServerHowto</a> — pot estar desactualitzada (última revisió important el 2018), però conserva bones explicacions conceptuals.</li>

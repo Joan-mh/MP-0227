@@ -2622,7 +2622,7 @@
 <h3 id="tasques_1">Tasques<a class="headerlink" href="#tasques_1" title="Enllaç a aquesta secció">&para;</a></h3>
 <p>Configureu Squid per satisfer les restriccions següents. Recordeu: cada canvi validat amb <code>sudo squid -k parse</code> i aplicat amb <code>sudo systemctl reload squid</code>.</p>
 <h4 id="1-bloqueig-dun-host-per-nom-no-per-ip">1. Bloqueig d'un host per <strong>nom</strong> (no per IP)<a class="headerlink" href="#1-bloqueig-dun-host-per-nom-no-per-ip" title="Enllaç a aquesta secció">&para;</a></h4>
-<p>L'equip Windows (per exemple <code>windows.aula.local</code>) <strong>no ha de tenir accés a Internet</strong>. La resta d'equips de la xarxa local sí. Per bloquejar per nom, cal:</p>
+<p>L'equip Windows (per exemple <code>windows.aula.edu</code>) <strong>no ha de tenir accés a Internet</strong>. La resta d'equips de la xarxa local sí. Per bloquejar per nom, cal:</p>
 <ul>
 <li>Al DNS o al <code>/etc/hosts</code> del servidor Squid, tenir el nom resoluble.</li>
 <li>Fer servir el tipus <code>srcdomain</code> (o <code>dstdomain</code> segons el cas).</li>
