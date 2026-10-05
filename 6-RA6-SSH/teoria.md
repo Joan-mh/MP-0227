@@ -269,10 +269,10 @@ Escolta al port local del client i envia tot el trànsit, a través de la connex
 Exemple: accedir a un servei web intern d'una empresa que només es veu des del servidor de l'empresa:
 
 ```bash
-ssh -L 8080:intranet.empresa.local:80 usuari@servidor.empresa.local
+ssh -L 8080:intranet.empresa.edu:80 usuari@servidor.empresa.edu
 ```
 
-Ara, al navegador local, `http://localhost:8080` mostra el que veuria `intranet.empresa.local:80` accedint des del servidor.
+Ara, al navegador local, `http://localhost:8080` mostra el que veuria `intranet.empresa.edu:80` accedint des del servidor.
 
 #### Túnel remot (`-R`)
 

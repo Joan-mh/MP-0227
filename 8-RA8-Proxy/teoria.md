@@ -257,7 +257,7 @@ Els fitxers de configuració viuen a `/etc/nginx/sites-available/` i s'activen a
 ```nginx
 server {
     listen 80;
-    server_name proxy.exemple.local;
+    server_name proxy.exemple.edu;
 
     location / {
         proxy_pass http://192.168.30.20;
@@ -287,7 +287,7 @@ Un proxy invers pot decidir cap a on va cada URL segons el path:
 ```nginx
 server {
     listen 80;
-    server_name empresa.exemple.local;
+    server_name empresa.exemple.edu;
 
     location /api/ {
         proxy_pass http://192.168.30.20:3000/;

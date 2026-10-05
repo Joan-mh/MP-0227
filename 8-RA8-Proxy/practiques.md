@@ -182,7 +182,7 @@ Configureu Squid per satisfer les restriccions següents. Recordeu: cada canvi v
 
 #### 1. Bloqueig d'un host per **nom** (no per IP)
 
-L'equip Windows (per exemple `windows.aula.local`) **no ha de tenir accés a Internet**. La resta d'equips de la xarxa local sí. Per bloquejar per nom, cal:
+L'equip Windows (per exemple `windows.aula.edu`) **no ha de tenir accés a Internet**. La resta d'equips de la xarxa local sí. Per bloquejar per nom, cal:
 
 - Al DNS o al `/etc/hosts` del servidor Squid, tenir el nom resoluble.
 - Fer servir el tipus `srcdomain` (o `dstdomain` segons el cas).

@@ -328,7 +328,7 @@ option subnet-mask 255.255.255.0;
 option broadcast-address 192.168.1.255;
 option routers 192.168.1.254;
 option domain-name-servers 192.168.1.1, 192.168.1.2;
-option domain-name "exemple.local";
+option domain-name "exemple.edu";
 
 subnet 192.168.1.0 netmask 255.255.255.0 {
   range 192.168.1.10 192.168.1.100;
@@ -418,7 +418,7 @@ option subnet-mask 255.255.255.0;
 option broadcast-address 192.168.50.255;
 option routers 192.168.50.1;
 option domain-name-servers 8.8.8.8, 8.8.4.4;
-option domain-name "exemple.local";
+option domain-name "exemple.edu";
 
 subnet 192.168.50.0 netmask 255.255.255.0 {
   range 192.168.50.10 192.168.50.50;

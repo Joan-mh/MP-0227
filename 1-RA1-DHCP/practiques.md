@@ -117,7 +117,7 @@ Partim de la configuració de la Part 2 (dos àmbits: classe C i classe B), amb 
 
 A `/etc/dhcp/dhcpd.conf`, **fora** de qualsevol bloc `subnet`, afegeix les opcions següents perquè s'apliquin a tots dos àmbits:
 
-- `option domain-name` amb un domini inventat (per exemple, `curs.local`).
+- `option domain-name` amb un domini inventat (per exemple, `curs.edu`).
 - `option ntp-servers` amb almenys un servidor NTP públic (`pool.ntp.org` no serveix — cal una IP; podeu usar, per exemple, `162.159.200.1` de Cloudflare).
 - `option domain-name-servers` amb `1.1.1.1` i `8.8.8.8`.
 

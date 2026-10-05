@@ -2,7 +2,7 @@
 
 > Al llarg de totes les pràctiques cal que un **client Windows** i un **client Linux** obtinguin els resultats esperats. Configureu-los perquè utilitzin el vostre servidor DNS com a primari i valideu la resolució amb `nslookup` (Windows) o `dig`/`nslookup` (Linux).
 >
-> El **domini d'exemple** és `cognom.edu`: cada alumne el substitueix pel seu propi cognom (per exemple, `mercade.edu`). Si preferiu, podeu triar qualsevol TLD reservat per a proves (`.test`, `.example`, `.local`) — veure la teoria per a la llista.
+> El **domini d'exemple** és `cognom.edu`: cada alumne el substitueix pel seu propi cognom (per exemple, `mercade.edu`). Si preferiu, podeu fer servir el TLD reservat per a proves `.test` (per exemple, `mercade.test`). **No feu servir `.local`**: està reservat per a mDNS i els clients Linux/Windows no el resoldran a través de bind9 (veure la teoria).
 >
 > **La xarxa** és `192.168.X.0/24`: el tercer octet `X` el trieu vosaltres (mantingueu-lo coherent en totes les parts).
 

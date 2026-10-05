@@ -9,8 +9,8 @@ Aquest fitxer contenia una llista de totes les adreces IP existents i els noms a
 
 ```
 127.0.0.1       localhost
-192.168.1.10    servidor1.exemple.local servidor1
-192.168.1.20    impressora.exemple.local impressora
+192.168.1.10    servidor1.exemple.edu servidor1
+192.168.1.20    impressora.exemple.edu impressora
 8.8.8.8         google-dns
 ```
 
@@ -276,14 +276,14 @@ Tots dins de `/etc/bind/`:
 
 ### Exemple bàsic complet
 
-Suposem que volem servir el domini `exemple.local` a la xarxa `192.168.50.0/24`, amb `ns1.exemple.local = 192.168.50.1` i `www.exemple.local = 192.168.50.10`.
+Suposem que volem servir el domini `exemple.edu` a la xarxa `192.168.50.0/24`, amb `ns1.exemple.edu = 192.168.50.1` i `www.exemple.edu = 192.168.50.10`.
 
 **1. Declaració de les zones a `/etc/bind/named.conf.local`:**
 
 ```
-zone "exemple.local" {
+zone "exemple.edu" {
     type master;
-    file "/etc/bind/db.exemple.local";
+    file "/etc/bind/db.exemple.edu";
 };
 
 zone "50.168.192.in-addr.arpa" {
@@ -314,17 +314,17 @@ options {
 
 Els **forwarders** són els servidors DNS externs als quals bind9 preguntarà si li arriba una consulta sobre un domini del qual **no és autoritatiu** i no té la resposta en caché.
 
-**3. Zona directa `/etc/bind/db.exemple.local`:**
+**3. Zona directa `/etc/bind/db.exemple.edu`:**
 
 ```
 $TTL    604800
-@       IN      SOA     ns1.exemple.local. admin.exemple.local. (
+@       IN      SOA     ns1.exemple.edu. admin.exemple.edu. (
                               1         ; Serial
                               604800    ; Refresh
                               86400     ; Retry
                               2419200   ; Expire
                               604800 )  ; Negative Cache TTL
-        IN      NS      ns1.exemple.local.
+        IN      NS      ns1.exemple.edu.
 ns1     IN      A       192.168.50.1
 www     IN      A       192.168.50.10
 ```
@@ -333,15 +333,15 @@ www     IN      A       192.168.50.10
 
 ```
 $TTL    604800
-@       IN      SOA     ns1.exemple.local. admin.exemple.local. (
+@       IN      SOA     ns1.exemple.edu. admin.exemple.edu. (
                               1         ; Serial
                               604800    ; Refresh
                               86400     ; Retry
                               2419200   ; Expire
                               604800 )  ; Negative Cache TTL
-@       IN      NS      ns1.exemple.local.
-1       IN      PTR     ns1.exemple.local.
-10      IN      PTR     www.exemple.local.
+@       IN      NS      ns1.exemple.edu.
+1       IN      PTR     ns1.exemple.edu.
+10      IN      PTR     www.exemple.edu.
 ```
 
 **5. Reiniciar el servei i comprovar l'estat:**
@@ -351,11 +351,11 @@ sudo systemctl restart bind9
 sudo systemctl status bind9
 ```
 
-Amb aquesta configuració, qualsevol client que faci servir aquest servidor DNS podrà resoldre `www.exemple.local` a la IP `192.168.50.10` i la IP `192.168.50.10` a `www.exemple.local`.
+Amb aquesta configuració, qualsevol client que faci servir aquest servidor DNS podrà resoldre `www.exemple.edu` a la IP `192.168.50.10` i la IP `192.168.50.10` a `www.exemple.edu`.
 
 ### Detalls importants sobre la sintaxi dels fitxers de zona
 
-- **El punt final és obligatori** en noms totalment qualificats (`ns1.exemple.local.`). Sense el punt, bind9 hi afegeix el nom de la zona: escriure `ns1.exemple.local` (sense punt) es converteix en `ns1.exemple.local.exemple.local.` — error habitual.
+- **El punt final és obligatori** en noms totalment qualificats (`ns1.exemple.edu.`). Sense el punt, bind9 hi afegeix el nom de la zona: escriure `ns1.exemple.edu` (sense punt) es converteix en `ns1.exemple.edu.exemple.edu.` — error habitual.
 - El símbol `@` representa el nom de la zona actual.
 - El **serial** del SOA s'ha d'incrementar **cada cop que es modifica la zona**. Convenció habitual: `AAAAMMDDNN` (any-mes-dia-versió).
 
@@ -365,7 +365,7 @@ Abans de reiniciar bind9, val la pena validar els fitxers:
 
 ```bash
 sudo named-checkconf                                     # valida named.conf*
-sudo named-checkzone exemple.local /etc/bind/db.exemple.local
+sudo named-checkzone exemple.edu /etc/bind/db.exemple.edu
 sudo named-checkzone 50.168.192.in-addr.arpa /etc/bind/db.192.168.50
 ```
 
@@ -381,9 +381,9 @@ Mostra la resposta completa de la consulta, capçaleres incloses. Molt útil per
 
 ```bash
 dig www.google.com                        # consulta al DNS configurat al sistema
-dig @192.168.50.1 www.exemple.local       # consulta un servidor concret
+dig @192.168.50.1 www.exemple.edu       # consulta un servidor concret
 dig -x 192.168.50.10                      # resolució inversa
-dig www.exemple.local +short              # només la resposta neta
+dig www.exemple.edu +short              # només la resposta neta
 ```
 
 ### `nslookup`
@@ -391,14 +391,14 @@ dig www.exemple.local +short              # només la resposta neta
 Més senzill i universal (existeix també a Windows). Ideal per comprovacions ràpides:
 
 ```bash
-nslookup www.exemple.local
-nslookup www.exemple.local 192.168.50.1     # forçar un servidor concret
+nslookup www.exemple.edu
+nslookup www.exemple.edu 192.168.50.1     # forçar un servidor concret
 ```
 
 A Windows:
 
 ```
-nslookup www.exemple.local
+nslookup www.exemple.edu
 ```
 
 ## Zones inverses
@@ -416,8 +416,8 @@ Exemples IPv4:
 Dins de la zona, cada host s'identifica només pel seu **últim octet** (o els octets que quedin fora de la part de xarxa):
 
 ```
-1       IN      PTR     ns1.exemple.local.
-10      IN      PTR     www.exemple.local.
+1       IN      PTR     ns1.exemple.edu.
+10      IN      PTR     www.exemple.edu.
 ```
 
 Un mateix nom pot tenir molts `A` (per exemple, per repartir càrrega), però un `PTR` normalment només apunta a un nom canònic. Per això la resolució directa i la inversa **no sempre són simètriques** a la vida real.
@@ -452,9 +452,10 @@ Encara que als exercicis podem inventar qualsevol domini, a la vida real cal evi
 - `.example` — reservat per a documentació i exemples.
 - `.invalid` — reservat per garantir que la resolució sempre falli.
 - `.localhost` — sempre s'ha de resoldre al loopback.
-- `.local` — reservat de facto per xarxes locals (usat per mDNS/Bonjour; **compte** si convius amb aquests protocols).
 
-Als exercicis d'aquest mòdul farem servir dominis del tipus `cognom.edu` (l'alumne substitueix pel seu cognom), però qui vulgui pot triar qualsevol dels TLDs de la llista anterior.
+> ⚠️ **No feu servir `.local` amb bind9.** `.local` està reservat per a **mDNS** (Multicast DNS, RFC 6762: Avahi, Bonjour). Els clients moderns no envien les consultes `*.local` al servidor DNS configurat sinó per multicast a la xarxa local: a Ubuntu, `systemd-resolved` (el resolver `127.0.0.53`) les envia a mDNS i la resolució falla, encara que la zona estigui ben configurada a bind9. Només funcionaria preguntant directament al servidor (`dig @192.168.50.1 ...`), cosa que confon molt a l'hora de depurar.
+
+Als exercicis d'aquest mòdul farem servir dominis del tipus `cognom.edu` (l'alumne substitueix pel seu cognom), però qui vulgui pot fer servir `.test` (per exemple, `cognom.test`). **Mai `.local`.**
 
 ## Documentació i referències
 
