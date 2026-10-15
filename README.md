@@ -19,10 +19,10 @@ L'ordre no és el numèric dels RA — està pensat perquè cada mòdul reforci 
 
 | Ordre | RA | Servei | Pes | Teoria | Pràctiques |
 |:-:|:-:|---|:-:|:-:|:-:|
-| 1 | RA7 | Wifi (repàs TCP/IP + adaptador pont) | 10% | [teoria](7-RA7-Wifi/teoria.md) | [pràctiques](7-RA7-Wifi/practiques.md) |
-| 2 | RA1 | DHCP | 15% | [teoria](1-RA1-DHCP/teoria.md) | [pràctiques](1-RA1-DHCP/practiques.md) |
-| 3 | RA2 | DNS | 15% | [teoria](2-RA2-DNS/teoria.md) | [pràctiques](2-RA2-DNS/practiques.md) |
-| 4 | RA6 | SSH i accés remot | 10% | [teoria](6-RA6-SSH/teoria.md) | [pràctiques](6-RA6-SSH/practiques.md) |
+| 1 | RA1 | DHCP (repàs TCP/IP) | 15% | [teoria](1-RA1-DHCP/teoria.md) | [pràctiques](1-RA1-DHCP/practiques.md) |
+| 2 | RA2 | DNS | 15% | [teoria](2-RA2-DNS/teoria.md) | [pràctiques](2-RA2-DNS/practiques.md) |
+| 3 | RA6 | SSH i accés remot | 10% | [teoria](6-RA6-SSH/teoria.md) | [pràctiques](6-RA6-SSH/practiques.md) |
+| 4 | RA7 | Wifi (adaptador pont) | 10% | [teoria](7-RA7-Wifi/teoria.md) | [pràctiques](7-RA7-Wifi/practiques.md) |
 | 5 | RA5 | HTTP | 15% | [teoria](5-RA5-HTTP/teoria.md) | [pràctiques](5-RA5-HTTP/practiques.md) |
 | 6 | RA3 | FTP | 10% | [teoria](3-RA3-FTP/teoria.md) | [pràctiques](3-RA3-FTP/practiques.md) |
 | 7 | RA8 | Proxy | 10% | [teoria](8-RA8-Proxy/teoria.md) | [pràctiques](8-RA8-Proxy/practiques.md) |
