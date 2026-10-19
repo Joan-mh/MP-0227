@@ -2341,7 +2341,7 @@
 <h3 id="tasques">Tasques<a class="headerlink" href="#tasques" title="Enllaç a aquesta secció">&para;</a></h3>
 <h4 id="1-installacio-i-comprovacio">1. Instal·lació i comprovació<a class="headerlink" href="#1-installacio-i-comprovacio" title="Enllaç a aquesta secció">&para;</a></h4>
 <ol>
-<li>Al <strong>servidor</strong>, actualitza els repositoris i instal·la el paquet <code>openssh-server</code>.</li>
+<li>Al <strong>servidor</strong>, actualitza els repositoris i instal·la el paquet <code>openssh-server</code> si no ertà ja instal·lat.</li>
 <li>Comprova que el servei està actiu: <code>systemctl status ssh</code>.</li>
 <li>Anota la IP del servidor amb <code>ip a</code>.</li>
 <li>Al <strong>client</strong>, comprova que ja hi ha el paquet <code>openssh-client</code> instal·lat (normalment sí, per defecte).</li>
@@ -2349,35 +2349,44 @@
 <h4 id="2-primera-connexio-i-known_hosts">2. Primera connexió i <code>known_hosts</code><a class="headerlink" href="#2-primera-connexio-i-known_hosts" title="Enllaç a aquesta secció">&para;</a></h4>
 <ol>
 <li>Des del client, connecta't al servidor amb <code>ssh usuari@IP_SERVIDOR</code>.</li>
-<li>Observa el missatge d'advertència de "authenticity of host can't be established". Contesta <code>yes</code>.</li>
-<li>Un cop dins, mira el contingut de <code>~/.ssh/known_hosts</code> al client. Hi ha d'aparèixer una línia amb la clau pública del servidor.</li>
-<li>Fes <code>exit</code> per sortir. Torna a connectar-te — aquesta vegada <strong>no</strong> ha d'aparèixer cap advertència.</li>
+<li>Observa el missatge "authenticity of host can't be established" i el tipus de clau presentat. Encara no contestis <code>yes</code>.</li>
+<li>Obre directament la consola del servidor a VirtualBox. Si el client presenta una clau ED25519, executa:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh-keygen<span class="w"> </span>-lf<span class="w"> </span>/etc/ssh/ssh_host_ed25519_key.pub
+</span></code></pre></div>
+<p>Si presenta un altre tipus de clau, consulta el fitxer públic corresponent.</p>
+<ol>
+<li>Compara el valor <code>SHA256:...</code> amb el que mostra el client. Si coincideix, contesta <code>yes</code>; si no coincideix, atura't i investiga la diferència.</li>
+<li>Introdueix la contrasenya del compte remot quan es demani. Acceptar la clau del servidor i autenticar-te al compte són passos diferents.</li>
+<li>Un cop dins, consulta <code>~/.ssh/known_hosts</code> <strong>a l'ordinador client</strong>, en un altre terminal. Hi ha d'haver una entrada amb la clau pública del servidor. El nom o la IP poden aparèixer ocults mitjançant un hash.</li>
+<li>Fes <code>exit</code> per sortir de la sessió remota. Torna a connectar-te: no ha de tornar a preguntar si confies en la clau. La contrasenya del compte remot sí que es continuarà demanant mentre no configuris l'accés amb clau pública.</li>
 </ol>
 <h4 id="3-simulacio-dun-canvi-de-clau-opcional-pero-molt-didactic">3. Simulació d'un canvi de clau (opcional però molt didàctic)<a class="headerlink" href="#3-simulacio-dun-canvi-de-clau-opcional-pero-molt-didactic" title="Enllaç a aquesta secció">&para;</a></h4>
 <ol>
 <li>Al <strong>servidor</strong>, com a root, esborra i regenera les claus de host:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/ssh/ssh_host_*
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>dpkg-reconfigure<span class="w"> </span>openssh-server
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>ssh
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/ssh/ssh_host_*
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>dpkg-reconfigure<span class="w"> </span>openssh-server
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>ssh
 </span></code></pre></div>
 <ol>
 <li>Torna a connectar des del client. Ara ha d'aparèixer el missatge en majúscules <strong><code>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</code></strong>. Fes una <strong>captura de pantalla</strong> al dossier.</li>
 <li>Explica al dossier per què apareix aquest missatge i què significaria si aparegués sense haver reinstal·lat el servidor.</li>
-<li>Neteja l'entrada antiga: <code>ssh-keygen -R IP_SERVIDOR</code>. Torna a connectar i acceptar la nova clau.</li>
+<li>Com que acabes de regenerar les claus expressament, coneixes la causa del canvi. Consulta la nova empremta des de la consola de VirtualBox.</li>
+<li>Al client, retira l'entrada antiga amb <code>ssh-keygen -R IP_SERVIDOR</code>. Torna a connectar-te, comprova que l'empremta coincideix amb la consultada i accepta la nova clau.</li>
 </ol>
 <h4 id="4-copia-de-fitxers-amb-scp">4. Còpia de fitxers amb <code>scp</code><a class="headerlink" href="#4-copia-de-fitxers-amb-scp" title="Enllaç a aquesta secció">&para;</a></h4>
 <ol>
 <li>Al client, crea un fitxer <code>prova.txt</code> amb qualsevol contingut.</li>
 <li>Copia'l al servidor a <code>/home/usuari/</code>:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scp<span class="w"> </span>prova.txt<span class="w"> </span>usuari@IP_SERVIDOR:/home/usuari/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>prova.txt<span class="w"> </span>usuari@IP_SERVIDOR:/home/usuari/
 </span></code></pre></div>
 <ol>
 <li>Comprova que ha arribat entrant per SSH i fent <code>ls</code>.</li>
 <li>Al servidor, crea el fitxer <code>/etc/hostname_copia.txt</code> amb el contingut de <code>/etc/hostname</code>. Baixa'l al directori actual del client:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>usuari@IP_SERVIDOR:/etc/hostname_copia.txt<span class="w"> </span>.
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scp<span class="w"> </span>usuari@IP_SERVIDOR:/etc/hostname_copia.txt<span class="w"> </span>.
 </span></code></pre></div>
 <ol>
 <li>Copia tot un directori sencer del client al servidor amb <code>scp -r</code>.</li>
@@ -2386,14 +2395,14 @@
 <ol>
 <li>Al <strong>servidor</strong> (que no té entorn gràfic), instal·la una aplicació gràfica lleugera:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xeyes
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>x11-apps<span class="w"> </span>xauth
 </span></code></pre></div>
-<p><em>(Alternativa: <code>gedit</code>, <code>gimp</code>, <code>nautilus</code>, ... el que vulgueu.)</em></p>
+<p>El paquet <code>x11-apps</code> inclou <code>xeyes</code>; <code>xauth</code> permet gestionar l'autenticació de les connexions X11. Per començar, utilitzarem <code>xeyes</code>, que és una aplicació petita.</p>
 <ol>
 <li>Comprova que a <code>/etc/ssh/sshd_config</code> la línia <code>X11Forwarding yes</code> <strong>està activa</strong> (per defecte ho està, però ho verifiquem).</li>
 <li>Des del <strong>client</strong> (Linux Desktop), connecta't amb l'opció <code>-X</code>:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh<span class="w"> </span>-X<span class="w"> </span>usuari@IP_SERVIDOR
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ssh<span class="w"> </span>-X<span class="w"> </span>usuari@IP_SERVIDOR
 </span></code></pre></div>
 <ol>
 <li>Un cop dins, executa <code>xeyes</code>. Ha d'aparèixer la finestra a la <strong>teva</strong> pantalla, tot i que el procés corre al <strong>servidor</strong>. Fes una captura.</li>
@@ -2406,7 +2415,7 @@
 </ul>
 <h3 id="reflexio">Reflexió<a class="headerlink" href="#reflexio" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
-<li>Per què el fitxer <code>known_hosts</code> és, en la pràctica, "una CA manual"?</li>
+<li>Què guarda <code>known_hosts</code> i què comprova el client amb aquesta informació?</li>
 <li>Quina diferència hi ha entre <code>scp</code> i copiar per una carpeta compartida SMB/NFS?</li>
 </ul>
 <h2 id="part-2-autenticacio-per-clau-securitzacio-i-tunels">Part 2 — Autenticació per clau, securització i túnels<a class="headerlink" href="#part-2-autenticacio-per-clau-securitzacio-i-tunels" title="Enllaç a aquesta secció">&para;</a></h2>
@@ -2414,7 +2423,7 @@
 <ul>
 <li>Generar un parell de claus i configurar l'accés SSH sense contrasenya.</li>
 <li>Deshabilitar l'accés amb contrasenya al servidor.</li>
-<li>Aplicar les 4 mesures mínimes de securització (<code>PermitRootLogin no</code>, <code>PasswordAuthentication no</code>, <code>MaxAuthTries 3</code>, <code>AllowUsers</code>).</li>
+<li>Aplicar quatre mesures de securització: impedir l'entrada directa de root, exigir clau pública, limitar els intents per connexió i restringir els comptes autoritzats.</li>
 <li>Instal·lar i configurar UFW i fail2ban.</li>
 <li>Crear túnels SSH locals per accedir a serveis interns del servidor.</li>
 </ul>
@@ -2423,7 +2432,7 @@
 <ol>
 <li>Al <strong>client</strong>, genera un parell de claus ED25519:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519
 </span></code></pre></div>
 <ol>
 <li>Accepta el camí per defecte (<code>~/.ssh/id_ed25519</code>). Posa una <strong>passphrase</strong> (recomanat) o deixa-la en blanc per aquesta pràctica.</li>
@@ -2433,12 +2442,12 @@
 <ol>
 <li>Copia la clau pública al servidor amb <code>ssh-copy-id</code>:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ssh-copy-id<span class="w"> </span>usuari@IP_SERVIDOR
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ssh-copy-id<span class="w"> </span>usuari@IP_SERVIDOR
 </span></code></pre></div>
 <ol>
 <li>Comprova al servidor que la clau ha aparegut a <code>~/.ssh/authorized_keys</code> de l'usuari:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cat<span class="w"> </span>~/.ssh/authorized_keys
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat<span class="w"> </span>~/.ssh/authorized_keys
 </span></code></pre></div>
 <ol>
 <li>Ara prova de tornar a connectar: <code>ssh usuari@IP_SERVIDOR</code>. Ja no ha de demanar contrasenya (només la passphrase de la clau, si n'has posat).</li>
@@ -2447,72 +2456,134 @@
 <ol>
 <li>Al client, mostra el contingut de la clau pública: <code>cat ~/.ssh/id_ed25519.pub</code>.</li>
 <li>Al servidor, edita el fitxer <code>~/.ssh/authorized_keys</code> a mà i afegeix una nova línia amb aquesta clau. Vigila permisos: <code>chmod 700 ~/.ssh</code> i <code>chmod 600 ~/.ssh/authorized_keys</code>.</li>
-<li>Explica al dossier per què <code>ssh-copy-id</code> és més segur que fer-ho a mà.</li>
+<li>Quins errors ajuda a evitar <code>ssh-copy-id</code>? Explica per què una còpia manual ben feta també és vàlida.</li>
 </ol>
 <h4 id="4-securitzacio-del-servidor">4. Securització del servidor<a class="headerlink" href="#4-securitzacio-del-servidor" title="Enllaç a aquesta secció">&para;</a></h4>
-<p>Editem <code>/etc/ssh/sshd_config</code> per aplicar les 4 mesures mínimes. Recorda el ritual (còpia de seguretat, editar, <code>sudo sshd -t</code>, reiniciar, comprovar amb sessió nova).</p>
+<p>Configurarem quatre mesures: impedir l'entrada directa de root, exigir clau pública, limitar els intents per connexió i restringir els comptes autoritzats. <strong>Abans de començar, comprova que ja pots entrar amb la clau i mantén oberta la sessió actual.</strong></p>
 <ol>
-<li>Descomenta o afegeix les línies següents:</li>
+<li>Fes la còpia de seguretat del ritual inicial i revisa <code>/etc/ssh/sshd_config</code>. A Ubuntu acostuma a incloure, al principi, aquesta línia:</li>
 </ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>PermitRootLogin no
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>PasswordAuthentication no
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>MaxAuthTries 3
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>AllowUsers usuari
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Include /etc/ssh/sshd_config.d/*.conf
 </span></code></pre></div>
-<p>(Substitueix <code>usuari</code> pel teu nom d'usuari real al servidor.)</p>
+<p>Significa que també es llegeixen els fitxers <code>.conf</code> d'aquesta carpeta. Per a la majoria de directives, OpenSSH conserva <strong>el primer valor que troba</strong>: una opció definida en un fitxer inclòs abans pot prevaler sobre una línia posterior del fitxer principal. Pots consultar la carpeta amb <code>sudo ls -l /etc/ssh/sshd_config.d/</code> i llegir-ne els fitxers amb <code>sudo less NOM_DEL_FITXER</code>.</p>
 <ol>
-<li>Reinicia el servei i <strong>des d'una segona sessió</strong> verifica:</li>
+<li>Edita amb <code>sudo</code> <code>/etc/ssh/sshd_config</code> i ajusta les directives següents. Si ja estan actives, modifica-les en lloc d'afegir-les duplicades:</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>PermitRootLogin no
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>PasswordAuthentication no
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>PubkeyAuthentication yes
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>AuthenticationMethods publickey
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>MaxAuthTries 3
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>AllowUsers usuari
+</span></code></pre></div>
+<p>Substitueix <code>usuari</code> pel nom del compte remot al qual vols accedir.</p>
+<ul>
+<li><code>PasswordAuthentication no</code> desactiva el mètode <code>password</code>, però un altre mètode, <code>keyboard-interactive</code>, també podria demanar una contrasenya.</li>
+<li><code>PubkeyAuthentication yes</code> permet utilitzar clau pública.</li>
+<li>
+<p><code>AuthenticationMethods publickey</code> <strong>exigeix</strong> aquest mètode: activar-lo com a possibilitat i exigir-lo són coses diferents.</p>
+</li>
+<li>
+<p>Comprova la sintaxi abans de reiniciar:</p>
+</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>sshd<span class="w"> </span>-t
+</span></code></pre></div>
+<p>Si no mostra cap missatge, no s'han detectat errors de sintaxi. Si mostra errors, corregeix-los abans de continuar.</p>
+<ol>
+<li>Comprova també els valors efectius que el servidor interpretaria en llegir els fitxers:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>sshd<span class="w"> </span>-T<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'^(permitrootlogin|passwordauthentication|pubkeyauthentication|authenticationmethods|maxauthtries|allowusers) '</span>
+</span></code></pre></div>
+<p>Han de correspondre a les sis directives del pas 2; OpenSSH mostra els noms en minúscules. Si un valor no coincideix, revisa si ja està definit abans al fitxer principal o en un dels fitxers inclosos. Fes una còpia de seguretat del fitxer que hagis de modificar, corregeix la definició que preval i repeteix <code>sshd -t</code> i <code>sshd -T</code>.</p>
+<p><strong><code>sshd -t</code> comprova que la configuració està ben escrita; <code>sshd -T</code> mostra els valors que se n'obtenen.</strong> Aquestes ordres no apliquen els canvis al servei que ja està funcionant. Per a aquesta pràctica utilitzem directives globals, fora de blocs <code>Match</code>, que serveixen per aplicar opcions només a determinades connexions.</p>
+<ol>
+<li>Quan les comprovacions siguin correctes, reinicia amb <code>sudo systemctl restart ssh</code> i, <strong>sense tancar la sessió actual</strong>, obre una connexió nova des d'un altre terminal del client. Verifica:</li>
 <li>Que continues podent entrar amb la clau.</li>
 <li>Que <code>ssh root@IP_SERVIDOR</code> <strong>no</strong> deixa entrar (missatge de "Permission denied").</li>
-<li>Que si intentes forçar contrasenya amb <code>ssh -o PubkeyAuthentication=no usuari@IP_SERVIDOR</code> <strong>no</strong> funciona.</li>
+<li>Que si desactives l'ús de claus al client amb <code>ssh -o PubkeyAuthentication=no usuari@IP_SERVIDOR</code>, <strong>no</strong> pots entrar amb contrasenya ni amb un altre mètode.</li>
 </ol>
+<p>Les comprovacions dels fitxers no substitueixen aquesta prova amb una connexió nova.</p>
 <h4 id="5-tallafoc-ufw">5. Tallafoc (UFW)<a class="headerlink" href="#5-tallafoc-ufw" title="Enllaç a aquesta secció">&para;</a></h4>
 <ol>
 <li>Al servidor, instal·la UFW si no hi és: <code>sudo apt install ufw</code>.</li>
 <li>Permet només el port SSH:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span>ssh
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span>ssh
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
 </span></code></pre></div>
 <ol>
 <li>Comprova l'estat: <code>sudo ufw status</code>.</li>
 <li>Prova des del client que la connexió SSH continua funcionant.</li>
 </ol>
 <h4 id="6-proteccio-contra-forca-bruta-amb-fail2ban">6. Protecció contra força bruta amb fail2ban<a class="headerlink" href="#6-proteccio-contra-forca-bruta-amb-fail2ban" title="Enllaç a aquesta secció">&para;</a></h4>
+<p>Fail2ban llegeix els registres del servei, compta els errors que reconeix i bloqueja temporalment la IP d'origen quan se supera el límit configurat. Una <em>jail</em> és el conjunt de regles de detecció i bloqueig d'un servei.</p>
 <ol>
-<li>Al servidor, instal·la fail2ban: <code>sudo apt install fail2ban</code>.</li>
-<li>Comprova l'estat del filtre SSH:</li>
+<li>Al <strong>servidor</strong>, instal·la Fail2ban i el suport per llegir el registre de systemd:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>fail2ban-client<span class="w"> </span>status<span class="w"> </span>sshd
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>fail2ban<span class="w"> </span>python3-systemd
 </span></code></pre></div>
 <ol>
-<li>Des del client, provoca uns quants intents fallits (per exemple, connecta't com a un usuari inexistent unes 5-6 vegades):</li>
+<li>Edita amb <code>sudo</code> el fitxer <code>/etc/fail2ban/jail.d/sshd.local</code> i configura la protecció d'SSH. Si ja conté un apartat <code>[sshd]</code>, modifica'l en lloc de duplicar-lo:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ssh<span class="w"> </span>usuariinexistent@IP_SERVIDOR
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">[sshd]</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="na">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="na">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">systemd</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="na">maxretry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="na">findtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10m</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="na">bantime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2m</span>
+</span></code></pre></div>
+<ul>
+<li><code>enabled</code>: activa la protecció del servei SSH.</li>
+<li><code>backend = systemd</code>: llegeix el diari de systemd, on es registren els esdeveniments d'SSH.</li>
+<li><code>maxretry = 3</code>: bloqueja una IP quan detecta tres errors reconeguts pel filtre dins de l'interval indicat.</li>
+<li><code>findtime = 10m</code>: busca aquests errors dins dels darrers deu minuts.</li>
+<li>
+<p><code>bantime = 2m</code>: manté el bloqueig durant dos minuts, un temps curt per al laboratori.</p>
+</li>
+<li>
+<p>Valida la configuració, reinicia Fail2ban i comprova la protecció d'SSH. Si la validació dona un error, corregeix-lo abans de reiniciar:</p>
+</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>fail2ban-client<span class="w"> </span>-t
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>fail2ban
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>sudo<span class="w"> </span>fail2ban-client<span class="w"> </span>status<span class="w"> </span>sshd
 </span></code></pre></div>
 <ol>
-<li>Torna a executar <code>sudo fail2ban-client status sshd</code> al servidor i observa si la IP del client apareix a la llista de bloquejats.</li>
-<li>Per desbloquejar-te: <code>sudo fail2ban-client set sshd unbanip IP_CLIENT</code>.</li>
+<li>Deixa oberta la <strong>consola del servidor a VirtualBox</strong>. Des del client, intenta connectar-te repetidament amb un usuari que no existeixi, sense crear-lo al servidor:</li>
 </ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">BatchMode</span><span class="o">=</span>yes<span class="w"> </span>usuariinexistent@IP_SERVIDOR
+</span></code></pre></div>
+<p><code>BatchMode=yes</code> evita les preguntes interactives. Observa els comptadors amb <code>sudo fail2ban-client status sshd</code> des de la consola del servidor i repeteix la prova fins que s'apliqui el bloqueig. Comptem errors de registre reconeguts pel filtre, no necessàriament ordres <code>ssh</code> executades.</p>
+<ol>
+<li>Comprova que la IP del client apareix a <code>Banned IP list</code> i que una connexió SSH nova des d'aquell client queda bloquejada. Si els comptadors no augmenten, consulta <code>sudo journalctl -u ssh --since "10 minutes ago"</code> i <code>sudo journalctl -u fail2ban --since "10 minutes ago"</code> per comprovar els registres i detectar errors.</li>
+<li><strong>Des de la consola de VirtualBox</strong>, desbloqueja el client:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>fail2ban-client<span class="w"> </span><span class="nb">set</span><span class="w"> </span>sshd<span class="w"> </span>unbanip<span class="w"> </span>IP_CLIENT
+</span></code></pre></div>
+<p>Substitueix <code>IP_CLIENT</code> per la IP real del client. Comprova que pots obrir una connexió SSH nova abans de continuar amb els túnels.</p>
 <h4 id="7-tunel-ssh-local">7. Túnel SSH local<a class="headerlink" href="#7-tunel-ssh-local" title="Enllaç a aquesta secció">&para;</a></h4>
 <p>Volem accedir a un servei que només escolta a <code>localhost</code> del servidor —típicament una base de dades o un panell d'administració intern. Simulem-ho amb un servidor web mínim.</p>
 <ol>
-<li>Al servidor, instal·la un web server ràpid i posa'l a escoltar només a localhost:</li>
+<li>Al <strong>servidor</strong>, prepara un directori amb una pàgina de prova i inicia un servidor web que només escolti a <code>127.0.0.1</code>:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8080</span><span class="w"> </span>--bind<span class="w"> </span><span class="m">127</span>.0.0.1
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3<span class="w"> </span>curl
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/web-prova
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'Servei intern accessible pel tunel SSH'</span><span class="w"> </span>&gt;<span class="w"> </span>~/web-prova/index.html
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8080</span><span class="w"> </span>--bind<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--directory<span class="w"> </span>~/web-prova
 </span></code></pre></div>
-<p>Deixa la comanda oberta a una terminal del servidor.</p>
+<p>Deixa la comanda oberta a una terminal del servidor. El servidor web no necessita <code>sudo</code> per escoltar al port 8080 i només comparteix el directori de prova.</p>
 <ol>
-<li>Comprova al servidor que el servei respon: <code>curl http://127.0.0.1:8080</code>.</li>
-<li>Comprova al <strong>client</strong> que <strong>NO</strong> hi ha resposta si intenta directament: <code>curl http://IP_SERVIDOR:8080</code> (ha de fallar — el servei no escolta a la IP externa).</li>
+<li>En una altra terminal del <strong>servidor</strong>, comprova que el servei respon amb <code>curl http://127.0.0.1:8080</code>. Després executa <code>ss -ltn 'sport = :8080'</code>: l'adreça local ha de ser <code>127.0.0.1:8080</code>, no <code>0.0.0.0:8080</code> ni la IP de la xarxa del laboratori.</li>
+<li>Al <strong>client</strong>, instal·la <code>curl</code> si no hi és (<code>sudo apt install curl</code>) i prova <code>curl --connect-timeout 3 http://IP_SERVIDOR:8080</code>. Ha de fallar. <strong>Aquesta fallada, tota sola, no demostra on escolta el servei</strong>, perquè el tallafoc també pot impedir-hi l'accés. La comprovació amb <code>ss</code> del pas anterior és la que ens mostra l'adreça d'escolta.</li>
 <li>Ara, des del client, obre un túnel SSH:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">9090</span>:localhost:8080<span class="w"> </span>usuari@IP_SERVIDOR
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">127</span>.0.0.1:9090:127.0.0.1:8080<span class="w"> </span>usuari@IP_SERVIDOR
 </span></code></pre></div>
 <ol>
-<li>Deixa aquesta sessió oberta. A una altra terminal del client, prova <code>curl http://localhost:9090</code>. Ara sí que arriba, a través del túnel.</li>
+<li>Deixa aquesta sessió oberta. <code>-N</code> manté el túnel sense obrir una consola remota. A una altra terminal del <strong>client</strong>, prova <code>curl http://127.0.0.1:9090</code>. Ara ha d'aparèixer el contingut de la pàgina de prova a través del túnel.</li>
 <li>Explica al dossier què està passant, dibuixant l'esquema client ↔ servidor amb els ports 9090 (client) i 8080 (servidor).</li>
+<li>Tanca el túnel amb <code>Ctrl+C</code> i repeteix el <code>curl</code> al port 9090: ara ha de fallar. Atura també el servidor web amb <code>Ctrl+C</code> a la terminal on l'has iniciat.</li>
 </ol>
 <h3 id="verificacio_1">Verificació<a class="headerlink" href="#verificacio_1" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
@@ -2524,8 +2595,9 @@
 </ul>
 <h3 id="reflexio_1">Reflexió<a class="headerlink" href="#reflexio_1" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
-<li>Per què <em>canviar el port SSH</em> NO és una mesura de seguretat real?</li>
-<li>Quins són els riscos d'un <code>PasswordAuthentication no</code> mal fet (com et pots quedar bloquejat fora)?</li>
+<li>Què aporta canviar el port SSH i quins problemes de seguretat no resol?</li>
+<li>Què has de comprovar abans d'exigir l'accés només amb clau pública per no quedar-te fora del servidor?</li>
+<li>Quina diferència hi ha entre <code>sshd -t</code>, <code>sshd -T</code> i provar una connexió nova?</li>
 <li>En quins casos reals de la vida professional creus que faries servir un túnel <code>-L</code>?</li>
 </ul>
 <h2 id="part-3-escriptori-remot-vnc-i-rdp">Part 3 — Escriptori remot: VNC i RDP<a class="headerlink" href="#part-3-escriptori-remot-vnc-i-rdp" title="Enllaç a aquesta secció">&para;</a></h2>
@@ -2548,22 +2620,22 @@
 <ol>
 <li>Al servidor, instal·la XFCE:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xfce4<span class="w"> </span>xfce4-goodies
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xfce4<span class="w"> </span>xfce4-goodies
 </span></code></pre></div>
 <ol>
 <li>Instal·la <code>xrdp</code>:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xrdp
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xrdp
 </span></code></pre></div>
 <ol>
 <li>Fes que <code>xrdp</code> fagi servir XFCE. Al fitxer <code>~/.xsession</code> del teu usuari:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"xfce4-session"</span><span class="w"> </span>&gt;<span class="w"> </span>~/.xsession
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"xfce4-session"</span><span class="w"> </span>&gt;<span class="w"> </span>~/.xsession
 </span></code></pre></div>
 <ol>
 <li>Reinicia <code>xrdp</code>:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>xrdp
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>xrdp
 </span></code></pre></div>
 <ol>
 <li>Obre el port 3389 al tallafoc: <code>sudo ufw allow 3389/tcp</code>.</li>
@@ -2592,50 +2664,53 @@
 <h4 id="4-linux-linux-amb-vnc">4. Linux → Linux amb VNC<a class="headerlink" href="#4-linux-linux-amb-vnc" title="Enllaç a aquesta secció">&para;</a></h4>
 <p><strong>Objectiu</strong>: connectar-nos des del client Linux a l'escriptori del servidor Linux via VNC, però <strong>encapsulant el trànsit dins un túnel SSH</strong>, tal com es fa a producció.</p>
 <ol>
-<li>Al <strong>servidor</strong>, instal·la <code>tigervnc-standalone-server</code>:</li>
+<li>Al <strong>servidor</strong>, instal·la TigerVNC i el suport de D-Bus per a la sessió gràfica. XFCE ja ha d'estar instal·lat des de l'apartat anterior:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>tigervnc-standalone-server
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>tigervnc-standalone-server<span class="w"> </span>tigervnc-tools<span class="w"> </span>dbus-x11
 </span></code></pre></div>
 <ol>
-<li>Configura la contrasenya VNC:</li>
+<li>Amb el <strong>compte remot que utilitzarà l'escriptori</strong>, sense <code>sudo</code>, configura la contrasenya VNC:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>vncpasswd
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>tigervncpasswd
 </span></code></pre></div>
+<p>Aquesta contrasenya és pròpia de VNC: no és la del compte remot ni la frase de pas de la clau SSH. Si pregunta si vols una contrasenya de només visualització, contesta que no per a aquesta pràctica.</p>
 <ol>
-<li>Inicia una sessió VNC escoltant <strong>només a localhost</strong> (per seguretat):</li>
+<li>Comprova que existeix <code>/usr/share/xsessions/xfce.desktop</code>. El nom <code>xfce</code> identifica la sessió gràfica que volem iniciar. Si no existeix, revisa la instal·lació de XFCE abans de continuar.</li>
+<li>Inicia TigerVNC amb la sessió <strong>XFCE explícita</strong> i escoltant <strong>només a localhost</strong>:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>vncserver<span class="w"> </span>-localhost<span class="w"> </span>yes<span class="w"> </span>:1
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>tigervncserver<span class="w"> </span>-localhost<span class="w"> </span>yes<span class="w"> </span>:1<span class="w"> </span>--<span class="w"> </span>xfce
 </span></code></pre></div>
-<p>Això crea una sessió VNC al port 5901 accessible només des de dins del servidor.</p>
+<p><code>:1</code> és el número de pantalla virtual; per defecte, el port és <code>5900 + 1 = 5901</code>. <code>-- xfce</code> selecciona l'escriptori que s'executarà dins d'aquesta pantalla virtual. És una sessió gràfica nova, no necessàriament la mateixa que veuríem a la consola física.</p>
 <ol>
 <li>
-<p>Verifica que està en marxa: <code>ss -tlnp | grep 5901</code> — ha d'escoltar només a <code>127.0.0.1:5901</code>.</p>
+<p>Verifica la sessió amb <code>tigervncserver -list</code> i executa <code>ss -ltn 'sport = :5901'</code>. Ha d'escoltar només a les adreces de bucle local (<code>127.0.0.1</code> i, si apareix, <code>::1</code>), no a totes les interfícies. Si la sessió es tanca immediatament, consulta el registre que indica TigerVNC en arrencar.</p>
 </li>
 <li>
 <p>Al <strong>client</strong>, obre un túnel SSH cap al port VNC:</p>
 </li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">5901</span>:localhost:5901<span class="w"> </span>usuari@IP_SERVIDOR
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">127</span>.0.0.1:5901:127.0.0.1:5901<span class="w"> </span>usuari@IP_SERVIDOR
 </span></code></pre></div>
 <ol>
-<li>En una altra terminal del client, obre el visor VNC:</li>
+<li>Deixa el túnel obert. En una altra terminal del <strong>client</strong>, instal·la i obre el visor VNC:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>remmina-plugin-vnc
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>remmina<span class="w"> </span>-c<span class="w"> </span>vnc://localhost:5901
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>remmina<span class="w"> </span>remmina-plugin-vnc
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>remmina<span class="w"> </span>-c<span class="w"> </span>vnc://127.0.0.1:5901
 </span></code></pre></div>
-<p>O bé directament amb <code>xtigervncviewer localhost:5901</code>.</p>
+<p>Com a alternativa, instal·la <code>tigervnc-viewer</code> al client i executa <code>xtigervncviewer 127.0.0.1::5901</code>. En aquest visor, els dos punts dobles indiquen un port TCP explícit.</p>
 <ol>
-<li>Introdueix la contrasenya VNC. Ha d'aparèixer un escriptori del servidor.</li>
+<li>Introdueix la contrasenya VNC. Ha d'aparèixer l'escriptori XFCE de la sessió virtual del servidor.</li>
 <li>Captura al dossier.</li>
 </ol>
 <p>Per acabar, atura el servidor VNC al servidor:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>vncserver<span class="w"> </span>-kill<span class="w"> </span>:1
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>tigervncserver<span class="w"> </span>-kill<span class="w"> </span>:1
 </span></code></pre></div>
+<p>Tanca també el visor i el túnel SSH amb <code>Ctrl+C</code> a la terminal del client on l'has iniciat.</p>
 <h3 id="verificacio_2">Verificació<a class="headerlink" href="#verificacio_2" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
 <li>Windows → Linux amb <code>xrdp</code> funciona (escriptori XFCE del servidor visible al Windows).</li>
 <li>Linux → Windows amb Remmina funciona (escriptori de Windows visible al Linux).</li>
-<li>Linux → Linux amb VNC funciona, i el trànsit <strong>passa per dins d'un túnel SSH</strong> (podeu comprovar-ho amb <code>sudo ss -tnp | grep 5901</code> — la connexió entrant al servidor ve de <code>127.0.0.1</code>, no de la IP del client).</li>
+<li>Linux → Linux amb VNC funciona, i el trànsit <strong>passa per dins d'un túnel SSH</strong>. Durant la connexió, comproveu al servidor amb <code>ss -tn 'sport = :5901'</code> que la connexió VNC ve de <code>127.0.0.1</code>. La connexió que travessa la xarxa entre les dues màquines és la d'SSH.</li>
 </ul>
 <h3 id="reflexio_2">Reflexió<a class="headerlink" href="#reflexio_2" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>

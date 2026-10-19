@@ -1,0 +1,2087 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material docent del mòdul professional 0227 (CFGM Sistemes Microinformàtics i Xarxes)">
+      
+      
+        <meta name="author" content="Joan Mercadé">
+      
+      
+        <link rel="canonical" href="https://joan-mh.github.io/MP-0227/6-RA6-SSH/explicacio-esquema-ssh/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Com funciona SSH: explicació de l’esquema pas a pas - Serveis de Xarxa — M227</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#com-funciona-ssh-explicacio-de-lesquema-pas-a-pas" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-header__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Serveis de Xarxa — M227
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Com funciona SSH: explicació de l’esquema pas a pas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode fosc"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passar a mode fosc" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Passar a mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passar a mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inici
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../0-RA0-PrepEntorn/practiques/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Preparació de l'entorn (Pt0)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../7-RA7-Wifi/teoria/" class="md-tabs__link">
+          
+  
+  
+  RA i ordre d'impartició
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Serveis de Xarxa — M227" class="md-nav__button md-logo" aria-label="Serveis de Xarxa — M227" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Serveis de Xarxa — M227
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joan-mh/MP-0227" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Joan-mh/MP-0227
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inici
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0-RA0-PrepEntorn/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparació de l'entorn (Pt0)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA i ordre d'impartició
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA i ordre d'impartició
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA7 — Wifi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA7 — Wifi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-RA7-Wifi/checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklist d'avaluació
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA1 — DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA1 — DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-RA1-DHCP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA2 — DNS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA2 — DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-RA2-DNS/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA6 — SSH
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA6 — SSH
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA5 — HTTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA5 — HTTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-RA5-HTTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA3 — FTP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA3 — FTP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-RA3-FTP/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA8 — Proxy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA8 — Proxy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8-RA8-Proxy/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA4 — Correu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RA4 — Correu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-RA4-Mail/practiques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#com-hem-de-llegir-el-grafic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Com hem de llegir el gràfic?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abans-de-comencar-quines-claus-apareixen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abans de començar: quines claus apareixen?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primera-part-establir-el-canal-segur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primera part: establir el canal segur
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Primera part: establir el canal segur">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-establir-la-connexio-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Establir la connexió TCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-intercanviar-les-cadenes-de-versio-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Intercanviar les cadenes de versió SSH
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-negociar-els-algoritmes-criptografics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Negociar els algoritmes criptogràfics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-executar-lintercanvi-de-claus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Executar l’intercanvi de claus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-el-servidor-envia-la-seva-clau-publica-de-host-i-una-signatura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. El servidor envia la seva clau pública de host i una signatura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-el-client-comprova-la-clau-i-verifica-la-signatura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. El client comprova la clau i verifica la signatura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-els-dos-extrems-deriven-les-claus-simetriques-de-sessio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Els dos extrems deriven les claus simètriques de sessió
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-intercanviar-newkeys-i-activar-el-transport-xifrat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Intercanviar NEWKEYS i activar el transport xifrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segona-part-autenticar-lusuari-amb-una-clau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segona part: autenticar l’usuari amb una clau
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Segona part: autenticar l’usuari amb una clau">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9-comencar-lautenticacio-de-lusuari" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Començar l’autenticació de l’usuari
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-oferir-una-clau-publica-per-accedir-al-compte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Oferir una clau pública per accedir al compte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-el-servidor-comprova-authorized_keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. El servidor comprova authorized_keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-el-client-signa-la-peticio-amb-la-seva-clau-privada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. El client signa la petició amb la seva clau privada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-enviar-la-signatura-digital" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Enviar la signatura digital
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-el-servidor-verifica-la-signatura-amb-la-publica-de-lusuari" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. El servidor verifica la signatura amb la pública de l’usuari
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-el-servidor-comunica-que-lautenticacio-ha-tingut-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. El servidor comunica que l’autenticació ha tingut èxit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tercera-part-utilitzar-la-connexio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tercera part: utilitzar la connexió
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tercera part: utilitzar la connexió">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#16-obrir-un-canal-de-sessio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Obrir un canal de sessió
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-enviar-comandes-o-dades-xifrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Enviar comandes o dades xifrades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-el-servidor-desxifra-i-processa-les-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. El servidor desxifra i processa les dades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-el-servidor-envia-el-resultat-xifrat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. El servidor envia el resultat xifrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-el-client-desxifra-el-resultat-i-el-mostra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. El client desxifra el resultat i el mostra
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-canviaria-si-entressim-amb-contrasenya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Què canviaria si entréssim amb contrasenya?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dos-fitxers-amb-funcions-oposades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dos fitxers amb funcions oposades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#com-observar-ho-en-una-connexio-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Com observar-ho en una connexió real
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencies-per-contrastar-els-detalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referències per contrastar els detalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Joan-mh/MP-0227/edit/main/6-RA6-SSH/explicacio-esquema-ssh.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="com-funciona-ssh-explicacio-de-lesquema-pas-a-pas">Com funciona SSH: explicació de l’esquema pas a pas<a class="headerlink" href="#com-funciona-ssh-explicacio-de-lesquema-pas-a-pas" title="Enllaç a aquesta secció">&para;</a></h1>
+<p>Aquest document explica els <strong>20 passos</strong> del gràfic <em>How SSH Works</em>, de <strong>ByteByteGo</strong>. El gràfic mostra una connexió SSH amb <strong>autenticació de l’usuari per clau pública</strong>. Si l’accés es fa amb contrasenya, la preparació del canal segur és semblant, però canvia la manera d’autenticar l’usuari.</p>
+<p><img alt="Esquema How SSH Works de ByteByteGo" src="../SSH.png" /></p>
+<h2 id="com-hem-de-llegir-el-grafic">Com hem de llegir el gràfic?<a class="headerlink" href="#com-hem-de-llegir-el-grafic" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>A l’esquerra hi ha el <strong>client SSH</strong>, el programa <code>ssh</code> del nostre ordinador. A la dreta hi ha el <strong>servidor SSH</strong>, el programa <code>sshd</code> de l’ordinador remot. El temps avança de dalt a baix. Les fletxes horitzontals representen comunicació; els requadres laterals representen càlculs o comprovacions locals.</p>
+<p>Utilitzarem aquest exemple:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>alumne@192.168.56.10
+</span></code></pre></div>
+<p>La persona que executa l’ordre vol accedir al compte <strong><code>alumne</code> del servidor</strong>. No cal que el seu compte a l’ordinador client es digui també <code>alumne</code>.</p>
+<p>El procés té tres parts:</p>
+<table>
+<thead>
+<tr>
+<th>Passos</th>
+<th>Què volem aconseguir?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–8</td>
+<td>Preparar el canal xifrat i autenticar el servidor</td>
+</tr>
+<tr>
+<td>9–15</td>
+<td>Demostrar que podem accedir al compte remot</td>
+</tr>
+<tr>
+<td>16–20</td>
+<td>Obrir una sessió i intercanviar dades protegides</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Primer comprovem el servidor; després el servidor comprova l’usuari.</strong></p>
+<h2 id="abans-de-comencar-quines-claus-apareixen">Abans de començar: quines claus apareixen?<a class="headerlink" href="#abans-de-comencar-quines-claus-apareixen" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>No totes les claus del dibuix són les mateixes ni tenen la mateixa funció:</p>
+<table>
+<thead>
+<tr>
+<th>Claus o secrets</th>
+<th>On es troben?</th>
+<th>Funció</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parell de claus de host del servidor</td>
+<td>La privada es queda al servidor; la pública es presenta al client</td>
+<td>Autenticar el servidor mitjançant una signatura</td>
+</tr>
+<tr>
+<td>Parell de claus d’autenticació de l’usuari</td>
+<td>La privada es queda al client; la pública s’autoritza al compte remot</td>
+<td>Autenticar l’usuari mitjançant una altra signatura</td>
+</tr>
+<tr>
+<td>Secrets temporals de l’intercanvi de claus</td>
+<td>Cada extrem genera el seu i no l’envia</td>
+<td>Obtenir un secret compartit</td>
+</tr>
+<tr>
+<td>Claus simètriques de sessió</td>
+<td>Les calcula cada extrem localment</td>
+<td>Xifrar i desxifrar el trànsit</td>
+</tr>
+</tbody>
+</table>
+<p>Les claus de host solen preparar-se en instal·lar o configurar el servei. Les de l’usuari es preparen prèviament amb <code>ssh-keygen</code> si volem accés per clau pública. Els secrets de l’intercanvi i les claus de sessió es preparen <strong>automàticament durant la connexió</strong>.</p>
+<h2 id="primera-part-establir-el-canal-segur">Primera part: establir el canal segur<a class="headerlink" href="#primera-part-establir-el-canal-segur" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="1-establir-la-connexio-tcp">1. Establir la connexió TCP<a class="headerlink" href="#1-establir-la-connexio-tcp" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El client es connecta a la IP o al nom del servidor i al port del servei SSH, habitualment <strong>22/TCP</strong>.</p>
+<p>TCP proporciona una comunicació ordenada i fiable entre els dos programes, però <strong>encara no tenim el xifratge d’SSH</strong>. Obrir una connexió TCP no demostra que l’altre extrem sigui el servidor autèntic.</p>
+<h3 id="2-intercanviar-les-cadenes-de-versio-ssh">2. Intercanviar les cadenes de versió SSH<a class="headerlink" href="#2-intercanviar-les-cadenes-de-versio-ssh" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Client i servidor s’envien una línia d’identificació. Una línia com aquesta indica que es parla SSH versió 2 i identifica la implementació:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>SSH-2.0-OpenSSH_...
+</span></code></pre></div>
+<p>Aquesta identificació <strong>no és una contrasenya ni una prova d’identitat</strong>. Un programa maliciós també podria anunciar-se com un servidor SSH. A l’inici de la connexió, aquestes dades encara són visibles per a qui observa la xarxa.</p>
+<h3 id="3-negociar-els-algoritmes-criptografics">3. Negociar els algoritmes criptogràfics<a class="headerlink" href="#3-negociar-els-algoritmes-criptografics" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Els dos programes comuniquen quins algoritmes admeten i seleccionen opcions compatibles per a les diferents funcions:</p>
+<ul>
+<li><strong>Intercanvi de claus</strong>, com Diffie-Hellman o una variant com ECDH.</li>
+<li><strong>Signatura del servidor</strong>, per exemple amb claus ED25519 o RSA.</li>
+<li><strong>Xifratge simètric</strong>, com AES o ChaCha20.</li>
+<li><strong>Protecció d’integritat</strong>, per detectar modificacions dels paquets. Pot utilitzar un MAC o estar integrada en el mode de xifratge.</li>
+</ul>
+<p>No és una tria que hagi de fer manualment l’alumne a cada connexió: la fan els programes segons les seves capacitats i configuracions.</p>
+<p><strong>No es tria entre SHA-2, AES i RSA com si fessin la mateixa feina.</strong> Un resum criptogràfic, un xifratge i una signatura resolen problemes diferents.</p>
+<h3 id="4-executar-lintercanvi-de-claus">4. Executar l’intercanvi de claus<a class="headerlink" href="#4-executar-lintercanvi-de-claus" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Cada extrem genera informació privada temporal i envia uns valors públics calculats a partir d’aquesta informació. Amb el seu secret privat i el valor públic rebut, cadascun obté <strong>el mateix secret compartit</strong>.</p>
+<p>La idea de Diffie-Hellman és aquesta:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Secret temporal del client + valor públic del servidor → secret compartit
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Secret temporal del servidor + valor públic del client → el mateix secret compartit
+</span></code></pre></div>
+<p>Els secrets privats i el secret compartit <strong>no viatgen per la xarxa</strong>. Els valors públics sí que hi viatgen.</p>
+<p>Aquí encara falta una pregunta: <strong>hem acordat aquest secret amb el servidor correcte?</strong> Un atacant actiu podria intentar interposar-se i fer dos intercanvis diferents. Per això necessitem els passos 5 i 6.</p>
+<h3 id="5-el-servidor-envia-la-seva-clau-publica-de-host-i-una-signatura">5. El servidor envia la seva clau pública de host i una signatura<a class="headerlink" href="#5-el-servidor-envia-la-seva-clau-publica-de-host-i-una-signatura" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El servidor presenta la seva <strong>clau pública de host</strong> i una signatura feta amb la <strong>clau privada de host</strong>.</p>
+<p>La signatura es calcula sobre un resum que vincula les dades d’aquesta negociació, la clau de host, els valors de l’intercanvi i el secret compartit. Així el servidor demostra que disposa de la privada i vincula aquesta prova amb la connexió que s’està preparant.</p>
+<p><strong>No envia la privada ni el secret compartit.</strong> El client pot calcular el mateix resum perquè disposa de les dades necessàries i també obté el secret compartit.</p>
+<p>El dibuix separa els passos 4 i 5 per explicar-los. En el protocol real estan relacionats: en DH clàssic, la resposta del servidor inclou el seu valor públic d’intercanvi, la clau de host i la signatura. No són necessàriament dues converses separades.</p>
+<h3 id="6-el-client-comprova-la-clau-i-verifica-la-signatura">6. El client comprova la clau i verifica la signatura<a class="headerlink" href="#6-el-client-comprova-la-clau-i-verifica-la-signatura" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>S’han de superar <strong>dues comprovacions</strong>:</p>
+<ol>
+<li><strong>La clau pública correspon al servidor esperat?</strong> El client la compara amb la guardada per a aquella destinació a <code>~/.ssh/known_hosts</code>.</li>
+<li><strong>La signatura és vàlida?</strong> El client la verifica amb aquesta clau pública i amb el resum de l’intercanvi que ell mateix calcula.</li>
+</ol>
+<p>Copiar la pública del servidor no permet suplantar-lo: falta generar la signatura vàlida sense disposar de la privada. Però una signatura vàlida amb la clau d’un atacant tampoc no ens serveix: cal comprovar que la pública és la del servidor esperat.</p>
+<p>Si és la primera connexió, encara no hi ha una clau guardada. El client mostra una empremta i pregunta si l’acceptem. Cal contrastar-la per un canal fiable, per exemple des de la consola del servidor a VirtualBox:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ssh-keygen<span class="w"> </span>-lf<span class="w"> </span>/etc/ssh/ssh_host_ed25519_key.pub
+</span></code></pre></div>
+<p>Aquesta ordre consulta la clau ED25519; si el client presenta un altre tipus de clau, cal consultar la pública corresponent. <strong>Contestar <code>yes</code> desa la clau presentada; no genera claus d’usuari ni substitueix la comprovació de l’empremta.</strong></p>
+<h3 id="7-els-dos-extrems-deriven-les-claus-simetriques-de-sessio">7. Els dos extrems deriven les claus simètriques de sessió<a class="headerlink" href="#7-els-dos-extrems-deriven-les-claus-simetriques-de-sessio" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Aquest número apareix dues vegades al gràfic perquè <strong>el càlcul es fa als dos ordinadors</strong>.</p>
+<p>Derivar vol dir aplicar una funció al secret compartit i a dades de l’intercanvi per obtenir les claus que necessita el canal. Com que tots dos tenen el mateix material de partida, calculen les mateixes claus corresponents sense enviar-les.</p>
+<p>Es preparen claus diferents per a cada sentit de comunicació i, quan cal, material per protegir la integritat. La clau de xifratge client → servidor no té per què ser la mateixa que la de servidor → client.</p>
+<p>Per tant, no apareix cap clau secreta de manera màgica: <strong>l’intercanvi permet calcular el mateix secret i la derivació el transforma en les claus necessàries</strong>.</p>
+<h3 id="8-intercanviar-newkeys-i-activar-el-transport-xifrat">8. Intercanviar NEWKEYS i activar el transport xifrat<a class="headerlink" href="#8-intercanviar-newkeys-i-activar-el-transport-xifrat" title="Enllaç a aquesta secció">&para;</a></h3>
+<p><code>NEWKEYS</code> és el nom d’un missatge de control que indica el canvi als algoritmes i claus acabats de preparar. <strong>Malgrat el nom, no conté les claus secretes.</strong></p>
+<p>Cada extrem envia el seu missatge i passa a utilitzar les noves claus per als missatges següents que envia; quan rep el de l’altre extrem, passa a utilitzar-les per llegir els missatges següents que rep.</p>
+<p>Des d’aquest punt, l’autenticació de l’usuari i les dades posteriors circulen pel canal protegit. <strong>Ja tenim el servidor autenticat i el canal xifrat, però l’usuari encara no ha iniciat sessió.</strong></p>
+<h2 id="segona-part-autenticar-lusuari-amb-una-clau">Segona part: autenticar l’usuari amb una clau<a class="headerlink" href="#segona-part-autenticar-lusuari-amb-una-clau" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="9-comencar-lautenticacio-de-lusuari">9. Començar l’autenticació de l’usuari<a class="headerlink" href="#9-comencar-lautenticacio-de-lusuari" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El client inicia el servei d’autenticació d’SSH i indica el compte remot al qual vol accedir, en l’exemple <code>alumne</code>.</p>
+<p>El servidor aplica les seves regles: quins comptes poden entrar i quins mètodes d’autenticació admet. El gràfic continua amb el mètode <strong>clau pública</strong>.</p>
+<h3 id="10-oferir-una-clau-publica-per-accedir-al-compte">10. Oferir una clau pública per accedir al compte<a class="headerlink" href="#10-oferir-una-clau-publica-per-accedir-al-compte" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El client pot presentar la <strong>clau pública d’autenticació de l’usuari</strong> per preguntar si el servidor l’acceptaria per a aquell compte.</p>
+<p>Aquesta no és la pública de host del pas 5: aquella identifica el servidor; aquesta serveix per autenticar-se com a usuari.</p>
+<p>La consulta prèvia sense signatura és <strong>opcional</strong>. El client també pot enviar directament una petició signada. El gràfic mostra el camí amb consulta prèvia i simplifica la resposta del servidor que indica que es pot provar aquesta clau.</p>
+<h3 id="11-el-servidor-comprova-authorized_keys">11. El servidor comprova authorized_keys<a class="headerlink" href="#11-el-servidor-comprova-authorized_keys" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>En la configuració habitual del laboratori, el servidor busca la clau presentada a:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>~/.ssh/authorized_keys
+</span></code></pre></div>
+<p>Aquí <code>~</code> és el directori personal del <strong>compte remot al servidor</strong>. Si el compte és <code>alumne</code>, habitualment parlem de <code>/home/alumne/.ssh/authorized_keys</code>.</p>
+<p>La clau s’hi ha afegit prèviament, per exemple amb <code>ssh-copy-id</code>. Trobar-la vol dir que està autoritzada per a aquell compte, amb les restriccions que hi pugui haver. <strong>Encara cal demostrar que el client disposa de la privada corresponent.</strong></p>
+<h3 id="12-el-client-signa-la-peticio-amb-la-seva-clau-privada">12. El client signa la petició amb la seva clau privada<a class="headerlink" href="#12-el-client-signa-la-peticio-amb-la-seva-clau-privada" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El client prepara una petició d’autenticació que queda vinculada a aquesta sessió i al compte remot, i la signa amb la <strong>privada de l’usuari</strong>, habitualment desada en un fitxer com <code>~/.ssh/id_ed25519</code> del client.</p>
+<p>Si el fitxer està protegit amb una frase de pas, es pot demanar per desbloquejar-lo localment, o se’n pot gestionar l’ús amb un agent d’autenticació. Aquesta frase de pas <strong>no és la contrasenya del compte remot</strong>.</p>
+<p>La privada es fa servir localment per signar: <strong>no s’envia al servidor</strong>.</p>
+<h3 id="13-enviar-la-signatura-digital">13. Enviar la signatura digital<a class="headerlink" href="#13-enviar-la-signatura-digital" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El client envia la petició signada pel canal que ja està xifrat. La signatura prova la possessió de la privada sense haver de transmetre-la.</p>
+<p>Com que la petició signada incorpora l’identificador de la sessió, una signatura capturada no serveix per autenticar una altra connexió diferent. No es tracta d’enviar sempre una mateixa «prova secreta» reutilitzable.</p>
+<h3 id="14-el-servidor-verifica-la-signatura-amb-la-publica-de-lusuari">14. El servidor verifica la signatura amb la pública de l’usuari<a class="headerlink" href="#14-el-servidor-verifica-la-signatura-amb-la-publica-de-lusuari" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El servidor verifica la signatura amb la clau pública autoritzada i les dades de la petició. Així comprova que el client disposa de la privada corresponent i que la prova és vàlida per a aquesta sessió.</p>
+<p><strong>La pública verifica; no desxifra cap repte enviat al client.</strong> En aquest procediment, el servidor no necessita conèixer la privada.</p>
+<h3 id="15-el-servidor-comunica-que-lautenticacio-ha-tingut-exit">15. El servidor comunica que l’autenticació ha tingut èxit<a class="headerlink" href="#15-el-servidor-comunica-que-lautenticacio-ha-tingut-exit" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Si la clau està autoritzada, la signatura és vàlida i la política del servidor ho permet, es comunica l’èxit de l’autenticació.</p>
+<p>El gràfic pressuposa que aquesta autenticació és suficient. Un servidor podria exigir factors addicionals, però això queda fora de l’exemple.</p>
+<p>A partir d’aquí podem accedir al compte <code>alumne</code>, però <strong>no obtenim automàticament permisos de root</strong>. Les accions disponibles depenen dels permisos del compte i de les regles del sistema.</p>
+<h2 id="tercera-part-utilitzar-la-connexio">Tercera part: utilitzar la connexió<a class="headerlink" href="#tercera-part-utilitzar-la-connexio" title="Enllaç a aquesta secció">&para;</a></h2>
+<h3 id="16-obrir-un-canal-de-sessio">16. Obrir un canal de sessió<a class="headerlink" href="#16-obrir-un-canal-de-sessio" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Dins de la connexió SSH ja establerta, el client demana un <strong>canal de sessió</strong> i el servidor ha d’acceptar-lo.</p>
+<p>Un canal és una comunicació lògica dins de la mateixa connexió; no implica obrir una altra connexió TCP. Després es pot demanar una consola interactiva, executar una ordre o iniciar un subsistema com SFTP.</p>
+<p>En l’exemple <code>ssh alumne@192.168.56.10</code>, habitualment es demana un terminal i una consola de comandes del compte remot. El gràfic agrupa aquestes operacions en un sol pas.</p>
+<h3 id="17-enviar-comandes-o-dades-xifrades">17. Enviar comandes o dades xifrades<a class="headerlink" href="#17-enviar-comandes-o-dades-xifrades" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>Si escrivim una ordre com <code>whoami</code>, el client transporta les dades del terminal dins del canal SSH. Les protegeix amb les claus simètriques i el mecanisme d’integritat negociats.</p>
+<p>Les dades del terminal poden enviar-se a mesura que escrivim: no cal imaginar cada ordre sencera com un únic paquet. Qui captura el trànsit a la xarxa no veu l’ordre en clar, tot i que pot observar informació com les IP, els ports i el volum de trànsit.</p>
+<h3 id="18-el-servidor-desxifra-i-processa-les-dades">18. El servidor desxifra i processa les dades<a class="headerlink" href="#18-el-servidor-desxifra-i-processa-les-dades" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El servidor comprova la integritat de les dades rebudes segons el mecanisme negociat i les desxifra. Les entrega a la consola o al programa que gestiona el canal.</p>
+<p>En l’exemple, <code>whoami</code> s’executa <strong>al servidor</strong> amb la identitat del compte remot. Per això esperem que retorni <code>alumne</code>, independentment del nom del compte al nostre ordinador.</p>
+<p>El servidor pot llegir les dades perquè és un extrem de la connexió. <strong>El xifratge protegeix el trajecte, no oculta les ordres al servidor que les ha d’executar.</strong></p>
+<h3 id="19-el-servidor-envia-el-resultat-xifrat">19. El servidor envia el resultat xifrat<a class="headerlink" href="#19-el-servidor-envia-el-resultat-xifrat" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El servidor recull la sortida del programa, la protegeix i l’envia pel canal SSH. Utilitza el material de claus corresponent al sentit <strong>servidor → client</strong>.</p>
+<p>El resultat de <code>whoami</code>, per exemple, torna xifrat. La comunicació és bidireccional encara que el dibuix representi una ordre i una resposta per separat.</p>
+<h3 id="20-el-client-desxifra-el-resultat-i-el-mostra">20. El client desxifra el resultat i el mostra<a class="headerlink" href="#20-el-client-desxifra-el-resultat-i-el-mostra" title="Enllaç a aquesta secció">&para;</a></h3>
+<p>El client comprova la integritat i desxifra les dades rebudes. Finalment les mostra al terminal:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>alumne
+</span></code></pre></div>
+<p>El cicle d’enviar dades i rebre resultats es repeteix mentre utilitzem la sessió. Quan fem <code>exit</code>, es tanca la consola remota i, en una connexió senzilla sense altres canals oberts, també acaba la connexió SSH.</p>
+<h2 id="que-canviaria-si-entressim-amb-contrasenya">Què canviaria si entréssim amb contrasenya?<a class="headerlink" href="#que-canviaria-si-entressim-amb-contrasenya" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Es mantindria la preparació del canal segur i l’autenticació del servidor dels passos 1–8. Els passos 10–14 de prova amb la clau de l’usuari se substituirien per l’enviament de la contrasenya del compte remot <strong>dins del canal ja xifrat</strong> i la comprovació que en fa el servidor.</p>
+<p>Per tant:</p>
+<ul>
+<li>No cal generar claus d’usuari per poder establir una connexió SSH amb contrasenya.</li>
+<li>La comprovació de la clau de host del servidor continua sent necessària.</li>
+<li>La contrasenya viatja protegida pel xifratge; la privada de l’usuari, en l’altre mètode, no viatja.</li>
+</ul>
+<h2 id="dos-fitxers-amb-funcions-oposades">Dos fitxers amb funcions oposades<a class="headerlink" href="#dos-fitxers-amb-funcions-oposades" title="Enllaç a aquesta secció">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Fitxer</th>
+<th>On és, en aquest exemple?</th>
+<th>Què conté?</th>
+<th>Quina pregunta ajuda a respondre?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>~/.ssh/known_hosts</code></td>
+<td>Al client, dins del compte local</td>
+<td>Claus públiques dels servidors de confiança</td>
+<td>Estic parlant amb el servidor esperat?</td>
+</tr>
+<tr>
+<td><code>~/.ssh/authorized_keys</code></td>
+<td>Al servidor, dins del compte remot</td>
+<td>Claus públiques autoritzades per accedir a aquell compte</td>
+<td>Aquesta clau està autoritzada per entrar en aquest compte?</td>
+</tr>
+</tbody>
+</table>
+<p>Cap d’aquests fitxers conté les claus privades ni les claus simètriques de sessió. Les llistes de claus públiques <strong>no substitueixen la verificació de les signatures</strong>.</p>
+<h2 id="com-observar-ho-en-una-connexio-real">Com observar-ho en una connexió real<a class="headerlink" href="#com-observar-ho-en-una-connexio-real" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>Al client podem demanar informació de depuració:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ssh<span class="w"> </span>-vv<span class="w"> </span>alumne@192.168.56.10
+</span></code></pre></div>
+<p>Els missatges permeten observar la versió, els algoritmes negociats, la clau de host, el canvi a les noves claus, els intents d’autenticació i l’obertura del canal. El text exacte varia segons la versió i la configuració; no hem d’esperar una línia per cada número del dibuix.</p>
+<p>Podem utilitzar aquesta sortida per identificar <strong>quan es prepara el canal segur, quan s’autentica l’usuari i quan s’obre la sessió</strong>. No mostra les claus secretes de sessió per poder-les copiar.</p>
+<h2 id="referencies-per-contrastar-els-detalls">Referències per contrastar els detalls<a class="headerlink" href="#referencies-per-contrastar-els-detalls" title="Enllaç a aquesta secció">&para;</a></h2>
+<p>El gràfic original és de <strong>ByteByteGo</strong>, tal com indica la imatge aportada. La numeració d’aquest document segueix el gràfic; els matisos sobre missatges i passos opcionals es poden contrastar a:</p>
+<ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc4253.html">RFC 4253 — Transport SSH</a>: intercanvi de claus, autenticació del servidor i activació amb <code>NEWKEYS</code>.</li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc4252.html#section-7">RFC 4252, apartat 7 — Autenticació per clau pública</a>: consulta opcional de la clau i petició signada vinculada a la sessió.</li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc4254.html#section-6">RFC 4254, apartat 6 — Canals de sessió</a>: obertura del canal i peticions de terminal, consola o execució.</li>
+<li><a href="https://man.openbsd.org/ssh">Manual d’OpenSSH: ssh</a>: ús del client, autenticació i opció de depuració <code>-v</code>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Joan-mh/MP-0227" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
