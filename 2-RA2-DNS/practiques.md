@@ -228,6 +228,22 @@ Si el slave no ha refrescat, pots forçar-ho amb `sudo rndc retransfer cognom.ed
 2. Atura el servei al master (`sudo systemctl stop bind9`).
 3. Comprova que els clients continuen podent resoldre noms.
 
+> **Atenció amb Windows:** `nslookup` no fa servir el resolutor de Windows. Sempre pregunta només al primer servidor DNS de la llista, i si aquest no respon dona *DNS request timed out*, encara que el secundari funcioni. Per tant, `nslookup` **no serveix** per comprovar la redundància.
+>
+> Per provar-la cal fer servir una eina que utilitzi el resolutor del sistema, després de buidar la memòria cau:
+>
+> ```
+> ipconfig /flushdns
+> ```
+>
+> ```powershell
+> Resolve-DnsName www.cognom.edu      # PowerShell
+> ```
+>
+> o bé, des de `cmd`, `ping www.cognom.edu` (n'hi ha prou que mostri la IP, encara que la màquina no respongui).
+>
+> Si `Resolve-DnsName` (o `ping`) resol el nom amb el master aturat, la redundància funciona. Si tampoc no resol, reviseu que el client no tingui un altre adaptador (per exemple, el NAT) amb un DNS que respongui abans.
+
 ### Resultats esperats
 
 - El slave rep la zona automàticament del master (transferència AXFR/IXFR visible al log).
