@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2424,6 +2424,16 @@
 <li>Atura el servei al master (<code>sudo systemctl stop bind9</code>).</li>
 <li>Comprova que els clients continuen podent resoldre noms.</li>
 </ol>
+<blockquote>
+<p><strong>Atenció amb Windows:</strong> <code>nslookup</code> no fa servir el resolutor de Windows. Sempre pregunta només al primer servidor DNS de la llista, i si aquest no respon dona <em>DNS request timed out</em>, encara que el secundari funcioni. Per tant, <code>nslookup</code> <strong>no serveix</strong> per comprovar la redundància.</p>
+<p>Per provar-la cal fer servir una eina que utilitzi el resolutor del sistema, després de buidar la memòria cau:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ipconfig /flushdns
+</span></code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">Resolve-DnsName</span> <span class="n">www</span><span class="p">.</span><span class="n">cognom</span><span class="p">.</span><span class="n">edu</span>      <span class="c"># PowerShell</span>
+</span></code></pre></div>
+<p>o bé, des de <code>cmd</code>, <code>ping www.cognom.edu</code> (n'hi ha prou que mostri la IP, encara que la màquina no respongui).</p>
+<p>Si <code>Resolve-DnsName</code> (o <code>ping</code>) resol el nom amb el master aturat, la redundància funciona. Si tampoc no resol, reviseu que el client no tingui un altre adaptador (per exemple, el NAT) amb un DNS que respongui abans.</p>
+</blockquote>
 <h3 id="resultats-esperats_2">Resultats esperats<a class="headerlink" href="#resultats-esperats_2" title="Enllaç a aquesta secció">&para;</a></h3>
 <ul>
 <li>El slave rep la zona automàticament del master (transferència AXFR/IXFR visible al log).</li>
@@ -2544,10 +2554,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
